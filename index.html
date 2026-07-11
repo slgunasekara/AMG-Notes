@@ -90,29 +90,46 @@
         /* ---------- Sticky nav ---------- */
         nav.jumpnav{
             position:sticky;top:0;z-index:40;
-            background:rgba(251,253,255,.85);
-            backdrop-filter:blur(10px);
+            background:rgba(251,253,255,.82);
+            backdrop-filter:blur(12px);
             border-bottom:1px solid var(--line);
             padding:12px 16px;
         }
         .jumpnav-inner{
             max-width:1180px;margin:0 auto;
-            display:flex;gap:8px;overflow-x:auto;
+            display:flex;align-items:center;gap:8px;overflow-x:auto;
             scrollbar-width:none;
         }
         .jumpnav-inner::-webkit-scrollbar{display:none;}
+        .jumpnav-inner .navdiv{
+            flex:none;width:1px;height:20px;background:var(--blue-100);margin:0 4px;
+        }
         .jumpnav-inner a{
             flex:none;
+            display:inline-flex;align-items:center;gap:7px;
             font-family:'Outfit',sans-serif;font-weight:600;font-size:13.5px;
-            padding:9px 16px;border-radius:999px;
+            padding:9px 17px 9px 13px;border-radius:999px;
             color:var(--blue-800);
             background:var(--white);
             border:1px solid var(--blue-100);
             text-decoration:none;
-            transition:.2s;
             white-space:nowrap;
+            box-shadow:0 2px 6px rgba(29,78,216,.06);
+            transition:box-shadow .22s, background .22s, color .22s, border-color .22s;
         }
-        .jumpnav-inner a:hover{background:var(--blue-600);color:#fff;border-color:var(--blue-600);transform:translateY(-1px);}
+        .jumpnav-inner a svg{width:14px;height:14px;flex:none;stroke:var(--blue-600);fill:none;stroke-width:1.9;transition:stroke .22s;}
+        .jumpnav-inner a:hover{
+            background:var(--blue-50);
+            border-color:var(--blue-300,#93C5FD);
+            box-shadow:0 4px 10px rgba(29,78,216,.12);
+        }
+        .jumpnav-inner a.active{
+            color:#fff;
+            background:linear-gradient(135deg,var(--blue-700),var(--blue-500));
+            border-color:transparent;
+            box-shadow:0 4px 12px rgba(29,78,216,.28);
+        }
+        .jumpnav-inner a.active svg{stroke:#fff;}
 
         /* ---------- Layout ---------- */
         main{max-width:1180px;margin:0 auto;padding:8px 24px 60px;}
@@ -125,11 +142,24 @@
         .section-head .rule{flex:1;height:1px;background:linear-gradient(90deg,var(--blue-200),transparent);min-width:40px;}
         .section-head .count{font-size:12.5px;color:var(--muted);font-weight:600;}
         .section-sub{
-            font-family:'Outfit',sans-serif;font-weight:700;font-size:15px;
-            color:var(--blue-700);margin:30px 0 16px;
-            display:flex;align-items:center;gap:10px;
+            font-family:'Outfit',sans-serif;font-weight:800;font-size:21px;
+            color:var(--blue-900);margin:38px 0 20px;
+            display:flex;align-items:center;gap:12px;
+            padding-left:16px;
+            border-left:5px solid var(--cyan);
         }
-        .section-sub::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--cyan);display:inline-block;transform:rotate(45deg);}
+
+        .section-sub2{
+            display:inline-flex;align-items:center;gap:7px;
+            font-family:'Outfit',sans-serif;font-weight:700;font-size:12.5px;
+            letter-spacing:.05em;text-transform:uppercase;
+            color:var(--blue-700);
+            background:var(--blue-50);
+            border:1px solid var(--blue-100);
+            padding:7px 15px;border-radius:999px;
+            margin:26px 0 14px;
+        }
+        .section-sub2 svg{width:13px;height:13px;flex:none;}
 
         /* ---------- Card grid (3D signature) ---------- */
         .card-grid{
@@ -161,16 +191,23 @@
             border-color:var(--blue-300,#93C5FD);
         }
         .card:active{transform:translateY(-2px) scale(.99);}
-        .badge{
-            width:50px;height:50px;border-radius:15px;flex:none;
+        .art{
+            position:relative;
+            width:100%;height:96px;border-radius:14px;flex:none;overflow:hidden;
             display:flex;align-items:center;justify-content:center;
-            background:linear-gradient(135deg,var(--blue-600),var(--cyan));
-            box-shadow:
-                    inset 0 2px 3px rgba(255,255,255,.55),
-                    inset 0 -4px 8px rgba(6,20,60,.28),
-                    0 8px 16px rgba(37,99,235,.30);
+            background:linear-gradient(150deg,var(--blue-700) 0%, var(--blue-500) 55%, var(--cyan) 130%);
+            box-shadow:inset 0 2px 4px rgba(255,255,255,.35), inset 0 -10px 18px rgba(6,20,60,.28);
         }
-        .badge svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+        .art::before{
+            content:"";position:absolute;inset:0;
+            background:
+                    radial-gradient(60px 60px at 15% 15%, rgba(255,255,255,.35), transparent 60%),
+                    radial-gradient(90px 90px at 100% 100%, rgba(11,42,91,.35), transparent 60%);
+        }
+        .art .blob{position:absolute;border-radius:50%;background:rgba(255,255,255,.14);}
+        .art .blob.b1{width:70px;height:70px;top:-22px;right:-18px;}
+        .art .blob.b2{width:44px;height:44px;bottom:-16px;left:-10px;background:rgba(11,42,91,.18);}
+        .art svg{position:relative;width:44px;height:44px;z-index:1;filter:drop-shadow(0 4px 6px rgba(6,20,60,.35));}
         .card .ctitle{font-family:'Outfit',sans-serif;font-weight:700;font-size:15px;line-height:1.35;color:var(--blue-900);}
         .card .cmeta{
             margin-top:auto;display:flex;align-items:center;gap:6px;
@@ -196,7 +233,7 @@
             width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;
             background:linear-gradient(135deg,var(--blue-700),var(--cyan));
         }
-        .tool-pill .tbadge svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2;}
+        .tool-pill .tbadge svg{width:16px;height:16px;}
 
         /* ---------- People / repo cards ---------- */
         .people-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;}
@@ -214,6 +251,12 @@
             font-family:'Outfit',sans-serif;font-weight:700;color:#fff;font-size:15px;
             background:linear-gradient(135deg,var(--blue-700),var(--blue-400));
             box-shadow:inset 0 2px 3px rgba(255,255,255,.4), inset 0 -3px 6px rgba(6,20,60,.25);
+            text-decoration:none;cursor:pointer;
+            transition:transform .25s, box-shadow .25s;
+        }
+        .avatar:hover{
+            transform:translateY(-3px) scale(1.06);
+            box-shadow:inset 0 2px 3px rgba(255,255,255,.4), inset 0 -3px 6px rgba(6,20,60,.25), 0 8px 16px rgba(37,99,235,.35);
         }
         .person-name{font-family:'Outfit',sans-serif;font-weight:700;font-size:15px;color:var(--blue-900);}
         .person-name a{font-size:11.5px;font-weight:600;color:var(--blue-600);text-decoration:none;display:block;margin-top:2px;}
@@ -226,6 +269,7 @@
             transition:.2s;display:inline-flex;align-items:center;gap:5px;
         }
         .link-chip:hover{background:var(--blue-600);color:#fff;border-color:var(--blue-600);transform:translateY(-2px);}
+        .link-chip svg{width:12px;height:12px;flex:none;}
 
         /* ---------- No results ---------- */
         #noResults{display:none;text-align:center;color:var(--muted);padding:50px 20px;font-size:14px;}
@@ -257,7 +301,7 @@
 <body>
 
 <header class="hero">
-    <span class="eyebrow"><span class="dot"></span> Code Hub</span>
+    <span class="eyebrow"><span class="dot"></span> GDSE &amp; CAME Study Hub</span>
     <h1 class="title">Documents by AMG</h1>
     <p class="subtitle">Every note, VIVA guide and GitHub repo in one place. <b>Click any card</b> to jump straight to the resource.</p>
 
@@ -269,14 +313,16 @@
 </header>
 
 <nav class="jumpnav">
-    <div class="jumpnav-inner">
-        <a href="#tools">Tools</a>
-        <a href="#came">CAME Course</a>
-        <a href="#sem1">GDSE · SEM 1</a>
-        <a href="#docs1">Lecture Docs</a>
-        <a href="#repo1">GitHub · SEM 1</a>
-        <a href="#sem2">GDSE · SEM 2</a>
-        <a href="#repo2">GitHub · SEM 2</a>
+    <div class="jumpnav-inner" id="jumpnavInner">
+        <a href="#tools" data-target="tools"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.4"/><path d="M12 3.5v3M12 17.5v3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M2.5 12h3M18.5 12h3M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/></svg>Tools</a>
+        <a href="#came" data-target="came"><svg viewBox="0 0 24 24"><path d="M9.5 3.2A3 3 0 0 0 6.7 6a3 3 0 0 0-1.9 4.9A3 3 0 0 0 6.7 16h2.8"/><path d="M14.5 3.2A3 3 0 0 1 17.3 6a3 3 0 0 1 1.9 4.9A3 3 0 0 1 17.3 16h-2.8"/><path d="M9.5 3.2v17.6M14.5 3.2v17.6"/></svg>CAME Course</a>
+        <span class="navdiv"></span>
+        <a href="#sem1" data-target="sem1"><svg viewBox="0 0 24 24"><path d="M12 3.2l8.4 4.6L12 12.4 3.6 7.8z"/><path d="M3.6 12.4L12 17l8.4-4.6"/></svg>GDSE · SEM 1</a>
+        <a href="#docs1" data-target="docs1"><svg viewBox="0 0 24 24"><path d="M6 2.5h8.5L19 7v14.5H6z"/><path d="M14.5 2.5V7H19"/></svg>Lecture Docs</a>
+        <a href="#repo1" data-target="repo1"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8V16M6 12c0 3.4 3.5 3.4 7.5 3.4H15"/></svg>GitHub · SEM 1</a>
+        <span class="navdiv"></span>
+        <a href="#sem2" data-target="sem2"><svg viewBox="0 0 24 24"><path d="M12 3.2l8.4 4.6L12 12.4 3.6 7.8z"/><path d="M3.6 12.4L12 17l8.4-4.6"/></svg>GDSE · SEM 2</a>
+        <a href="#repo2" data-target="repo2"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8V16M6 12c0 3.4 3.5 3.4 7.5 3.4H15"/></svg>GitHub · SEM 2</a>
     </div>
 </nav>
 
@@ -297,18 +343,18 @@
         <div class="section-sub">SEM 1</div>
         <div class="card-grid" id="sem1Grid"></div>
 
-        <div class="section-sub" id="docs1">Lecture Doc</div>
+        <div class="section-sub2" id="docs1"><svg viewBox="0 0 24 24"><path d="M6 2.5h8.5L19 7v14.5H6z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M14.5 2.5V7H19" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Lecture Doc</div>
         <div class="card-grid" id="docs1Grid"></div>
 
-        <div class="section-sub" id="repo1">Lecture Repo</div>
+        <div class="section-sub2" id="repo1"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.1" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="6" cy="18" r="2.1" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="12" r="2.1" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M6 8.1V16M6 8.1c0 4.3 4 4.3 8.5 4.3H16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Lecture Repo</div>
         <div class="people-grid" id="repo1Grid"></div>
     </section>
 
     <section class="section" id="sem2">
-        <div class="section-head"><h2>SEM 2</h2><div class="rule"></div></div>
+        <div class="section-sub">SEM 2</div>
         <div class="card-grid" id="sem2Grid"></div>
 
-        <div class="section-sub" id="repo2">Lecture Repo</div>
+        <div class="section-sub2" id="repo2"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.1" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="6" cy="18" r="2.1" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="12" r="2.1" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M6 8.1V16M6 8.1c0 4.3 4 4.3 8.5 4.3H16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Lecture Repo</div>
         <div class="people-grid" id="repo2Grid"></div>
     </section>
 
@@ -326,41 +372,50 @@
 
 <script>
     /* ---------------- Icon library (inline, theme-colored) ---------------- */
+    /* Bold, filled, duotone illustration icons (not thin emoji-style lines).
+       Default fill is white (set on the <svg> wrapper); a few shapes use
+       opacity or an accent color for depth, and small utility icons
+       (arrow / branch) explicitly opt back into a thin stroke look. */
     const ICONS = {
-        book:'<path d="M4 4.5h9a3 3 0 0 1 3 3V20H7.2A3.2 3.2 0 0 1 4 16.8V4.5z"/><path d="M16 4.5h4V20h-4"/>',
-        flask:'<path d="M9 3h6M10 3v5.2L4.6 17a2 2 0 0 0 1.7 3h11.4a2 2 0 0 0 1.7-3L14 8.2V3"/><path d="M8 14h8"/>',
-        badge:'<path d="M12 2.5l2.6 5.1 5.7.8-4.1 4 1 5.6L12 15.4l-5.2 2.6 1-5.6-4.1-4 5.7-.8z"/>',
-        database:'<ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v13c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-13"/><path d="M4.5 12c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8"/>',
-        terminal:'<rect x="3" y="4.5" width="18" height="15" rx="2.2"/><path d="M7 9.5l3 2.8-3 2.8M13 15h4.2"/>',
-        gear:'<circle cx="12" cy="12" r="3"/><path d="M12 3.5v3M12 17.5v3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M2.5 12h3M18.5 12h3M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/>',
-        globe:'<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.6 3.8 5.6 3.8 8.5s-1.4 5.9-3.8 8.5c-2.4-2.6-3.8-5.6-3.8-8.5S9.6 6.1 12 3.5z"/>',
-        layers:'<path d="M12 3.2l8.4 4.6L12 12.4 3.6 7.8z"/><path d="M3.6 12.4L12 17l8.4-4.6"/><path d="M3.6 17L12 21.6 20.4 17"/>',
-        link:'<path d="M9.5 14.5l5-5"/><path d="M7.4 16.6a3.8 3.8 0 0 1 0-5.4l2.1-2.1"/><path d="M16.6 7.4a3.8 3.8 0 0 1 0 5.4l-2.1 2.1"/>',
-        network:'<circle cx="5.5" cy="6.5" r="2.2"/><circle cx="18.5" cy="6.5" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M5.5 8.7v3.3M18.5 8.7v3.3M7.5 12.6l3.4 3.6M16.5 12.6l-3.4 3.6"/>',
-        plug:'<path d="M9 2.5v5.2M15 2.5v5.2M6.2 7.7h11.6v3.6a5.8 5.8 0 0 1-11.6 0z"/><path d="M12 17v4.5"/>',
-        leaf:'<path d="M5 21c9-1 14.5-6 15.5-15.5C11.3 6.3 6 11.5 5 21z"/><path d="M6.2 19.8c3-3 6-6.6 8.6-11.4"/>',
-        stack:'<rect x="3" y="4" width="7.5" height="7.5" rx="1.4"/><rect x="13.5" y="4" width="7.5" height="7.5" rx="1.4"/><rect x="8.2" y="13" width="7.5" height="7.5" rx="1.4"/>',
-        code:'<path d="M8.5 6L3 12l5.5 6M15.5 6L21 12l-5.5 6"/>',
-        brain:'<path d="M9.5 3.2A3 3 0 0 0 6.7 6a3 3 0 0 0-1.9 4.9A3 3 0 0 0 6.7 16h2.8"/><path d="M14.5 3.2A3 3 0 0 1 17.3 6a3 3 0 0 1 1.9 4.9A3 3 0 0 1 17.3 16h-2.8"/><path d="M9.5 3.2v17.6M14.5 3.2v17.6"/>',
-        sigma:'<path d="M17 5H7l5 7-5 7h10" />',
-        chip:'<rect x="6.5" y="6.5" width="11" height="11" rx="1.6"/><path d="M9.5 2.5v4M14.5 2.5v4M9.5 17.5v4M14.5 17.5v4M2.5 9.5h4M2.5 14.5h4M17.5 9.5h4M17.5 14.5h4"/>',
-        cloud:'<path d="M7.2 18.5a4.3 4.3 0 0 1-1.1-8.4 5.4 5.4 0 0 1 10.4-2 4.6 4.6 0 0 1 1.3 9.1 4 4 0 0 1-.8 1.3H7.2z"/>',
-        doc:'<path d="M6 2.5h8.5L19 7v14.5H6z"/><path d="M14.5 2.5V7H19"/><path d="M9 13h6M9 17h6"/>',
-        branch:'<circle cx="6" cy="6" r="2.1"/><circle cx="6" cy="18" r="2.1"/><circle cx="18" cy="12" r="2.1"/><path d="M6 8.1V16M6 8.1c0 4.3 4 4.3 8.5 4.3H16"/>',
-        arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>'
+        book:'<path d="M4 4.5h8.2a2.6 2.6 0 0 1 2.6 2.6V20H6.6A2.6 2.6 0 0 1 4 17.4z"/><path d="M14.8 4.5H19a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1h-4.2V7.1a2.6 2.6 0 0 0-2.6-2.6z" opacity=".55"/><rect x="6.2" y="8" width="6.2" height="1.5" rx=".75" fill="#12327A" opacity=".55"/><rect x="6.2" y="11.2" width="6.2" height="1.5" rx=".75" fill="#12327A" opacity=".4"/>',
+        flask:'<path d="M9.6 2.5h4.8v5.7l4.7 8.7a2.1 2.1 0 0 1-1.8 3.1H6.7a2.1 2.1 0 0 1-1.8-3.1l4.7-8.7z"/><path d="M7.3 14.8h9.4l1.7 3.2a1 1 0 0 1-.9 1.5H6.5a1 1 0 0 1-.9-1.5z" fill="#12327A" opacity=".38"/><circle cx="12" cy="12.4" r="1.15" fill="#12327A" opacity=".5"/>',
+        badge:'<circle cx="12" cy="8.6" r="6.4"/><path d="M8.6 14.3L5.8 21.5l6.2-2.7 6.2 2.7-2.8-7.2" opacity=".55"/><path d="M9.4 8.6l1.8 1.8 3.4-3.6" fill="none" stroke="#12327A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity=".6"/>',
+        database:'<ellipse cx="12" cy="5.6" rx="8" ry="3"/><path d="M4 5.6V11.8c0 1.66 3.58 3 8 3s8-1.34 8-3V5.6" opacity=".45"/><path d="M4 11.8V18c0 1.66 3.58 3 8 3s8-1.34 8-3v-6.2" opacity=".8"/>',
+        terminal:'<rect x="2.4" y="4" width="19.2" height="16" rx="2.6"/><path d="M6 9.6l3.4 2.9L6 15.4" fill="none" stroke="#12327A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/><rect x="12.4" y="14.2" width="6" height="1.7" rx=".85" fill="#12327A" opacity=".7"/>',
+        gear:'<circle cx="12" cy="12" r="3.6"/><g opacity=".92"><rect x="10.85" y="1.4" width="2.3" height="4.3" rx="1.1"/><rect x="10.85" y="1.4" width="2.3" height="4.3" rx="1.1" transform="rotate(45 12 12)"/><rect x="10.85" y="1.4" width="2.3" height="4.3" rx="1.1" transform="rotate(90 12 12)"/><rect x="10.85" y="1.4" width="2.3" height="4.3" rx="1.1" transform="rotate(135 12 12)"/><rect x="10.85" y="1.4" width="2.3" height="4.3" rx="1.1" transform="rotate(180 12 12)"/><rect x="10.85" y="1.4" width="2.3" height="4.3" rx="1.1" transform="rotate(225 12 12)"/><rect x="10.85" y="1.4" width="2.3" height="4.3" rx="1.1" transform="rotate(270 12 12)"/><rect x="10.85" y="1.4" width="2.3" height="4.3" rx="1.1" transform="rotate(315 12 12)"/></g><circle cx="12" cy="12" r="1.4" fill="#12327A" opacity=".55"/>',
+        globe:'<circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4M12 2.8c2.7 2.9 4.2 6.2 4.2 9.2s-1.5 6.3-4.2 9.2c-2.7-2.9-4.2-6.2-4.2-9.2S9.3 5.7 12 2.8z" fill="none" stroke="#12327A" stroke-width="1.3" opacity=".5"/>',
+        layers:'<path d="M12 2.6l9.6 5.3L12 13.2 2.4 7.9z"/><path d="M2.4 12.3L12 17.6l9.6-5.3" fill="none" stroke="#12327A" stroke-width="1.9" stroke-linecap="round" opacity=".55"/><path d="M2.4 17L12 22.3l9.6-5.3" fill="none" stroke="#12327A" stroke-width="1.9" stroke-linecap="round" opacity=".35"/>',
+        link:'<rect x="1.8" y="9.6" width="10.6" height="6.4" rx="3.2" transform="rotate(-35 7.1 12.8)"/><rect x="11.6" y="8" width="10.6" height="6.4" rx="3.2" transform="rotate(-35 16.9 11.2)" opacity=".6"/>',
+        network:'<circle cx="5.4" cy="6" r="2.8"/><circle cx="18.6" cy="6" r="2.8"/><circle cx="12" cy="18.6" r="2.8"/><path d="M5.4 8.8v2.8M18.6 8.8v2.8M7.5 12.8l3.2 3.4M16.5 12.8l-3.2 3.4" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".9"/>',
+        plug:'<path d="M5.8 8.2h12.4v3.5a6.2 6.2 0 0 1-12.4 0z"/><rect x="8.1" y="2.2" width="2.3" height="5.2" rx="1.1"/><rect x="13.6" y="2.2" width="2.3" height="5.2" rx="1.1"/><rect x="10.8" y="16.6" width="2.4" height="5.2" rx="1.2"/>',
+        leaf:'<path d="M4.8 21c9.2-1 14.9-6.3 15.9-16.5C10.8 5.9 5.6 11.5 4.8 21z"/><path d="M6.3 19.5c3-3 6.3-6.9 9-11.9" fill="none" stroke="#12327A" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>',
+        stack:'<rect x="2.3" y="3.3" width="8.4" height="8.4" rx="2"/><rect x="13.3" y="3.3" width="8.4" height="8.4" rx="2" opacity=".6"/><rect x="7.8" y="12.4" width="8.4" height="8.4" rx="2" opacity=".85"/>',
+        code:'<path d="M9.2 5l-7 7 7 7 2-2-5-5 5-5z"/><path d="M14.8 5l7 7-7 7-2-2 5-5-5-5z" opacity=".6"/>',
+        brain:'<path d="M12 3.1c-2.7 0-4.6 1.8-4.9 4.1-2.1.7-3.6 2.7-3.4 5 .2 2.5 2.3 4.3 4.8 4.3H12z"/><path d="M12 3.1c2.7 0 4.6 1.8 4.9 4.1 2.1.7 3.6 2.7 3.4 5-.2 2.5-2.3 4.3-4.8 4.3H12z" opacity=".62"/><rect x="10.7" y="15.5" width="2.6" height="6" rx="1.3"/>',
+        sigma:'<path d="M5.6 4.6h12.8l-.8 3.6H9.2L14 12l-4.8 4.4h9.4L17.8 20H5.6l7-8z"/>',
+        chip:'<rect x="6.2" y="6.2" width="11.6" height="11.6" rx="2.2"/><rect x="9.6" y="9.6" width="4.8" height="4.8" rx="1" fill="#12327A" opacity=".6"/><rect x="2" y="9" width="3.2" height="2.1" rx="1"/><rect x="2" y="12.9" width="3.2" height="2.1" rx="1"/><rect x="18.8" y="9" width="3.2" height="2.1" rx="1"/><rect x="18.8" y="12.9" width="3.2" height="2.1" rx="1"/><rect x="9" y="2" width="2.1" height="3.2" rx="1"/><rect x="12.9" y="2" width="2.1" height="3.2" rx="1"/><rect x="9" y="18.8" width="2.1" height="3.2" rx="1"/><rect x="12.9" y="18.8" width="2.1" height="3.2" rx="1"/>',
+        cloud:'<path d="M6.9 18.6a4.7 4.7 0 0 1-1.1-9.2 5.9 5.9 0 0 1 11.4-2.1 5 5 0 0 1 1.4 9.8 4.4 4.4 0 0 1-.9 1.5z"/><path d="M8.4 14.6h7.6" fill="none" stroke="#12327A" stroke-width="1.5" stroke-linecap="round" opacity=".4"/>',
+        doc:'<path d="M5.4 2.4h8.1L19 7.7v13.9H5.4z"/><path d="M13.5 2.4v5.3H19" opacity=".5"/><rect x="7.9" y="11.8" width="8.2" height="1.6" rx=".8" fill="#12327A" opacity=".6"/><rect x="7.9" y="15.2" width="8.2" height="1.6" rx=".8" fill="#12327A" opacity=".6"/>',
+        branch:'<circle cx="6" cy="6" r="2.1" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="6" cy="18" r="2.1" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="12" r="2.1" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M6 8.1V16M6 8.1c0 4.3 4 4.3 8.5 4.3H16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>',
+        spark:'<path d="M12 2.2c.7 4.4 2.7 7.4 7 8.1-4.3.7-6.3 3.7-7 8.1-.7-4.4-2.7-7.4-7-8.1 4.3-.7 6.3-3.7 7-8.1z"/>',
+        sparkle:'<path d="M8.2 2.6c.5 3 1.9 5 4.9 5.6-3 .5-4.4 2.6-4.9 5.6-.5-3-1.9-5-4.9-5.6 3-.5 4.4-2.6 4.9-5.6z"/><path d="M17 11.5c.35 1.9 1.2 3.2 3.1 3.6-1.9.35-2.75 1.7-3.1 3.6-.35-1.9-1.2-3.25-3.1-3.6 1.9-.35 2.75-1.7 3.1-3.6z" opacity=".78"/>',
+        asterisk:'<path d="M12 2.4v9.2M12 12.4v9.2M4.6 6.2l7.4 5.4M12 12.4l7.4 5.4M19.4 6.2L12 11.6M12 12.4l-7.4 5.4" fill="none" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round"/><circle cx="12" cy="12" r="1.7"/>',
+        whale:'<path d="M2.6 13.4c2.2-4.4 6.6-6.6 10.8-6.6 4.3 0 7.4 2.2 8.4 5.3-1.1.55-2.2.5-3.2-.05-.4 1.75-2.1 3.05-4.3 3.05H8.2c-2.2 0-4.3-.6-5.6-1.7z"/><circle cx="17.6" cy="10.4" r="1" fill="#12327A" opacity=".7"/><path d="M12.6 7.4c.6-1.6 2-2.8 3.8-3.2-.2 1.7-1.1 3-2.6 3.7" opacity=".6"/>',
+        notebook:'<rect x="4" y="2.6" width="15.4" height="18.8" rx="2.2"/><rect x="4" y="2.6" width="4.2" height="18.8" rx="1.4" fill="#12327A" opacity=".35"/><rect x="10.6" y="8" width="6.6" height="1.5" rx=".75" fill="#12327A" opacity=".55"/><rect x="10.6" y="11.2" width="6.6" height="1.5" rx=".75" fill="#12327A" opacity=".4"/>',
+        arrow:'<path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
     };
-    function svg(name, cls){ return `<svg viewBox="0 0 24 24" class="${cls||''}">${ICONS[name]||ICONS.doc}</svg>`; }
+    function svg(name, cls){ return `<svg viewBox="0 0 24 24" fill="#fff" class="${cls||''}">${ICONS[name]||ICONS.doc}</svg>`; }
 
     /* ---------------- Data ---------------- */
     const TOOLS = [
-        {t:'Google Docs', u:'https://docs.google.com/document/u/0/', i:'doc'},
-        {t:'GeeksforGeeks', u:'https://www.geeksforgeeks.org/', i:'code'},
-        {t:'W3Schools', u:'https://www.w3schools.com/', i:'globe'},
-        {t:'ChatGPT', u:'https://chatgpt.com/?model=auto', i:'chip'},
-        {t:'Gemini', u:'https://gemini.google.com/app', i:'chip'},
-        {t:'Claude', u:'https://claude.ai/new', i:'chip'},
-        {t:'DeepSeek', u:'https://chat.deepseek.com/', i:'chip'},
-        {t:'NotebookLM', u:'https://notebooklm.google.com/', i:'book'}
+        {t:'Google Docs', u:'https://docs.google.com/document/u/0/', i:'doc', c:'#4285F4,#34A853'},
+        {t:'GeeksforGeeks', u:'https://www.geeksforgeeks.org/', i:'code', c:'#2F8D46,#0C7C36'},
+        {t:'W3Schools', u:'https://www.w3schools.com/', i:'globe', c:'#04AA6D,#04724D'},
+        {t:'ChatGPT', u:'https://chatgpt.com/?model=auto', i:'spark', c:'#10A37F,#0D8266'},
+        {t:'Gemini', u:'https://gemini.google.com/app', i:'sparkle', c:'#4285F4,#9B72CB'},
+        {t:'Claude', u:'https://claude.ai/new', i:'asterisk', c:'#D97757,#B85C3E'},
+        {t:'DeepSeek', u:'https://chat.deepseek.com/', i:'whale', c:'#4D6BFE,#3350D6'},
+        {t:'NotebookLM', u:'https://notebooklm.google.com/', i:'notebook', c:'#F9AB00,#E37400'}
     ];
 
     const CAME = [
@@ -414,18 +469,16 @@
         {t:'ORM Viva / Exam', u:'https://docs.google.com/document/d/1_XLv5vjykaLcELK_vBcCC044e5jp5DGL73NCN4dxJes/edit?tab=t.0', i:'badge'},
         {t:'Network Programming Introduction', u:'https://docs.google.com/document/d/1xMKXsJyrj3AYJQ6_F5l2TjfJHOhdAm08yQ4Qez58zpA/edit?tab=t.0#heading=h.y7wrvj4cqehu', i:'network'},
         {t:'Foundation of Network Documentation', u:'https://docs.google.com/document/d/1yjx0p7snzk2PC4gZ2ol1OgD2_jvsa_FGq7Bi6ntJloI/edit?tab=t.0#heading=h.s2xifd8ngzwu', i:'network'},
+        {t:'Computer Network Programming (CNS)', u:'https://docs.google.com/document/d/1669hdobAdqSgjnkHeQmm5YAwTwyD6JOVY1YYCII_otM/edit?tab=t.0', i:'network'},
+        {t:'CNS Exam / Viva', u:'https://docs.google.com/document/d/1iWYOosABYFpOzPSxtRfVnnVBhYxUtrogvhtoIVd5LEs/edit?tab=t.0', i:'badge'},
+        {t:'CNS Malindu', u:'https://docs.google.com/document/d/1r_31nBthhibiOssXyQgOzLOIh2GaAfEaxy8wXsZihks/edit?usp=sharing', i:'network'},
         {t:'API Full Note', u:'https://docs.google.com/document/d/1NUQ-IZdf0YDnTDQqAyTyQupQBxE6n0bNmVNF6rFrh64/edit?tab=t.0', i:'plug'},
         {t:'API Viva / Exam', u:'https://docs.google.com/document/d/1AJtM4EfmgvUKXUHJ_sZgjnekWxcPMqWFzJXF9QMDVHM/edit?tab=t.0', i:'badge'},
         {t:'TDS - API', u:'https://docs.google.com/document/d/1z_s5e6O3BDu9rS3AAkZHK5t0ms2mjByb-fXsJmbnXgs/edit?tab=t.0', i:'doc'},
         {t:'Spring Boot Full Note', u:'https://docs.google.com/document/d/1fdShxkISKhISkUNqAH9XNvc1SWSsqAF7LK_pXryl8lo/edit?tab=t.0#heading=h.5r67fq2iyupq', i:'leaf'},
         {t:'Spring Boot Exam / Viva', u:'https://docs.google.com/document/d/1fdShxkISKhISkUNqAH9XNvc1SWSsqAF7LK_pXryl8lo/edit?tab=t.0#heading=h.5r67fq2iyupq', i:'badge'},
         {t:'MERN Stack Full Note', u:'https://docs.google.com/document/d/1ddz41P9v5Qyb4Lqt5a_-NFnLNIDrxlegD32lLTXrO2E/edit?tab=t.0', i:'stack'},
-        {t:'Professional English', u:'https://docs.google.com/document/d/1dIXMvkzJrUeyb-HIRn0g4LMWyqQvn-tgxZXOcTfc9nU/edit?tab=t.0', i:'book'},
-        {t:'Computer Network Programming(CNS)', u:'https://docs.google.com/document/d/1669hdobAdqSgjnkHeQmm5YAwTwyD6JOVY1YYCII_otM/edit?tab=t.0', i:'network'},
-        {t:'CNS Exam / Viva', u:'https://docs.google.com/document/d/1iWYOosABYFpOzPSxtRfVnnVBhYxUtrogvhtoIVd5LEs/edit?tab=t.0', i:'network'},
-        {t:'CNS Note - malindu', u:'https://docs.google.com/document/d/1r_31nBthhibiOssXyQgOzLOIh2GaAfEaxy8wXsZihks/edit?usp=sharing', i:'network'}
-
-
+        {t:'Professional English', u:'https://docs.google.com/document/d/1dIXMvkzJrUeyb-HIRn0g4LMWyqQvn-tgxZXOcTfc9nU/edit?tab=t.0', i:'book'}
     ];
 
     const REPO1 = [
@@ -472,7 +525,7 @@
     /* ---------------- Renderers ---------------- */
     function cardHTML(item){
         return `<a class="card" href="${item.u}" target="_blank" rel="noopener" data-search="${item.t.toLowerCase()}">
-    <span class="badge">${svg(item.i)}</span>
+    <span class="art"><span class="blob b1"></span><span class="blob b2"></span>${svg(item.i)}</span>
     <span class="ctitle">${item.t}</span>
     <span class="cmeta">Open resource ${svg('arrow')}</span>
   </a>`;
@@ -487,10 +540,9 @@
         const chips = p.l.map(link=>`<a class="link-chip" href="${link.u}" target="_blank" rel="noopener" data-search="${p.n.toLowerCase()} ${link.t.toLowerCase()}">${svg('branch')} ${link.t}</a>`).join('');
         return `<div class="person-card" data-search="${p.n.toLowerCase()}">
     <div class="person-top">
-      <span class="avatar">${initials(p.n)}</span>
+      <a class="avatar" href="${p.p}" target="_blank" rel="noopener" title="${p.n} on GitHub">${initials(p.n)}</a>
       <div>
         <div class="person-name">${p.n}</div>
-        <a href="${p.p}" target="_blank" rel="noopener">View GitHub profile ↗</a>
       </div>
     </div>
     <div class="link-chip-row">${chips}</div>
@@ -500,10 +552,12 @@
         document.getElementById(id).innerHTML = people.map(personHTML).join('');
     }
     function renderTools(){
-        document.getElementById('toolsRow').innerHTML = TOOLS.map(t=>
-            `<a class="tool-pill" href="${t.u}" target="_blank" rel="noopener" data-search="${t.t.toLowerCase()}">
-      <span class="tbadge">${svg(t.i)}</span>${t.t}
-    </a>`).join('');
+        document.getElementById('toolsRow').innerHTML = TOOLS.map(t=>{
+            const [c1,c2] = t.c.split(',');
+            return `<a class="tool-pill" href="${t.u}" target="_blank" rel="noopener" data-search="${t.t.toLowerCase()}">
+      <span class="tbadge" style="background:linear-gradient(135deg,${c1},${c2})">${svg(t.i)}</span>${t.t}
+    </a>`;
+        }).join('');
     }
 
     renderTools();
@@ -541,8 +595,25 @@
         resultCount.textContent = q ? visible + ' found' : '';
         noResults.style.display = (q && visible === 0) ? 'block' : 'none';
 
-        document.querySelectorAll('.section, .section-sub').forEach(s=>s.style.display='');
+        document.querySelectorAll('.section, .section-sub, .section-sub2').forEach(s=>s.style.display='');
     });
+
+    /* ---------------- Scroll-spy for nav ---------------- */
+    const navLinks = document.querySelectorAll('#jumpnavInner a');
+    const spyTargets = ['tools','came','sem1','docs1','repo1','sem2','repo2']
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
+
+    const spyObserver = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                const id = entry.target.id;
+                navLinks.forEach(a=> a.classList.toggle('active', a.dataset.target === id));
+            }
+        });
+    }, { rootMargin: '-100px 0px -70% 0px', threshold: 0 });
+
+    spyTargets.forEach(el => spyObserver.observe(el));
 
     /* ---------------- Back to top ---------------- */
     const toTop = document.getElementById('toTop');
