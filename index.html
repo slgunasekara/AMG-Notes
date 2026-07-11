@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDSE Documents by AMG</title>
+    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLkx0yVuH5FYYU1Wdmkn97IyAAbKVzSUKChQ&s" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --blue-900:#0B2A5B;
+            --blue-800:#123B82;
+            --blue-700:#1D4ED8;
+            --blue-600:#2563EB;
+            --blue-500:#3B82F6;
+            --blue-400:#60A5FA;
+            --blue-200:#BFDBFE;
+            --blue-100:#DBEAFE;
+            --blue-50:#EFF6FF;
+            --cyan:#22D3EE;
+            --white:#FFFFFF;
+            --ink:#0F1E3D;
+            --muted:#5B6B8C;
+            --line:rgba(29,78,216,0.12);
+            --radius:20px;
+        }
+        *{box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{
+            margin:0;
+            font-family:'Inter',sans-serif;
+            color:var(--ink);
+            background:
+                    radial-gradient(1100px 600px at 100% -10%, #E4EEFF 0%, rgba(228,238,255,0) 60%),
+                    radial-gradient(900px 500px at -10% 10%, #EAF3FF 0%, rgba(234,243,255,0) 55%),
+                    linear-gradient(180deg,#FBFDFF 0%, #F3F7FF 100%);
+            min-height:100vh;
+        }
+        a{color:inherit;}
+
+        /* ---------- Header ---------- */
+        header.hero{
+            padding:64px 24px 40px;
+            text-align:center;
+            position:relative;
+            overflow:hidden;
+        }
+        .eyebrow{
+            display:inline-flex;align-items:center;gap:8px;
+            font-family:'Outfit',sans-serif;font-weight:700;font-size:13px;
+            letter-spacing:.14em;text-transform:uppercase;color:var(--blue-700);
+            background:var(--white);
+            border:1px solid var(--blue-100);
+            padding:8px 16px;border-radius:999px;
+            box-shadow:0 6px 16px rgba(37,99,235,.10);
+        }
+        .dot{width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--blue-600));}
+        h1.title{
+            font-family:'Outfit',sans-serif;font-weight:800;
+            font-size:clamp(32px,5vw,54px);
+            line-height:1.05;
+            margin:22px 0 10px;
+            background:linear-gradient(120deg,var(--blue-900) 20%, var(--blue-600) 60%, var(--cyan) 100%);
+            -webkit-background-clip:text;background-clip:text;color:transparent;
+        }
+        p.subtitle{
+            max-width:560px;margin:0 auto;color:var(--muted);font-size:16px;line-height:1.6;
+        }
+        p.subtitle b{color:var(--blue-700);}
+
+        /* ---------- Search ---------- */
+        .search-wrap{
+            max-width:520px;margin:32px auto 0;
+            display:flex;align-items:center;gap:10px;
+            background:var(--white);
+            border:1px solid var(--blue-100);
+            border-radius:16px;
+            padding:14px 18px;
+            box-shadow:8px 12px 26px rgba(29,78,216,.10), inset 0 1px 0 #fff;
+        }
+        .search-wrap svg{flex:none;stroke:var(--blue-600);}
+        .search-wrap input{
+            border:none;outline:none;background:transparent;
+            font-family:'Inter',sans-serif;font-size:15px;width:100%;color:var(--ink);
+        }
+        .search-wrap input::placeholder{color:#9AAAC7;}
+        #resultCount{font-size:12px;color:var(--muted);white-space:nowrap;}
+
+        /* ---------- Sticky nav ---------- */
+        nav.jumpnav{
+            position:sticky;top:0;z-index:40;
+            background:rgba(251,253,255,.85);
+            backdrop-filter:blur(10px);
+            border-bottom:1px solid var(--line);
+            padding:12px 16px;
+        }
+        .jumpnav-inner{
+            max-width:1180px;margin:0 auto;
+            display:flex;gap:8px;overflow-x:auto;
+            scrollbar-width:none;
+        }
+        .jumpnav-inner::-webkit-scrollbar{display:none;}
+        .jumpnav-inner a{
+            flex:none;
+            font-family:'Outfit',sans-serif;font-weight:600;font-size:13.5px;
+            padding:9px 16px;border-radius:999px;
+            color:var(--blue-800);
+            background:var(--white);
+            border:1px solid var(--blue-100);
+            text-decoration:none;
+            transition:.2s;
+            white-space:nowrap;
+        }
+        .jumpnav-inner a:hover{background:var(--blue-600);color:#fff;border-color:var(--blue-600);transform:translateY(-1px);}
+
+        /* ---------- Layout ---------- */
+        main{max-width:1180px;margin:0 auto;padding:8px 24px 60px;}
+
+        .section{padding-top:56px;scroll-margin-top:76px;}
+        .section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:22px;flex-wrap:wrap;}
+        .section-head h2{
+            font-family:'Outfit',sans-serif;font-weight:800;font-size:26px;margin:0;color:var(--blue-900);
+        }
+        .section-head .rule{flex:1;height:1px;background:linear-gradient(90deg,var(--blue-200),transparent);min-width:40px;}
+        .section-head .count{font-size:12.5px;color:var(--muted);font-weight:600;}
+        .section-sub{
+            font-family:'Outfit',sans-serif;font-weight:700;font-size:15px;
+            color:var(--blue-700);margin:30px 0 16px;
+            display:flex;align-items:center;gap:10px;
+        }
+        .section-sub::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--cyan);display:inline-block;transform:rotate(45deg);}
+
+        /* ---------- Card grid (3D signature) ---------- */
+        .card-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fill,minmax(228px,1fr));
+            gap:18px;
+            perspective:1400px;
+        }
+        .card{
+            position:relative;
+            display:flex;flex-direction:column;gap:16px;
+            background:linear-gradient(160deg,#ffffff 0%, #f4f8ff 100%);
+            border:1px solid rgba(191,219,254,.7);
+            border-radius:var(--radius);
+            padding:22px 20px 20px;
+            text-decoration:none;color:var(--ink);
+            box-shadow:
+                    10px 14px 26px rgba(29,78,216,.10),
+                    -8px -8px 18px rgba(255,255,255,.85),
+                    inset 0 1px 0 rgba(255,255,255,.7);
+            transform-style:preserve-3d;
+            transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s, border-color .3s;
+        }
+        .card:hover{
+            transform:translateY(-8px) rotateX(6deg) rotateY(-6deg);
+            box-shadow:
+                    18px 26px 34px rgba(29,78,216,.18),
+                    -10px -10px 20px rgba(255,255,255,.9);
+            border-color:var(--blue-300,#93C5FD);
+        }
+        .card:active{transform:translateY(-2px) scale(.99);}
+        .badge{
+            width:50px;height:50px;border-radius:15px;flex:none;
+            display:flex;align-items:center;justify-content:center;
+            background:linear-gradient(135deg,var(--blue-600),var(--cyan));
+            box-shadow:
+                    inset 0 2px 3px rgba(255,255,255,.55),
+                    inset 0 -4px 8px rgba(6,20,60,.28),
+                    0 8px 16px rgba(37,99,235,.30);
+        }
+        .badge svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+        .card .ctitle{font-family:'Outfit',sans-serif;font-weight:700;font-size:15px;line-height:1.35;color:var(--blue-900);}
+        .card .cmeta{
+            margin-top:auto;display:flex;align-items:center;gap:6px;
+            font-size:12px;color:var(--blue-600);font-weight:600;
+        }
+        .card .cmeta svg{width:13px;height:13px;stroke:var(--blue-600);transition:transform .3s;}
+        .card:hover .cmeta svg{transform:translateX(3px);}
+
+        /* ---------- Tools row ---------- */
+        .tools-row{display:flex;flex-wrap:wrap;gap:10px;}
+        .tool-pill{
+            display:flex;align-items:center;gap:10px;
+            background:var(--white);
+            border:1px solid var(--blue-100);
+            border-radius:999px;padding:9px 16px 9px 9px;
+            text-decoration:none;color:var(--blue-900);
+            font-family:'Outfit',sans-serif;font-weight:600;font-size:13.5px;
+            box-shadow:4px 6px 14px rgba(29,78,216,.08);
+            transition:.25s;
+        }
+        .tool-pill:hover{transform:translateY(-3px);box-shadow:6px 12px 20px rgba(29,78,216,.16);border-color:var(--blue-300,#93C5FD);}
+        .tool-pill .tbadge{
+            width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+            background:linear-gradient(135deg,var(--blue-700),var(--cyan));
+        }
+        .tool-pill .tbadge svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2;}
+
+        /* ---------- People / repo cards ---------- */
+        .people-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;}
+        .person-card{
+            background:linear-gradient(160deg,#ffffff, #f4f8ff);
+            border:1px solid rgba(191,219,254,.7);
+            border-radius:var(--radius);
+            padding:20px;
+            box-shadow:8px 12px 24px rgba(29,78,216,.10), inset 0 1px 0 #fff;
+        }
+        .person-top{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+        .avatar{
+            width:42px;height:42px;border-radius:50%;flex:none;
+            display:flex;align-items:center;justify-content:center;
+            font-family:'Outfit',sans-serif;font-weight:700;color:#fff;font-size:15px;
+            background:linear-gradient(135deg,var(--blue-700),var(--blue-400));
+            box-shadow:inset 0 2px 3px rgba(255,255,255,.4), inset 0 -3px 6px rgba(6,20,60,.25);
+        }
+        .person-name{font-family:'Outfit',sans-serif;font-weight:700;font-size:15px;color:var(--blue-900);}
+        .person-name a{font-size:11.5px;font-weight:600;color:var(--blue-600);text-decoration:none;display:block;margin-top:2px;}
+        .person-name a:hover{text-decoration:underline;}
+        .link-chip-row{display:flex;flex-wrap:wrap;gap:8px;}
+        .link-chip{
+            font-size:12.5px;font-weight:600;color:var(--blue-800);
+            background:var(--blue-50);border:1px solid var(--blue-100);
+            padding:7px 12px;border-radius:10px;text-decoration:none;
+            transition:.2s;display:inline-flex;align-items:center;gap:5px;
+        }
+        .link-chip:hover{background:var(--blue-600);color:#fff;border-color:var(--blue-600);transform:translateY(-2px);}
+
+        /* ---------- No results ---------- */
+        #noResults{display:none;text-align:center;color:var(--muted);padding:50px 20px;font-size:14px;}
+
+        /* ---------- Back to top ---------- */
+        #toTop{
+            position:fixed;right:22px;bottom:22px;z-index:50;
+            width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;
+            background:linear-gradient(135deg,var(--blue-700),var(--cyan));
+            box-shadow:0 10px 22px rgba(29,78,216,.35), inset 0 2px 3px rgba(255,255,255,.5);
+            display:flex;align-items:center;justify-content:center;
+            opacity:0;pointer-events:none;transform:translateY(10px);
+            transition:.3s;
+        }
+        #toTop.show{opacity:1;pointer-events:auto;transform:translateY(0);}
+        #toTop svg{stroke:#fff;width:20px;height:20px;fill:none;stroke-width:2.4;}
+
+        footer{
+            text-align:center;padding:40px 20px 60px;color:var(--muted);font-size:13px;
+        }
+        footer .credit{font-family:'Outfit',sans-serif;font-weight:700;color:var(--blue-800);margin-top:4px;}
+
+        @media(max-width:520px){
+            header.hero{padding:44px 18px 28px;}
+            .section{padding-top:40px;}
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <span class="eyebrow"><span class="dot"></span> Code Hub</span>
+    <h1 class="title">Documents by AMG</h1>
+    <p class="subtitle">Every note, VIVA guide and GitHub repo in one place. <b>Click any card</b> to jump straight to the resource.</p>
+
+    <div class="search-wrap">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input id="searchBox" type="text" placeholder="Search a subject, e.g. DBMS, ORM, Spring boot...">
+        <span id="resultCount"></span>
+    </div>
+</header>
+
+<nav class="jumpnav">
+    <div class="jumpnav-inner">
+        <a href="#tools">Tools</a>
+        <a href="#came">CAME Course</a>
+        <a href="#sem1">GDSE · SEM 1</a>
+        <a href="#docs1">Lecture Docs</a>
+        <a href="#repo1">GitHub · SEM 1</a>
+        <a href="#sem2">GDSE · SEM 2</a>
+        <a href="#repo2">GitHub · SEM 2</a>
+    </div>
+</nav>
+
+<main id="content">
+
+    <section class="section" id="tools">
+        <div class="section-head"><h2>Tools</h2><div class="rule"></div></div>
+        <div class="tools-row" id="toolsRow"></div>
+    </section>
+
+    <section class="section" id="came">
+        <div class="section-head"><h2>CAME Course</h2><div class="rule"></div><span class="count" id="cameCount"></span></div>
+        <div class="card-grid" id="cameGrid"></div>
+    </section>
+
+    <section class="section" id="sem1">
+        <div class="section-head"><h2>GDSE Course</h2><div class="rule"></div></div>
+        <div class="section-sub">SEM 1</div>
+        <div class="card-grid" id="sem1Grid"></div>
+
+        <div class="section-sub" id="docs1">Lecture Doc</div>
+        <div class="card-grid" id="docs1Grid"></div>
+
+        <div class="section-sub" id="repo1">Lecture Repo</div>
+        <div class="people-grid" id="repo1Grid"></div>
+    </section>
+
+    <section class="section" id="sem2">
+        <div class="section-head"><h2>SEM 2</h2><div class="rule"></div></div>
+        <div class="card-grid" id="sem2Grid"></div>
+
+        <div class="section-sub" id="repo2">Lecture Repo</div>
+        <div class="people-grid" id="repo2Grid"></div>
+    </section>
+
+    <p id="noResults">No resource matches your search. Try another keyword.</p>
+</main>
+
+<footer>
+    <div>© All rights reserved.</div>
+    <div class="credit">👨‍💻 Made by AMG ♛ (Praveena Gunasekara)</div>
+</footer>
+
+<button id="toTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+    /* ---------------- Icon library (inline, theme-colored) ---------------- */
+    const ICONS = {
+        book:'<path d="M4 4.5h9a3 3 0 0 1 3 3V20H7.2A3.2 3.2 0 0 1 4 16.8V4.5z"/><path d="M16 4.5h4V20h-4"/>',
+        flask:'<path d="M9 3h6M10 3v5.2L4.6 17a2 2 0 0 0 1.7 3h11.4a2 2 0 0 0 1.7-3L14 8.2V3"/><path d="M8 14h8"/>',
+        badge:'<path d="M12 2.5l2.6 5.1 5.7.8-4.1 4 1 5.6L12 15.4l-5.2 2.6 1-5.6-4.1-4 5.7-.8z"/>',
+        database:'<ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v13c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-13"/><path d="M4.5 12c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8"/>',
+        terminal:'<rect x="3" y="4.5" width="18" height="15" rx="2.2"/><path d="M7 9.5l3 2.8-3 2.8M13 15h4.2"/>',
+        gear:'<circle cx="12" cy="12" r="3"/><path d="M12 3.5v3M12 17.5v3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M2.5 12h3M18.5 12h3M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/>',
+        globe:'<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.6 3.8 5.6 3.8 8.5s-1.4 5.9-3.8 8.5c-2.4-2.6-3.8-5.6-3.8-8.5S9.6 6.1 12 3.5z"/>',
+        layers:'<path d="M12 3.2l8.4 4.6L12 12.4 3.6 7.8z"/><path d="M3.6 12.4L12 17l8.4-4.6"/><path d="M3.6 17L12 21.6 20.4 17"/>',
+        link:'<path d="M9.5 14.5l5-5"/><path d="M7.4 16.6a3.8 3.8 0 0 1 0-5.4l2.1-2.1"/><path d="M16.6 7.4a3.8 3.8 0 0 1 0 5.4l-2.1 2.1"/>',
+        network:'<circle cx="5.5" cy="6.5" r="2.2"/><circle cx="18.5" cy="6.5" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M5.5 8.7v3.3M18.5 8.7v3.3M7.5 12.6l3.4 3.6M16.5 12.6l-3.4 3.6"/>',
+        plug:'<path d="M9 2.5v5.2M15 2.5v5.2M6.2 7.7h11.6v3.6a5.8 5.8 0 0 1-11.6 0z"/><path d="M12 17v4.5"/>',
+        leaf:'<path d="M5 21c9-1 14.5-6 15.5-15.5C11.3 6.3 6 11.5 5 21z"/><path d="M6.2 19.8c3-3 6-6.6 8.6-11.4"/>',
+        stack:'<rect x="3" y="4" width="7.5" height="7.5" rx="1.4"/><rect x="13.5" y="4" width="7.5" height="7.5" rx="1.4"/><rect x="8.2" y="13" width="7.5" height="7.5" rx="1.4"/>',
+        code:'<path d="M8.5 6L3 12l5.5 6M15.5 6L21 12l-5.5 6"/>',
+        brain:'<path d="M9.5 3.2A3 3 0 0 0 6.7 6a3 3 0 0 0-1.9 4.9A3 3 0 0 0 6.7 16h2.8"/><path d="M14.5 3.2A3 3 0 0 1 17.3 6a3 3 0 0 1 1.9 4.9A3 3 0 0 1 17.3 16h-2.8"/><path d="M9.5 3.2v17.6M14.5 3.2v17.6"/>',
+        sigma:'<path d="M17 5H7l5 7-5 7h10" />',
+        chip:'<rect x="6.5" y="6.5" width="11" height="11" rx="1.6"/><path d="M9.5 2.5v4M14.5 2.5v4M9.5 17.5v4M14.5 17.5v4M2.5 9.5h4M2.5 14.5h4M17.5 9.5h4M17.5 14.5h4"/>',
+        cloud:'<path d="M7.2 18.5a4.3 4.3 0 0 1-1.1-8.4 5.4 5.4 0 0 1 10.4-2 4.6 4.6 0 0 1 1.3 9.1 4 4 0 0 1-.8 1.3H7.2z"/>',
+        doc:'<path d="M6 2.5h8.5L19 7v14.5H6z"/><path d="M14.5 2.5V7H19"/><path d="M9 13h6M9 17h6"/>',
+        branch:'<circle cx="6" cy="6" r="2.1"/><circle cx="6" cy="18" r="2.1"/><circle cx="18" cy="12" r="2.1"/><path d="M6 8.1V16M6 8.1c0 4.3 4 4.3 8.5 4.3H16"/>',
+        arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>'
+    };
+    function svg(name, cls){ return `<svg viewBox="0 0 24 24" class="${cls||''}">${ICONS[name]||ICONS.doc}</svg>`; }
+
+    /* ---------------- Data ---------------- */
+    const TOOLS = [
+        {t:'Google Docs', u:'https://docs.google.com/document/u/0/', i:'doc'},
+        {t:'GeeksforGeeks', u:'https://www.geeksforgeeks.org/', i:'code'},
+        {t:'W3Schools', u:'https://www.w3schools.com/', i:'globe'},
+        {t:'ChatGPT', u:'https://chatgpt.com/?model=auto', i:'chip'},
+        {t:'Gemini', u:'https://gemini.google.com/app', i:'chip'},
+        {t:'Claude', u:'https://claude.ai/new', i:'chip'},
+        {t:'DeepSeek', u:'https://chat.deepseek.com/', i:'chip'},
+        {t:'NotebookLM', u:'https://notebooklm.google.com/', i:'book'}
+    ];
+
+    const CAME = [
+        {t:'Introduction to Python and Basic Syntax', u:'https://docs.google.com/document/d/11dBODKj3eJ8gUUdevrfrEB_HRqgHA9dTbaMfDf1aEiE/edit?tab=t.0', i:'code'},
+        {t:'Python for ML', u:'https://docs.google.com/document/d/11dBODKj3eJ8gUUdevrfrEB_HRqgHA9dTbaMfDf1aEiE/edit?tab=t.0', i:'code'},
+        {t:'Mathematical Foundations for ML', u:'https://docs.google.com/document/d/1dmqADrE-hph5LuVJUry-xlod3DgIRGu6lZvojompilg/edit?tab=t.0', i:'sigma'},
+        {t:'Introduction to Machine Learning', u:'https://docs.google.com/document/d/1Z4_rxkXORi_yrGHRhytXf7B0qKe0_yQxBW6UdEyCDKs/edit?tab=t.0', i:'brain'},
+        {t:'Deep Learning & Neural Networks', u:'https://docs.google.com/document/d/1CLpxCuWo04MhmcAh4VNt1eU-AWWwoF_z9cLxCCbTi_A/edit?tab=t.0', i:'chip'},
+        {t:'Production ML Systems', u:'https://docs.google.com/document/d/1Jbg8i3IeUYXAaFqP2MSsA6MrqHeBWZYAb3p06W5Qu0c/edit?tab=t.0', i:'cloud'}
+    ];
+
+    const SEM1 = [
+        {t:'OOP Lab Session', u:'https://docs.google.com/document/d/1665VXJaWxvCKK1EwDEIlrUGagcOcR7QJ1qaYyW2CyNI/edit?usp=sharing', i:'flask'},
+        {t:'OOP Notes', u:'https://docs.google.com/document/d/15YUh0IGVE914dOjRBUs5w0EVu5xbUemWXZvhP47veCY/edit?tab=t.0', i:'book'},
+        {t:'OOP Exam / Viva', u:'https://docs.google.com/document/d/1Jfq7UrIOHSNOEsoDIyEOPkfNBMJOmPtzR3jxQ5qXNKg/edit?tab=t.0', i:'badge'},
+        {t:'DBMS', u:'https://docs.google.com/document/d/18vDYDeQLgzsiFpTnLM2PaLvsiKDLAye0vU7N-DueDHo/edit?tab=t.0', i:'database'},
+        {t:'DBMS Repeated', u:'https://docs.google.com/document/d/1IIYX1smAJQNrCY4FgMi3B2vnaaKLUKgG3i9J58INpC8/edit?tab=t.0', i:'database'},
+        {t:'DBMS Commands', u:'https://docs.google.com/document/d/1hZOf7Cqk2qXyhTANqJXZMSIIugZcDAPDYwz2oI2Vhs4/edit?tab=t.0', i:'terminal'},
+        {t:'DBMS Exam / Viva', u:'https://docs.google.com/document/d/1LLOpjiyU9Ar50TBsfIMHiADswnOrswW9WHGm6u_r2f4/edit?tab=t.0#heading=h.go1muws1y9y4', i:'badge'},
+        {t:'PRF', u:'https://docs.google.com/document/d/1YBgb1URQofg5VcfPPVhDdqt1N_sq-j-Kh-Bk_PUQKmU/edit?usp=sharing', i:'leaf'},
+        {t:'PRF Summery', u:'https://docs.google.com/document/d/1BoNTYJTfPKh5FozDPG3h-qnEe1hF9GYmvU24f0jM80g/edit?tab=t.0', i:'doc'},
+        {t:'SWE', u:'https://docs.google.com/document/d/13aUNBDXK86AOn9zojTw2vIP-XDvyljyuDfFL4F7Leww/edit?tab=t.0', i:'gear'},
+        {t:'SWE Repeated', u:'https://docs.google.com/document/d/1uJHHjh278LbVYaqoOS0bl1jyaBpsNkP_eLyBK1TAZVE/edit?tab=t.0', i:'gear'},
+        {t:'SWE Exam / Viva', u:'https://docs.google.com/document/d/120RJmBmoth3ef_ryS8XsdGrssnFc3vQI_dJTLBeRK-8/edit?tab=t.0', i:'badge'},
+        {t:'Data Base Programming', u:'https://docs.google.com/document/d/1MOIEtYBcbQ6T7QeBIwVY5pVxaKdx6PQtZnSzuPPZfFQ/edit?tab=t.0', i:'database'},
+        {t:'DBP Exam / Viva', u:'https://docs.google.com/document/d/1LLOpjiyU9Ar50TBsfIMHiADswnOrswW9WHGm6u_r2f4/edit?tab=t.0#heading=h.go1muws1y9y4', i:'badge'}
+    ];
+
+    const DOCS1 = [
+        {t:'OOP Galle Lab Session', u:'https://docs.google.com/document/d/1OnqoOqsRcm4k9tdm0TYygMYKvU2Oj191A16Q2f_JNO8/edit?usp=sharing', i:'flask'},
+        {t:'OOP Panadura Lab Session', u:'https://docs.google.com/document/d/1nFtTxuY_mhirZs_4UkBuqRviYNNkT4GIU9tQYxvicB4/edit?usp=sharing', i:'flask'},
+        {t:'OOP Galle Notes', u:'https://docs.google.com/document/d/1W_2behCSIt1ZUgBbHQtH2oWxaZXwXauif0bJOayi_Ww/edit?usp=sharing', i:'book'},
+        {t:'OOP Panadura Notes', u:'https://docs.google.com/document/d/1NmtWVQZAoE_akmkE9UdH3Z_mfscnJKQV9-xqn720zy4/edit?tab=t.0#heading=h.pxxzpzw95adm', i:'book'},
+        {t:'OOP Remedial by TDS', u:'https://docs.google.com/document/d/1kCqCVVamV7extSeQtKQa7KpMF2PmSJZsRB4RyU1yhDk/edit?tab=t.0', i:'badge'},
+        {t:'PRF Galle Notes', u:'https://docs.google.com/document/d/1i7BbykDhweZG6ZoUoQKlqQQpZ8WNXPwRBm1oAc-rLLI/edit?tab=t.0', i:'doc'},
+        {t:'PRF Panadura Notes', u:'https://docs.google.com/document/d/1MSCENziGNURWoKxqGPg4nhGsoBoBMCTcnfK9CjVfk2Y/edit?tab=t.0', i:'doc'},
+        {t:'PRF Remedial Galle Session', u:'https://docs.google.com/document/d/12l5-F5wwLNUGD9apruNLQjKgzRTPWVWpSEFpyNWKtS4/edit?usp=sharing', i:'badge'},
+        {t:'PRF Remedial by TDS · Panadura', u:'https://docs.google.com/document/d/1MSCENziGNURWoKxqGPg4nhGsoBoBMCTcnfK9CjVfk2Y/edit?tab=t.0', i:'badge'},
+        {t:'PRF Remedial by TDS', u:'https://docs.google.com/document/d/1mIeGaqpeMcbrpwMaU2VInS4Ban34ehHZC5tlbMgzCHc/edit?tab=t.0#heading=h.dexkl1gnzmr3', i:'badge'},
+        {t:'DBMS Galle Notes', u:'https://docs.google.com/document/d/1x18T96sGW8WkVTRoltA-fsRPP1xEW6WUgltEGXv2Dj4/edit?usp=sharing', i:'database'},
+        {t:'DBMS Panadura Notes', u:'https://docs.google.com/document/d/1QC_1zmrvMsGxRxok6SZ3E40vweXDYIY-YqgzYNUXvSY/edit?usp=sharing', i:'database'}
+    ];
+
+    const SEM2 = [
+        {t:'Web Technologies', u:'https://docs.google.com/document/d/1QCFSmtf_q5uP8zpbTrWNMlCWMH3hpEJJYIZdfvFbv68/edit?tab=t.0', i:'globe'},
+        {t:'Web VIVA', u:'https://docs.google.com/document/d/1IA2ZTc9N_nQX1ng3e5iJnT3ilIJKRWIvfIasI4f5_tk/edit?tab=t.0#heading=h.pv54tskdf7am', i:'badge'},
+        {t:'Software Architecture & Design Pattern', u:'https://docs.google.com/document/d/1LwWL_iQY0itbzEC3_4bQZeRYQGeet9Wet6Y0o9h-bEw/edit?tab=t.0#heading=h.5fibx0x5tj2a', i:'layers'},
+        {t:'Layered Architecture Viva / Exam', u:'https://docs.google.com/document/d/1yxebcslAPE72cSglHzgVpOILlh9TCnXqhwlSet3y55M/edit?tab=t.0#heading=h.rxroluf1e56g', i:'badge'},
+        {t:'ORM Full Note', u:'https://docs.google.com/document/d/18SD8c62RO0ZSYnBuxAXw9gGp_JOyE0LIdG3rd5x_o8k/edit?tab=t.0', i:'link'},
+        {t:'ORM Udaara', u:'https://docs.google.com/document/d/1b5gMlMEcQL5Au0B4iKuZWW3uwBf_e2A70iv2wm0hf7U/edit?tab=t.0#heading=h.u2bi3vhi37wy', i:'link'},
+        {t:'ORM Viva / Exam', u:'https://docs.google.com/document/d/1_XLv5vjykaLcELK_vBcCC044e5jp5DGL73NCN4dxJes/edit?tab=t.0', i:'badge'},
+        {t:'Network Programming Introduction', u:'https://docs.google.com/document/d/1xMKXsJyrj3AYJQ6_F5l2TjfJHOhdAm08yQ4Qez58zpA/edit?tab=t.0#heading=h.y7wrvj4cqehu', i:'network'},
+        {t:'Foundation of Network Documentation', u:'https://docs.google.com/document/d/1yjx0p7snzk2PC4gZ2ol1OgD2_jvsa_FGq7Bi6ntJloI/edit?tab=t.0#heading=h.s2xifd8ngzwu', i:'network'},
+        {t:'API Full Note', u:'https://docs.google.com/document/d/1NUQ-IZdf0YDnTDQqAyTyQupQBxE6n0bNmVNF6rFrh64/edit?tab=t.0', i:'plug'},
+        {t:'API Viva / Exam', u:'https://docs.google.com/document/d/1AJtM4EfmgvUKXUHJ_sZgjnekWxcPMqWFzJXF9QMDVHM/edit?tab=t.0', i:'badge'},
+        {t:'TDS - API', u:'https://docs.google.com/document/d/1z_s5e6O3BDu9rS3AAkZHK5t0ms2mjByb-fXsJmbnXgs/edit?tab=t.0', i:'doc'},
+        {t:'Spring Boot Full Note', u:'https://docs.google.com/document/d/1fdShxkISKhISkUNqAH9XNvc1SWSsqAF7LK_pXryl8lo/edit?tab=t.0#heading=h.5r67fq2iyupq', i:'leaf'},
+        {t:'Spring Boot Exam / Viva', u:'https://docs.google.com/document/d/1fdShxkISKhISkUNqAH9XNvc1SWSsqAF7LK_pXryl8lo/edit?tab=t.0#heading=h.5r67fq2iyupq', i:'badge'},
+        {t:'MERN Stack Full Note', u:'https://docs.google.com/document/d/1ddz41P9v5Qyb4Lqt5a_-NFnLNIDrxlegD32lLTXrO2E/edit?tab=t.0', i:'stack'},
+        {t:'Professional English', u:'https://docs.google.com/document/d/1dIXMvkzJrUeyb-HIRn0g4LMWyqQvn-tgxZXOcTfc9nU/edit?tab=t.0', i:'book'},
+        {t:'Computer Network Programming(CNS)', u:'https://docs.google.com/document/d/1669hdobAdqSgjnkHeQmm5YAwTwyD6JOVY1YYCII_otM/edit?tab=t.0', i:'network'},
+        {t:'CNS Exam / Viva', u:'https://docs.google.com/document/d/1iWYOosABYFpOzPSxtRfVnnVBhYxUtrogvhtoIVd5LEs/edit?tab=t.0', i:'network'},
+        {t:'CNS Note - malindu', u:'https://docs.google.com/document/d/1r_31nBthhibiOssXyQgOzLOIh2GaAfEaxy8wXsZihks/edit?usp=sharing', i:'network'}
+
+
+    ];
+
+    const REPO1 = [
+        {n:'Kavindu Akash · DBP', p:'https://github.com/KavinduAkash', l:[
+                {t:'Super Market', u:'https://github.com/KavinduAkash/supermarket_hdse_76/tree/master'},
+                {t:'Food City', u:'https://github.com/KavinduAkash/foodcity-75-76'}
+            ]}
+    ];
+
+    const REPO2 = [
+        {n:'Udaara San', p:'https://github.com/udarasan', l:[
+                {t:'Layered', u:'https://github.com/udarasan/LA-PROJECT-75.git'},
+                {t:'Layered Rules', u:'https://github.com/udarasan/LA_RULES_76'},
+                {t:'Networking Intro / Chatapp', u:'https://github.com/udarasan/chatapp-75'},
+                {t:'Java-Socket Programming', u:'https://github.com/udarasan/Java-Scoket-Programming'},
+                {t:'JavaEE Theory (74)', u:'https://github.com/udarasan/JavaEE-Theory'},
+                {t:'JavaEE - GDSE74', u:'https://github.com/udarasan/JavaEE-GDSE74'},
+                {t:'Spring Framework 74', u:'https://github.com/udarasan/SpringFramework74'},
+                {t:'JavaEE - 71 Batch', u:'https://github.com/udarasan/GDSE71-JavaEE'},
+                {t:'JavaEE Final Project (71)', u:'https://github.com/udarasan/JAVAEE-FINAL-PROJECT-71'},
+                {t:'Spring Framework 71', u:'https://github.com/udarasan/Spring-Framework-71'},
+                {t:'Threads in Java', u:'https://github.com/udarasan/Threads-In-Java-72'}
+            ]},
+        {n:'Kavindu Akash', p:'https://github.com/KavinduAkash', l:[
+                {t:'Web', u:'https://github.com/KavinduAkash/ITS1119-HDSE75'}
+            ]},
+        {n:'Shamodha', p:'https://github.com/shamodhas-ijse-teaching', l:[
+                {t:'ORM 1 · 76', u:'https://github.com/shamodhas-ijse-teaching/orm-day-01-76'},
+                {t:'ORM 2 · 76', u:'https://github.com/shamodhas-ijse-teaching/orm-day-03-76'},
+                {t:'ORM 3 · 76 (End Code)', u:'https://github.com/shamodhas-ijse-teaching/orm-end-76'},
+                {t:'ORM 1 · 75', u:'https://github.com/shamodhas-ijse-teaching/orm-day-01-75'},
+                {t:'ORM 2 · 75', u:'https://github.com/shamodhas-ijse-teaching/orm-day-02-75'},
+                {t:'ORM 3 · 75', u:'https://github.com/shamodhas-ijse-teaching/orm-day-03-75'}
+            ]},
+        {n:'Friends Repo · Tharusha', p:'https://github.com/Tharushadils', l:[
+                {t:'AAD', u:'https://github.com/Tharushadils/AAD_Class_Project/tree/master'}
+            ]},
+        {n:'AMG Repo · Praveena', p:'https://github.com/settings/profile', l:[
+                {t:'AAD Day 1', u:'https://github.com/slgunasekara/aad_day_1'},
+                {t:'AAD Day 2', u:'https://github.com/slgunasekara/aad_day_2'}
+            ]}
+    ];
+
+    /* ---------------- Renderers ---------------- */
+    function cardHTML(item){
+        return `<a class="card" href="${item.u}" target="_blank" rel="noopener" data-search="${item.t.toLowerCase()}">
+    <span class="badge">${svg(item.i)}</span>
+    <span class="ctitle">${item.t}</span>
+    <span class="cmeta">Open resource ${svg('arrow')}</span>
+  </a>`;
+    }
+    function renderGrid(id, items){
+        document.getElementById(id).innerHTML = items.map(cardHTML).join('');
+    }
+    function initials(name){
+        return name.replace(/[^A-Za-z ]/g,'').trim().split(/\s+/).slice(0,2).map(w=>w[0]).join('').toUpperCase() || 'A';
+    }
+    function personHTML(p){
+        const chips = p.l.map(link=>`<a class="link-chip" href="${link.u}" target="_blank" rel="noopener" data-search="${p.n.toLowerCase()} ${link.t.toLowerCase()}">${svg('branch')} ${link.t}</a>`).join('');
+        return `<div class="person-card" data-search="${p.n.toLowerCase()}">
+    <div class="person-top">
+      <span class="avatar">${initials(p.n)}</span>
+      <div>
+        <div class="person-name">${p.n}</div>
+        <a href="${p.p}" target="_blank" rel="noopener">View GitHub profile ↗</a>
+      </div>
+    </div>
+    <div class="link-chip-row">${chips}</div>
+  </div>`;
+    }
+    function renderPeople(id, people){
+        document.getElementById(id).innerHTML = people.map(personHTML).join('');
+    }
+    function renderTools(){
+        document.getElementById('toolsRow').innerHTML = TOOLS.map(t=>
+            `<a class="tool-pill" href="${t.u}" target="_blank" rel="noopener" data-search="${t.t.toLowerCase()}">
+      <span class="tbadge">${svg(t.i)}</span>${t.t}
+    </a>`).join('');
+    }
+
+    renderTools();
+    renderGrid('cameGrid', CAME);
+    renderGrid('sem1Grid', SEM1);
+    renderGrid('docs1Grid', DOCS1);
+    renderPeople('repo1Grid', REPO1);
+    renderGrid('sem2Grid', SEM2);
+    renderPeople('repo2Grid', REPO2);
+    document.getElementById('cameCount').textContent = CAME.length + ' resources';
+
+    /* ---------------- Search ---------------- */
+    const searchBox = document.getElementById('searchBox');
+    const resultCount = document.getElementById('resultCount');
+    const noResults = document.getElementById('noResults');
+
+    searchBox.addEventListener('input', ()=>{
+        const q = searchBox.value.trim().toLowerCase();
+        const cards = document.querySelectorAll('.card, .link-chip');
+        const personCards = document.querySelectorAll('.person-card');
+        let visible = 0;
+
+        cards.forEach(el=>{
+            const match = !q || el.dataset.search.includes(q);
+            el.style.display = match ? '' : 'none';
+            if(match) visible++;
+        });
+
+        personCards.forEach(pc=>{
+            const anyChipVisible = [...pc.querySelectorAll('.link-chip')].some(c=>c.style.display !== 'none');
+            const nameMatch = pc.dataset.search.includes(q);
+            pc.style.display = (!q || anyChipVisible || nameMatch) ? '' : 'none';
+        });
+
+        resultCount.textContent = q ? visible + ' found' : '';
+        noResults.style.display = (q && visible === 0) ? 'block' : 'none';
+
+        document.querySelectorAll('.section, .section-sub').forEach(s=>s.style.display='');
+    });
+
+    /* ---------------- Back to top ---------------- */
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', ()=>{
+        toTop.classList.toggle('show', window.scrollY > 500);
+    });
+    toTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+</script>
+</body>
+</html>
