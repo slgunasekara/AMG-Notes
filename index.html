@@ -56,6 +56,30 @@
             box-shadow:0 6px 16px rgba(37,99,235,.10);
         }
         .dot{width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--blue-600));}
+        .brand-logo{
+            width:84px;height:84px;border-radius:26px;
+            display:flex;align-items:center;justify-content:center;
+            margin:0 auto 18px;
+            padding:6px;
+            background:linear-gradient(150deg,var(--blue-700) 0%, var(--blue-500) 55%, var(--cyan) 130%);
+            box-shadow:
+                    0 16px 30px rgba(29,78,216,.28),
+                    inset 0 2px 4px rgba(255,255,255,.4),
+                    inset 0 -8px 14px rgba(6,20,60,.28);
+            animation:logoFloat 5s ease-in-out infinite;
+        }
+        .brand-logo img{
+            width:100%;height:100%;object-fit:contain;
+            border-radius:19px;
+            filter:drop-shadow(0 4px 8px rgba(6,20,60,.25));
+        }
+        @keyframes logoFloat{
+            0%,100%{transform:translateY(0);}
+            50%{transform:translateY(-6px);}
+        }
+        @media(max-width:520px){
+            .brand-logo{width:66px;height:66px;border-radius:20px;margin-bottom:14px;}
+        }
         h1.title{
             font-family:'Outfit',sans-serif;font-weight:800;
             font-size:clamp(32px,5vw,54px);
@@ -100,6 +124,14 @@
             display:flex;align-items:center;gap:8px;overflow-x:auto;
             scrollbar-width:none;
         }
+        .nav-brand{
+            flex:none;width:30px;height:30px;border-radius:9px;
+            display:flex;align-items:center;justify-content:center;
+            margin-right:4px;
+            background:linear-gradient(150deg,var(--blue-700) 0%, var(--blue-500) 55%, var(--cyan) 130%);
+            box-shadow:0 3px 8px rgba(29,78,216,.30), inset 0 1px 2px rgba(255,255,255,.4);
+        }
+        .nav-brand img{width:100%;height:100%;object-fit:contain;border-radius:6px;padding:3px;}
         .jumpnav-inner::-webkit-scrollbar{display:none;}
         .jumpnav-inner .navdiv{
             flex:none;width:1px;height:20px;background:var(--blue-100);margin:0 4px;
@@ -301,7 +333,8 @@
 <body>
 
 <header class="hero">
-    <span class="eyebrow"><span class="dot"></span> AMG Notes</span>
+    <div class="brand-logo"><img src="assets/amg.png" alt="AMG logo" onerror="this.parentElement.style.display='none'"></div>
+    <!--    <span class="eyebrow"><span class="dot"></span> AMG Notes </span>-->
     <h1 class="title">Documents by AMG</h1>
     <p class="subtitle">Every note, VIVA guide and GitHub repo in one place. <b>Click any card</b> to jump straight to the resource.</p>
 
@@ -314,6 +347,7 @@
 
 <nav class="jumpnav">
     <div class="jumpnav-inner" id="jumpnavInner">
+        <a href="#" class="nav-brand" title="Documents by AMG" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;"><img src="assets/amg.png" alt="AMG" onerror="this.parentElement.style.display='none'"></a>
         <a href="#tools" data-target="tools"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.4"/><path d="M12 3.5v3M12 17.5v3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M2.5 12h3M18.5 12h3M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/></svg>Tools</a>
         <a href="#came" data-target="came"><svg viewBox="0 0 24 24"><path d="M9.5 3.2A3 3 0 0 0 6.7 6a3 3 0 0 0-1.9 4.9A3 3 0 0 0 6.7 16h2.8"/><path d="M14.5 3.2A3 3 0 0 1 17.3 6a3 3 0 0 1 1.9 4.9A3 3 0 0 1 17.3 16h-2.8"/><path d="M9.5 3.2v17.6M14.5 3.2v17.6"/></svg>CAME Course</a>
         <span class="navdiv"></span>
