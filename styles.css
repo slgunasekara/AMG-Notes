@@ -29,6 +29,17 @@
         }
         a{color:inherit;}
 
+        /* ---------- Site gate lock (hide the whole site until logged in) ---------- */
+        body.site-locked #userBar,
+        body.site-locked header.hero,
+        body.site-locked nav.jumpnav,
+        body.site-locked main#content,
+        body.site-locked main#adminView,
+        body.site-locked footer,
+        body.site-locked #toTop,
+        body.site-locked #chatToggleBtn,
+        body.site-locked #chatWindow{display:none !important;}
+
         /* ---------- Header ---------- */
         header.hero{
             padding:64px 24px 40px;
@@ -152,6 +163,78 @@
             box-shadow:0 4px 12px rgba(29,78,216,.28);
         }
         .jumpnav-inner a.active svg{stroke:#fff;}
+
+        /* ---------- Course dropdown (course button -> semester list, nested modules) ----------
+           The dropdown menu is parked as a direct child of <body> by the JS (not nested inside
+           the horizontally-scrolling nav bar) and positioned with position:fixed, because a
+           scrollable ancestor (overflow-x:auto) clips any absolutely-positioned dropdown inside
+           it — this is what kept the semester list from showing before. */
+        .nav-course{position:relative;flex:none;}
+        .nav-course-btn{
+            all:unset;box-sizing:border-box;cursor:pointer;
+            display:inline-flex;align-items:center;gap:7px;
+            font-family:'Outfit',sans-serif;font-weight:600;font-size:13.5px;
+            padding:9px 14px 9px 13px;border-radius:999px;
+            color:var(--blue-800);
+            background:var(--white);
+            border:1px solid var(--blue-100);
+            white-space:nowrap;
+            box-shadow:0 2px 6px rgba(29,78,216,.06);
+            transition:box-shadow .22s, background .22s, color .22s, border-color .22s;
+        }
+        .nav-course-btn svg{width:14px;height:14px;flex:none;stroke:var(--blue-600);fill:none;stroke-width:1.9;transition:stroke .22s, transform .22s;}
+        .nav-course-btn .nav-chevron{width:11px;height:11px;margin-left:-1px;transition:transform .22s;}
+        .nav-course-btn:hover{background:var(--blue-50);border-color:#93C5FD;box-shadow:0 4px 10px rgba(29,78,216,.12);}
+        .nav-course-btn.active{color:#fff;background:linear-gradient(135deg,var(--blue-700),var(--blue-500));border-color:transparent;box-shadow:0 4px 12px rgba(29,78,216,.28);}
+        .nav-course-btn.active svg{stroke:#fff;}
+        .nav-course.open .nav-course-btn .nav-chevron{transform:rotate(180deg);}
+        .nav-course-menu{
+            position:fixed;min-width:220px;max-width:300px;
+            max-height:min(430px,70vh);overflow-y:auto;
+            background:#fff;border:1px solid var(--blue-100);border-radius:14px;
+            box-shadow:0 18px 34px rgba(29,78,216,.20);
+            padding:8px;display:none;flex-direction:column;gap:2px;z-index:600;
+        }
+        .nav-course-menu.open{display:flex;animation:navMenuIn .16s ease-out;}
+        @keyframes navMenuIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+        .nav-course-menu > a{
+            display:block;padding:9px 12px;border-radius:9px;
+            font-family:'Inter',sans-serif;font-weight:600;font-size:13px;
+            color:var(--blue-800);text-decoration:none;white-space:nowrap;
+            transition:background .18s, color .18s;
+        }
+        .nav-course-menu > a:hover{background:var(--blue-50);color:var(--blue-700);}
+        .nav-menu-empty{padding:9px 12px;font-size:12.5px;color:var(--muted);}
+
+        /* A semester with modules underneath expands in place instead of navigating away —
+           only the module (the final sub-part) actually navigates the page. A semester with
+           no modules is itself the final sub-part, so it's a plain link. */
+        .nav-sem-group{display:flex;flex-direction:column;}
+        .nav-sem-toggle{
+            all:unset;box-sizing:border-box;cursor:pointer;
+            display:flex;align-items:center;justify-content:space-between;gap:8px;
+            padding:9px 12px;border-radius:9px;
+            font-family:'Inter',sans-serif;font-weight:600;font-size:13px;
+            color:var(--blue-800);
+            transition:background .18s, color .18s;
+        }
+        .nav-sem-toggle:hover{background:var(--blue-50);color:var(--blue-700);}
+        .nav-chevron-sm{width:12px;height:12px;flex:none;stroke:var(--muted);transition:transform .18s, stroke .18s;}
+        .nav-sem-group.open .nav-sem-toggle{color:var(--blue-700);}
+        .nav-sem-group.open .nav-chevron-sm{transform:rotate(90deg);stroke:var(--blue-600);}
+        .nav-sem-modlist{
+            display:none;flex-direction:column;gap:1px;
+            margin:2px 0 4px 10px;padding:2px 0 2px 12px;
+            border-left:2px solid var(--blue-100);
+        }
+        .nav-sem-group.open .nav-sem-modlist{display:flex;}
+        .nav-sem-modlist a{
+            display:block;padding:7px 10px;border-radius:8px;
+            font-family:'Inter',sans-serif;font-weight:500;font-size:12.5px;
+            color:var(--blue-700);text-decoration:none;white-space:nowrap;
+            transition:background .18s, color .18s;
+        }
+        .nav-sem-modlist a:hover{background:var(--blue-50);color:var(--blue-700);font-weight:600;}
 
         /* ---------- Layout ---------- */
         main{max-width:1180px;margin:0 auto;padding:8px 24px 60px;}
@@ -384,6 +467,92 @@
         }
         .login-error.show{display:block;}
         .login-hint{text-align:center;margin-top:16px;font-size:11.5px;color:#9AAAC7;}
+
+        /* =========================================================
+           SITE GATE — full-page login every visitor must pass
+           ========================================================= */
+        #siteGate{
+            position:fixed;inset:0;z-index:500;
+            display:flex;align-items:center;justify-content:center;
+            padding:24px;
+            background:
+                    radial-gradient(1100px 600px at 100% -10%, #E4EEFF 0%, rgba(228,238,255,0) 60%),
+                    radial-gradient(900px 500px at -10% 10%, #EAF3FF 0%, rgba(234,243,255,0) 55%),
+                    linear-gradient(180deg,#FBFDFF 0%, #F3F7FF 100%);
+        }
+        #siteGate.gate-done{display:none;}
+        .gate-card{
+            position:relative;width:100%;max-width:900px;min-height:520px;
+            display:grid;grid-template-columns:1fr 1fr;
+            background:#fff;border-radius:28px;overflow:hidden;
+            box-shadow:26px 40px 70px rgba(11,42,91,.22), -10px -10px 24px rgba(255,255,255,.8);
+        }
+        .gate-left{
+            position:relative;overflow:hidden;
+            background:linear-gradient(165deg,var(--blue-900) 0%, var(--blue-800) 45%, var(--blue-600) 130%);
+            color:#fff;padding:44px 34px;
+            display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;
+        }
+        .gate-left-glow{position:absolute;border-radius:50%;filter:blur(40px);opacity:.35;pointer-events:none;}
+        .gate-left-glow.g1{width:220px;height:220px;background:var(--cyan);top:-70px;right:-60px;}
+        .gate-left-glow.g2{width:260px;height:260px;background:var(--blue-400);bottom:-90px;left:-70px;}
+        .gate-left-mid{position:relative;display:flex;flex-direction:column;align-items:center;margin:auto 0;}
+        .gate-logo{
+            width:120px;height:120px;margin:0 auto 22px;
+            display:flex;align-items:center;justify-content:center;
+            filter:drop-shadow(0 14px 26px rgba(3,12,34,.45));
+            animation:logoFloat 5s ease-in-out infinite;
+        }
+        .gate-logo img{width:100%;height:100%;object-fit:contain;}
+        .gate-brand{font-family:'Outfit',sans-serif;font-weight:800;font-size:26px;margin:0 0 6px;position:relative;}
+        .gate-tagline{font-size:13.5px;color:var(--blue-100);opacity:.85;margin:0;position:relative;}
+        .gate-copy{position:relative;font-size:11px;color:var(--blue-100);opacity:.6;margin:0;}
+        .gate-right{padding:48px 44px;display:flex;flex-direction:column;justify-content:center;}
+        .gate-greeting{
+            display:inline-block;font-family:'Outfit',sans-serif;font-weight:700;font-size:13px;
+            color:var(--blue-600);margin-bottom:6px;
+            opacity:0;animation:gateFall .7s cubic-bezier(.16,.8,.34,1) forwards;animation-delay:2s;
+        }
+        .gate-title{
+            font-family:'Outfit',sans-serif;font-weight:800;font-size:25px;margin:0 0 6px;color:var(--blue-900);
+            opacity:0;animation:gateFall .7s cubic-bezier(.16,.8,.34,1) forwards;animation-delay:2.15s;
+        }
+        .gate-sub{
+            font-size:13px;color:var(--muted);margin:0 0 24px;
+            opacity:0;animation:gateFall .7s cubic-bezier(.16,.8,.34,1) forwards;animation-delay:2.3s;
+        }
+        @keyframes gateFall{
+            0%{opacity:0;transform:translateY(-26px);}
+            100%{opacity:1;transform:translateY(0);}
+        }
+        .gate-field-wrap{position:relative;}
+        .gate-field-wrap .field-ic{
+            position:absolute;left:13px;top:50%;transform:translateY(-50%);
+            width:16px;height:16px;color:#9AAAC7;pointer-events:none;
+        }
+        .gate-field-wrap input{padding-left:38px;padding-right:40px;}
+        .gate-field-wrap input#gateUser{padding-right:14px;}
+        .pw-toggle{
+            position:absolute;right:8px;top:50%;transform:translateY(-50%);
+            width:28px;height:28px;border:none;background:none;cursor:pointer;
+            color:#9AAAC7;display:flex;align-items:center;justify-content:center;border-radius:8px;
+        }
+        .pw-toggle:hover{color:var(--blue-600);background:var(--blue-50);}
+        .pw-toggle svg{width:17px;height:17px;}
+        .gate-row{display:flex;align-items:center;justify-content:space-between;margin:0 0 18px;}
+        .remember{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted);cursor:pointer;user-select:none;}
+        .remember input{accent-color:var(--blue-600);width:14px;height:14px;}
+        .gate-submit{display:flex;align-items:center;justify-content:center;gap:9px;}
+        .gate-submit svg{width:15px;height:15px;}
+        @media(max-width:760px){
+            .gate-card{grid-template-columns:1fr;max-width:420px;min-height:0;}
+            .gate-left{flex-direction:row;justify-content:center;gap:14px;padding:24px;text-align:left;}
+            .gate-left-mid{flex-direction:row;align-items:center;margin:0;}
+            .gate-logo{width:50px;height:50px;margin:0 12px 0 0;animation:none;}
+            .gate-tagline,.gate-copy{display:none;}
+            .gate-brand{font-size:19px;margin:0;}
+            .gate-right{padding:32px 26px 36px;}
+        }
 
         /* =========================================================
            TOP USER BAR
@@ -631,9 +800,20 @@
             margin:22px 0;
         }
         .semester-card:first-of-type{margin-top:24px;}
-        .semester-card-head{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;flex-wrap:wrap;}
+        .semester-card-head{display:flex;align-items:baseline;gap:12px;margin-bottom:12px;flex-wrap:wrap;}
         .semester-card-head h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:16.5px;margin:0;color:var(--blue-800);}
         .semester-card-head .count{font-size:11px;color:var(--muted);font-weight:600;}
+        .semester-modnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px;}
+        .sem-mod-btn{
+            all:unset;cursor:pointer;box-sizing:border-box;
+            font-family:'Outfit',sans-serif;font-weight:600;font-size:12px;
+            padding:7px 14px;border-radius:999px;
+            color:var(--blue-700);background:#fff;
+            border:1px solid var(--blue-100);
+            box-shadow:0 2px 6px rgba(29,78,216,.06);
+            transition:background .18s, color .18s, border-color .18s, transform .18s;
+        }
+        .sem-mod-btn:hover{background:linear-gradient(135deg,var(--blue-700),var(--blue-500));color:#fff;border-color:transparent;transform:translateY(-1px);}
         .module-card{
             background:#ffffff;
             border:1px solid rgba(191,219,254,.8);

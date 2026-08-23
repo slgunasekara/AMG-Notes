@@ -59,3 +59,15 @@ Token එක site code එකට කවදාවත් embed වෙන්නේ 
 ## Login
 
 Username/password කලින් තිබුණ ඒවගේම තියෙනවා.
+
+## v4 — Site-wide login gate + course dropdown nav
+
+1. **Site gate ඇවිත් තියෙනවා** — දැන් page එක load වෙන ගමන්ම, කලින් තිබ්බ "Owner Login" එකෙන් වෙනම, site එකම block කරන full-page login screen එකක් (`#siteGate`) පෙන්නනවා. හැමෝටම login වෙන්න ඕන — shared credentials: `amg` / `amg123`. Owner ගේ තමන්ගේ username/password එකෙන් login වුනොත් ඒකෙන්ම කෙලින්ම Owner Panel එකත් unlock වෙනවා (වෙනම Owner Login කරන්න ඕන නෑ). කලින් තිබ්බ "🔒 Owner Login" button එකෙන් open වෙන chota modal එක (`#loginScreen`) හරියටම කලින් වගේම තියෙනවා — guest login එකකින් පස්සේ owner බවට upgrade වෙන්න ඕන කෙනෙක්ට use කරන්න පුළුවන්.
+2. **Design එක** — දාපු `log.PNG` reference image එකේ split-panel style එකට close කරලා හදලා තියෙනවා: left side dark-blue panel එකේ `assets/amg.png` logo එකයි brand name එකයි, right side එකේ login form එක. "Good Morning / Good Afternoon / Good Evening / Good Night" greeting එක browser එකේ current time එක අනුව auto වෙනස් වෙනවා, page load වුනාට පස්සේ 2 seconds ගානක් late වෙලා උඩ ඉඳන් පහළට fade-in වෙනවා (image එකේ තිබ්බ animation style එකට සමානව). Password field එකට show/hide (👁) toggle එකකුත්, "Remember me" checkbox එකකුත් (uncheck කළොත් browser tab එක close වුනාම login එක expire වෙනවා, check කළොත් permanent) දාලා තියෙනවා.
+3. **Course dropdown nav** — Top nav bar එකේ course button එකක් click කළාම කලින් වගේ කෙලින්ම course එකට යන්නේ නෑ — ඒ course එකට add කරපු semester list එක button එක යටින්ම dropdown එකක් විදිහට open වෙනවා. Dropdown එකේ semester එකක් click කළහම විතරයි ඒ semester එකට page එක scroll වෙන්නේ. Course button එකම ආයෙත් click කළොත්, හරි වෙන පැත්තකක් click කළොත්, semester එකක් select කළොත් — dropdown එක auto close වෙනවා.
+4. **Semester card module quick-nav** — Semester එකකට giya ගමන්ම, semester card එකේ උඩම, ඒ semester එකේ add කරලා තියෙන module ඔක්කොම pill-button විදිහට පෙන්නනවා. ඒ buttons වලින් එකක් click කළහම කෙලින්ම ඒ module card එකට scroll වෙනවා.
+
+## v4.1 — Dropdown clipping fix + nested module navigation
+
+1. **Dropdown fix** — කලින් dropdown එක click කරාට පේන්නෙම නෑ කියල issue එකක් තිබුණා. Cause එක: top nav bar එකට (`.jumpnav-inner`) දාලා තිබුණු `overflow-x:auto` (horizontal scroll දෙන්නත් ඕන නිසා) එකේම side-effect එකක් විදිහට browser එක `overflow-y`ත් auto කරලා dropdown එකේ menu එක clip කරලා invisible කරලා තිබ්බේ. දැන් fix කරලා තියෙන්නේ dropdown menu එක JS එකෙන් `<body>` එකට කෙලින්ම attach කරලා (`position:fixed` එකෙන්, button එකේ actual screen position එක JS එකෙන් calculate කරලා) — දැන් nav bar එකේ scroll container එකෙන් bare කරන්නේ නෑ.
+2. **Nested navigation** — Course button එක click කළහම semester list එක පේනවා. Semester එකකට module already add කරලා තියෙනවා නම්, ඒ semester එක click කළහම navigate වෙන්නේ නෑ — ඒක යටින්ම module list එක expand වෙනවා (accordion විදිහට), module එකක් click කළහම විතරයි ඒකට navigate වෙන්නේ (deepest/final sub-part එකට). Semester එකකට module නැත්නම් (හිස් semester එකක් නම්), ඒක තමයි final sub-part එක නිසා ඒ semester එකම click කළහම කෙලින්ම navigate වෙනවා.

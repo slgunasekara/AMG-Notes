@@ -989,10 +989,17 @@ function moduleCardHTML(m){
   </div>`;
 }
 function semesterCardHTML(sem){
-    const modCount = (sem.modules||[]).length;
+    const mods = sem.modules || [];
+    const modCount = mods.length;
+    // Quick-jump pills at the top of the semester card — one per module already
+    // in this semester — so clicking one scrolls straight to that module's card.
+    const modNav = modCount
+        ? `<div class="semester-modnav">${mods.map(m=>`<button type="button" class="sem-mod-btn" data-modtarget="modcard_${m.id}">${esc(m.label)}</button>`).join('')}</div>`
+        : '';
     return `<div class="semester-card" id="${sem.id}">
     <div class="semester-card-head"><h3>${esc(sem.label)}</h3><span class="count">${modCount} modules</span></div>
-    ${(sem.modules||[]).map(moduleCardHTML).join('') || '<div class="module-empty">No modules in this semester yet.</div>'}
+    ${modNav}
+    ${mods.map(moduleCardHTML).join('') || '<div class="module-empty">No modules in this semester yet.</div>'}
   </div>`;
 }
 
@@ -1000,7 +1007,10 @@ function semesterCardHTML(sem){
 function renderModules(){
     const host = document.getElementById('modulesHost');
     const navInner = document.getElementById('jumpnavInner');
-    navInner.querySelectorAll('a[data-modnav]').forEach(a=>a.remove());
+    navInner.querySelectorAll('[data-modnav]').forEach(a=>a.remove());
+    // Dropdown menus live as direct children of <body> (see note above the CSS
+    // for .nav-course-menu), so clearing navInner alone doesn't remove them.
+    document.querySelectorAll('body > .nav-course-menu[data-modnav]').forEach(m=>m.remove());
     host.innerHTML = '';
 
     (CONTENT.courses||[]).forEach(course=>{
@@ -1012,17 +1022,127 @@ function renderModules(){
       ${(course.semesters||[]).map(semesterCardHTML).join('') || '<div class="module-empty">No semesters yet.</div>'}`;
         host.appendChild(sec);
 
-        const navLink = document.createElement('a');
-        navLink.href = '#' + course.id;
-        navLink.dataset.target = course.id;
-        navLink.dataset.modnav = '1';
-        navLink.innerHTML = `<svg viewBox="0 0 24 24">${navSvg('grid')}</svg>${esc(course.label)}`;
-        navInner.appendChild(navLink);
+        // A course is a dropdown button, not a straight link: clicking it just
+        // opens/closes the list of semesters that belong to it — it never
+        // navigates anywhere by itself.
+        const semesters = course.semesters || [];
+        const navGroup = document.createElement('div');
+        navGroup.className = 'nav-course';
+        navGroup.dataset.modnav = '1';
+        navGroup.innerHTML = `
+      <button type="button" class="nav-course-btn" data-target="${course.id}" data-course="${course.id}">
+        <svg viewBox="0 0 24 24">${navSvg('grid')}</svg>${esc(course.label)}
+        <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+    `;
+        navInner.appendChild(navGroup);
+
+        // A semester that already has modules expands in place to show them —
+        // only a module (the deepest sub-part) actually navigates the page.
+        // A semester with no modules yet IS the deepest sub-part, so it's a
+        // plain link that navigates straight to it.
+        const menu = document.createElement('div');
+        menu.className = 'nav-course-menu';
+        menu.id = 'navmenu-' + course.id;
+        menu.dataset.modnav = '1';
+        menu.innerHTML = semesters.length ? semesters.map(sem=>{
+            const mods = sem.modules || [];
+            if(mods.length){
+                return `<div class="nav-sem-group">
+              <button type="button" class="nav-sem-toggle" data-semgroup="${sem.id}">
+                <span>${esc(sem.label)}</span>
+                <svg class="nav-chevron-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+              </button>
+              <div class="nav-sem-modlist">
+                ${mods.map(m=>`<a href="#modcard_${m.id}" data-modtarget="modcard_${m.id}">${esc(m.label)}</a>`).join('')}
+              </div>
+            </div>`;
+            }
+            return `<a href="#${sem.id}" data-sem="${sem.id}">${esc(sem.label)}</a>`;
+        }).join('') : '<div class="nav-menu-empty">No semesters yet.</div>';
+        document.body.appendChild(menu);
     });
 
     applyTextSettings();
     rebuildSpyTargets();
 }
+
+/* ---------------- Course dropdown + nested semester/module nav (event delegation) ----------------
+   Everything routes through one document-level click listener because the dropdown
+   menus are parked on <body>, outside the nav bar's DOM subtree. */
+function closeAllNavMenus(){
+    document.querySelectorAll('.nav-course.open').forEach(g=>g.classList.remove('open'));
+    document.querySelectorAll('.nav-course-menu.open').forEach(m=>{
+        m.classList.remove('open');
+        m.querySelectorAll('.nav-sem-group.open').forEach(g=>g.classList.remove('open'));
+    });
+}
+function positionNavMenu(btn, menu){
+    const r = btn.getBoundingClientRect();
+    const menuWidth = Math.max(menu.offsetWidth, 220);
+    let left = r.left;
+    if(left + menuWidth > window.innerWidth - 12) left = window.innerWidth - menuWidth - 12;
+    if(left < 12) left = 12;
+    let top = r.bottom + 8;
+    if(top + menu.offsetHeight > window.innerHeight - 12) top = Math.max(12, r.top - menu.offsetHeight - 8);
+    menu.style.left = left + 'px';
+    menu.style.top = top + 'px';
+}
+document.addEventListener('click', (e)=>{
+    const courseBtn = e.target.closest('.nav-course-btn');
+    if(courseBtn){
+        e.preventDefault();
+        const menu = document.getElementById('navmenu-' + courseBtn.dataset.course);
+        const group = courseBtn.closest('.nav-course');
+        const wasOpen = group && group.classList.contains('open');
+        closeAllNavMenus();
+        if(!wasOpen && menu && group){
+            group.classList.add('open');
+            menu.classList.add('open');
+            positionNavMenu(courseBtn, menu);
+        }
+        return;
+    }
+    const semToggle = e.target.closest('.nav-sem-toggle');
+    if(semToggle){
+        e.preventDefault();
+        const group = semToggle.closest('.nav-sem-group');
+        const menu = semToggle.closest('.nav-course-menu');
+        const wasOpen = group.classList.contains('open');
+        menu.querySelectorAll('.nav-sem-group.open').forEach(g=>g.classList.remove('open'));
+        if(!wasOpen) group.classList.add('open');
+        return;
+    }
+    const modLink = e.target.closest('.nav-sem-modlist a[data-modtarget]');
+    if(modLink){
+        e.preventDefault();
+        const target = document.getElementById(modLink.dataset.modtarget);
+        closeAllNavMenus();
+        if(target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+        return;
+    }
+    const semLink = e.target.closest('.nav-course-menu > a[data-sem]');
+    if(semLink){
+        e.preventDefault();
+        const target = document.getElementById(semLink.dataset.sem);
+        closeAllNavMenus();
+        if(target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+        return;
+    }
+    // Click anywhere else on the page closes any open course dropdown.
+    if(!e.target.closest('.nav-course-btn') && !e.target.closest('.nav-course-menu')){
+        closeAllNavMenus();
+    }
+});
+window.addEventListener('scroll', closeAllNavMenus, { passive:true });
+window.addEventListener('resize', closeAllNavMenus);
+// Clicking a module pill at the top of a semester card jumps straight to that module.
+document.getElementById('modulesHost').addEventListener('click', (e)=>{
+    const btn = e.target.closest('.sem-mod-btn');
+    if(!btn) return;
+    const target = document.getElementById(btn.dataset.modtarget);
+    if(target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+});
 function applyTextSettings(){
     const s = CONTENT.settings || {};
     if(s.siteTitle) document.querySelector('h1.title').textContent = s.siteTitle;
@@ -1106,10 +1226,97 @@ function sha256(ascii){
 }
 
 function getSession(){
-    try{ return JSON.parse(localStorage.getItem(SESSION_KEY) || 'null'); }catch(e){ return null; }
+    try{ return JSON.parse(localStorage.getItem(SESSION_KEY) || sessionStorage.getItem(SESSION_KEY) || 'null'); }catch(e){ return null; }
 }
-function setSession(s){ localStorage.setItem(SESSION_KEY, JSON.stringify(s)); }
-function clearSession(){ localStorage.removeItem(SESSION_KEY); }
+// remember=true persists across browser restarts (localStorage); remember=false
+// only lasts for this tab/session (sessionStorage) — driven by the "Remember me" box.
+function setSession(s, remember){
+    try{
+        if(remember === false){
+            sessionStorage.setItem(SESSION_KEY, JSON.stringify(s));
+            localStorage.removeItem(SESSION_KEY);
+        } else {
+            localStorage.setItem(SESSION_KEY, JSON.stringify(s));
+            sessionStorage.removeItem(SESSION_KEY);
+        }
+    }catch(e){}
+}
+function clearSession(){
+    localStorage.removeItem(SESSION_KEY);
+    sessionStorage.removeItem(SESSION_KEY);
+}
+
+/* =========================================================
+   SITE GATE — one shared login (amg / amg123) every visitor
+   must pass before the site is shown; the owner's own
+   username/password also works here and unlocks Owner Panel
+   in the same step.
+   ========================================================= */
+const GATE_USER = 'amg';
+const GATE_PASS = 'amg123';
+
+function greetingText(){
+    const h = new Date().getHours();
+    if(h >= 5 && h < 12) return 'Good Morning!';
+    if(h >= 12 && h < 17) return 'Good Afternoon!';
+    if(h >= 17 && h < 21) return 'Good Evening!';
+    return 'Good Night!';
+}
+function paintGreeting(){
+    const el = document.getElementById('gateGreeting');
+    if(el) el.textContent = greetingText();
+}
+function unlockSite(){
+    document.body.classList.remove('site-locked');
+    document.getElementById('siteGate').classList.add('gate-done');
+    enterSite();
+}
+function lockSite(){
+    clearSession();
+    document.getElementById('gateForm').reset();
+    document.getElementById('gateRemember').checked = true;
+    document.getElementById('gateError').classList.remove('show');
+    paintGreeting();
+    document.getElementById('siteGate').classList.remove('gate-done');
+    document.body.classList.add('site-locked');
+    showSiteView();
+    enterSite();
+}
+document.getElementById('gatePwToggle').addEventListener('click', ()=>{
+    const inp = document.getElementById('gatePass');
+    const btn = document.getElementById('gatePwToggle');
+    const showing = inp.type === 'text';
+    inp.type = showing ? 'password' : 'text';
+    btn.querySelector('.ic-eye').style.display = showing ? '' : 'none';
+    btn.querySelector('.ic-eye-off').style.display = showing ? 'none' : '';
+});
+document.getElementById('gateForm').addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const u = document.getElementById('gateUser').value.trim();
+    const p = document.getElementById('gatePass').value;
+    const errBox = document.getElementById('gateError');
+    errBox.classList.remove('show');
+    if(!u || !p){
+        errBox.textContent = 'Please enter both a username and password.';
+        errBox.classList.add('show');
+        return;
+    }
+    const remember = document.getElementById('gateRemember').checked;
+    let role = null;
+    if(u.toLowerCase() === GATE_USER && p === GATE_PASS){
+        role = 'guest';
+    } else {
+        const hash = await sha256(p);
+        if(u.toLowerCase() === OWNER_USER && hash === OWNER_HASH) role = 'owner';
+    }
+    if(!role){
+        errBox.textContent = 'Incorrect username or password.';
+        errBox.classList.add('show');
+        return;
+    }
+    setSession({ user: u, role }, remember);
+    unlockSite();
+});
 
 function openLoginModal(){
     document.getElementById('loginError').classList.remove('show');
@@ -1150,10 +1357,11 @@ async function handleLogin(e){
 function enterSite(){
     const session = getSession();
     const isOwner = !!(session && session.role === 'owner');
+    const isLoggedIn = !!session;
     document.getElementById('ownerLoginBtn').classList.toggle('hidden', isOwner);
     document.getElementById('ubBadge').classList.toggle('hidden', !isOwner);
     document.getElementById('ownerPanelBtn').classList.toggle('hidden', !isOwner);
-    document.getElementById('logoutBtn').classList.toggle('hidden', !isOwner);
+    document.getElementById('logoutBtn').classList.toggle('hidden', !isLoggedIn);
     if(isOwner){
         document.getElementById('ubName').textContent = 'Owner';
     }
@@ -1166,11 +1374,7 @@ document.getElementById('loginCloseBtn').addEventListener('click', closeLoginMod
 document.getElementById('loginScreen').addEventListener('click', (e)=>{
     if(e.target.id === 'loginScreen') closeLoginModal();
 });
-document.getElementById('logoutBtn').addEventListener('click', ()=>{
-    clearSession();
-    showSiteView();
-    enterSite();
-});
+document.getElementById('logoutBtn').addEventListener('click', lockSite);
 
 /* ---------------- View switching ---------------- */
 function showSiteView(){
@@ -1864,7 +2068,7 @@ searchBox.addEventListener('input', ()=>{
 /* ---------------- Scroll-spy for nav (rebuilt whenever modules change) ---------------- */
 let spyObserver = null;
 function rebuildSpyTargets(){
-    const navLinks = document.querySelectorAll('#jumpnavInner a[data-target]');
+    const navLinks = document.querySelectorAll('#jumpnavInner [data-target]');
     const ids = ['tools'].concat(CONTENT.courses.map(c=>c.id));
     const spyTargets = ids.map(id => document.getElementById(id)).filter(Boolean);
 
@@ -1906,6 +2110,15 @@ document.addEventListener('selectstart', e => {
 
 /* ---------------- Boot ---------------- */
 (async function boot(){
+    paintGreeting();
+    // Body starts with the "site-locked" class (see index.html), so the gate
+    // is the only thing visible until we know whether there's a valid session.
+    if(getSession()){
+        document.body.classList.remove('site-locked');
+        document.getElementById('siteGate').classList.add('gate-done');
+    } else {
+        setTimeout(()=> document.getElementById('gateUser').focus(), 400);
+    }
     renderTools();
     await loadContent();
     initGhTab();

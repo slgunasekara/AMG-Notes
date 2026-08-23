@@ -9,7 +9,56 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="site-locked">
+
+<div id="siteGate">
+    <div class="gate-card">
+        <div class="gate-left">
+            <div class="gate-left-glow g1"></div>
+            <div class="gate-left-glow g2"></div>
+            <div class="gate-left-mid">
+                <div class="gate-logo"><img src="assets/amg.png" alt="AMG logo" onerror="this.parentElement.style.display='none'"></div>
+                <h1 class="gate-brand">AMG Notes</h1>
+                <p class="gate-tagline">Documents &amp; Resource Hub</p>
+            </div>
+            <p class="gate-copy">© 2026 AMG Notes · All Rights Reserved</p>
+        </div>
+        <div class="gate-right">
+            <span class="gate-greeting" id="gateGreeting">Good Afternoon!</span>
+            <h2 class="gate-title">Login to Continue</h2>
+            <p class="gate-sub">Enter your credentials to access the hub</p>
+            <div class="login-error" id="gateError"></div>
+            <form id="gateForm" autocomplete="off">
+                <div class="field">
+                    <label for="gateUser">Username</label>
+                    <div class="gate-field-wrap">
+                        <svg class="field-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>
+                        <input type="text" id="gateUser" autocomplete="username" placeholder="Enter username" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="gatePass">Password</label>
+                    <div class="gate-field-wrap">
+                        <svg class="field-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10.5" width="16" height="9.5" rx="2.4"/><path d="M7.5 10.5V7.5a4.5 4.5 0 0 1 9 0v3"/></svg>
+                        <input type="password" id="gatePass" autocomplete="current-password" placeholder="••••••••" required>
+                        <button type="button" class="pw-toggle" id="gatePwToggle" aria-label="Show password">
+                            <svg class="ic-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 12S5 5 12 5s10.5 7 10.5 7-3.5 7-10.5 7S1.5 12 1.5 12z"/><circle cx="12" cy="12" r="3.2"/></svg>
+                            <svg class="ic-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M3 3l18 18"/><path d="M10.6 5.2A10.6 10.6 0 0 1 12 5c7 0 10.5 7 10.5 7a13.9 13.9 0 0 1-3.15 4.15M6.5 6.6C3.4 8.5 1.5 12 1.5 12s3.5 7 10.5 7a10.4 10.4 0 0 0 4.1-.82"/><path d="M9.9 9.9a3.2 3.2 0 0 0 4.2 4.2"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="gate-row">
+                    <label class="remember"><input type="checkbox" id="gateRemember" checked><span>Remember me</span></label>
+                </div>
+                <button type="submit" class="btn-primary gate-submit">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>
+                    Login to AMG Notes
+                </button>
+            </form>
+            <p class="login-hint">One shared login for everyone · owners can sign in with their own account too</p>
+        </div>
+    </div>
+</div>
 
 <div id="loginScreen">
     <div class="login-card">
