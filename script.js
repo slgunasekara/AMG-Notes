@@ -26,7 +26,11 @@ const ICONS = {
     whale:'<path d="M2.6 13.4c2.2-4.4 6.6-6.6 10.8-6.6 4.3 0 7.4 2.2 8.4 5.3-1.1.55-2.2.5-3.2-.05-.4 1.75-2.1 3.05-4.3 3.05H8.2c-2.2 0-4.3-.6-5.6-1.7z"/><circle cx="17.6" cy="10.4" r="1" fill="#12327A" opacity=".7"/><path d="M12.6 7.4c.6-1.6 2-2.8 3.8-3.2-.2 1.7-1.1 3-2.6 3.7" opacity=".6"/>',
     notebook:'<rect x="4" y="2.6" width="15.4" height="18.8" rx="2.2"/><rect x="4" y="2.6" width="4.2" height="18.8" rx="1.4" fill="#12327A" opacity=".35"/><rect x="10.6" y="8" width="6.6" height="1.5" rx=".75" fill="#12327A" opacity=".55"/><rect x="10.6" y="11.2" width="6.6" height="1.5" rx=".75" fill="#12327A" opacity=".4"/>',
     arrow:'<path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
-    drive:'<path d="M8.6 3.4h6.8l6.2 10.6-3.4 5.9H12l3.4-5.9-6.8-10.6z" opacity=".85"/><path d="M8.6 3.4L1.8 14l3.4 5.9L12 8.5z" opacity=".55"/><path d="M4.8 20.9h14.4l-3.4-5.9H8.2z"/>'
+    drive:'<path d="M8.6 3.4h6.8l6.2 10.6-3.4 5.9H12l3.4-5.9-6.8-10.6z" opacity=".85"/><path d="M8.6 3.4L1.8 14l3.4 5.9L12 8.5z" opacity=".55"/><path d="M4.8 20.9h14.4l-3.4-5.9H8.2z"/>',
+    meta:'<path d="M6.4 4.2C3.6 4.2 2 7.9 2 12.4c0 3.9 1.5 6.6 3.9 6.6 2 0 3.1-1.4 5.1-4.7 2 3.3 3.1 4.7 5.1 4.7 2.4 0 3.9-2.7 3.9-6.6 0-4.5-1.6-8.2-4.4-8.2-1.9 0-3.1 1.5-4.6 4.1-1.5-2.6-2.7-4.1-4.6-4.1z" fill="none" stroke="#ffffff" stroke-width="2.1" stroke-linejoin="round"/>',
+    ycombo:'<path d="M12 12.6V21M5 3.6l7 9 7-9" fill="none" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12.6" r="1.15" fill="#12327A" opacity=".5"/>',
+    hexH:'<path d="M12 2.2L20.6 7.1V16.9L12 21.8L3.4 16.9V7.1z" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linejoin="round"/><rect x="8.3" y="7.5" width="1.9" height="9" rx=".9"/><rect x="13.8" y="7.5" width="1.9" height="9" rx=".9"/><rect x="8.3" y="11" width="7.4" height="1.9" rx=".9"/>',
+    catface:'<path d="M6.5 7.6L4.9 3.1 9.5 6.1Z"/><path d="M17.5 7.6L19.1 3.1 14.5 6.1Z"/><circle cx="12" cy="10.2" r="5.6"/><rect x="9.3" y="14.8" width="2.2" height="6" rx="1.1"/><rect x="12.5" y="14.8" width="2.2" height="6" rx="1.1"/><path fill-rule="evenodd" d="M10.6 18.1a3.3 3.3 0 1 1 -6.6 0 3.3 3.3 0 0 1 6.6 0z M9.9 17.1a2.05 2.05 0 1 0 -4.1 0 2.05 2.05 0 0 0 4.1 0z"/>'
 };
 function svg(name, cls){ return `<svg viewBox="0 0 24 24" fill="#fff" class="${cls||''}">${ICONS[name]||ICONS.doc}</svg>`; }
 function navSvg(kind){
@@ -49,7 +53,14 @@ const TOOLS = [
     {t:'Gemini', u:'https://gemini.google.com/app', i:'sparkle', c:'#4285F4,#9B72CB'},
     {t:'Claude', u:'https://claude.ai/new', i:'asterisk', c:'#D97757,#B85C3E'},
     {t:'DeepSeek', u:'https://chat.deepseek.com/', i:'whale', c:'#4D6BFE,#3350D6'},
-    {t:'NotebookLM', u:'https://notebooklm.google.com/', i:'notebook', c:'#F9AB00,#E37400'}
+    {t:'NotebookLM', u:'https://notebooklm.google.com/', i:'notebook', c:'#F9AB00,#E37400'},
+    {t:'Meta AI', u:'https://www.meta.ai/', i:'meta', c:'#0082FB,#0064E0'},
+    {t:'GitHub', u:'https://github.com/', i:'catface', c:'#4A4A4A,#1B1B1B'},
+    {t:'Spring Initializr', u:'https://start.spring.io/', i:'leaf', c:'#6DB33F,#4C9A2A'},
+    {t:'Beginners Book', u:'https://beginnersbook.com/', i:'book', c:'#2E86DE,#1B4F91'},
+    {t:'Hacker News', u:'https://news.ycombinator.com/', i:'ycombo', c:'#FF6600,#CC5200'},
+    {t:'HackerRank', u:'https://www.hackerrank.com/', i:'hexH', c:'#00C46A,#009150'},
+    {t:'GDSE Full Notes', u:'https://themiu.github.io/Notes/', i:'layers', c:'#14B8A6,#0D7377'}
 ];
 function renderTools(){
     document.getElementById('toolsRow').innerHTML = TOOLS.map(t=>{
