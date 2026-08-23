@@ -794,22 +794,6 @@
               ]
             },
             {
-              "id": "hdse-s2-mern",
-              "label": "MERN Stack",
-              "locked": false,
-              "resources": [
-                {
-                  "id": "m1",
-                  "t": "MERN Stack Full Note",
-                  "u": "https://docs.google.com/document/d/1ddz41P9v5Qyb4Lqt5a_-NFnLNIDrxlegD32lLTXrO2E/edit?tab=t.0",
-                  "i": "stack",
-                  "visible": true
-                }
-              ],
-              "pdfs": [],
-              "repos": []
-            },
-            {
               "id": "hdse-s2-english",
               "label": "Professional English",
               "locked": false,
@@ -857,7 +841,7 @@
             },
             {
               "id": "hdse-semester-3-rad",
-              "label": "RAD",
+              "label": "RAD (MERN Stack)",
               "locked": false,
               "resources": [
                 {
@@ -871,6 +855,13 @@
                   "id": "xmt5uszewasm9s",
                   "t": "RAD - malindu full note",
                   "u": "https://docs.google.com/document/d/1NOqFPjSGnHaEfANQvn1xyoIcj0SrMgYUVRE0bDA_9-0/edit?tab=t.0",
+                  "i": "link",
+                  "visible": true
+                },
+                {
+                  "id": "xmt5zieygebokd",
+                  "t": "MERN Stack Full Note",
+                  "u": "https://docs.google.com/document/d/1ddz41P9v5Qyb4Lqt5a_-NFnLNIDrxlegD32lLTXrO2E/edit?tab=t.0",
                   "i": "link",
                   "visible": true
                 }
