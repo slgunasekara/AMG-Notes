@@ -1771,8 +1771,8 @@ document.getElementById('resetBtn').addEventListener('click', async ()=>{
 const CREATOR_REPLY = `This notes hub was built by <b>Praveena Gunasekara</b>.<br>
       🔗 <a href="https://github.com/slgunasekara" target="_blank" rel="noopener">GitHub</a><br>
       🔗 <a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a><br>
-      🔗 <a href="https://slgunasekara.github.io/AMGLankaGroup/" target="_blank" rel="noopener">Company</a><br>
-      🔗 <a href="https://slgunasekara.github.io/amg-portfolio/" target="_blank" rel="noopener">Portfolio</a>`;
+      🔗 <a href="https://slgunasekara.github.io/amg-portfolio/" target="_blank" rel="noopener">Portfolio</a><br>
+      🏢 Company: <a href="https://slgunasekara.github.io/AMGLankaGroup/" target="_blank" rel="noopener">AMG Lanka Group</a>`;
 
 const CHAT_RULES = [
     { k:['who made','who created','who built','who is the creator','who is the developer','creator','developer','who is created','owner of this site','who is the owner','admin of this site'], r: CREATOR_REPLY },
