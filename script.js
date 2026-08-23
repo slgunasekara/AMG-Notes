@@ -1155,7 +1155,7 @@ function enterSite(){
     document.getElementById('ownerPanelBtn').classList.toggle('hidden', !isOwner);
     document.getElementById('logoutBtn').classList.toggle('hidden', !isOwner);
     if(isOwner){
-        document.getElementById('ubName').textContent = session.user + ' · Owner';
+        document.getElementById('ubName').textContent = 'Owner';
     }
     showSiteView();
 }

@@ -1,5 +1,10 @@
 # AMG-Notes — v3 (Course → Semester → Module, cards-within-cards) — README
 
+## නවතම fixes
+
+1. **Owner name hide කළා** — Sign-in form එකේ username placeholder එකේ තිබ්බ "praveen" hint එකත්, login වුනාට පස්සේ top-right badge එකේ පෙන්නපු username එකත් අයින් කළා. දැන් "Owner" කියලා විතරයි පෙන්නන්නේ.
+2. **Sign-in button click bug fix කළා** — Login card එකට දාපු continuous 3D floating animation එක (`loginFloat`) තමයි root cause එක — card එක continuously rotate/move වෙන නිසා cursor එක button එක උඩ තිබ්බත් click coordinate එකයි button එකේ actual (moved) position එකයි mismatch වෙලා click එක register වුනේ නෑ. Enter key එකෙන් සෘජුවම submit වෙන නිසා ඒකට මේ issue බලපාන්නේ නෑ. Animation එක අයින් කරලා card එක static කළා — දැන් click එකෙන්ම log වෙනවා.
+
 ## Files — දැන් වෙන වෙනම files වශයෙන්
 
 කලින් `index.html` file එකකම හැම දෙයක්ම (CSS, JS) inline කරලා තිබුණා — ඒක නිසා `script.js` වගේ file එකක් වෙනම edit කරන්න බැරි වුනා. දැන් වෙන වෙනම files 5ක්:
