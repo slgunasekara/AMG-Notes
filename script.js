@@ -1771,6 +1771,7 @@ document.getElementById('resetBtn').addEventListener('click', async ()=>{
 const CREATOR_REPLY = `This notes hub was built by <b>Praveena Gunasekara</b>.<br>
       🔗 <a href="https://github.com/slgunasekara" target="_blank" rel="noopener">GitHub</a><br>
       🔗 <a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a><br>
+      🔗 <a href="https://slgunasekara.github.io/AMGLankaGroup/" target="_blank" rel="noopener">Company</a><br>
       🔗 <a href="https://slgunasekara.github.io/amg-portfolio/" target="_blank" rel="noopener">Portfolio</a>`;
 
 const CHAT_RULES = [
