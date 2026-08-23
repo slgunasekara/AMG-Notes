@@ -71,3 +71,7 @@ Username/password කලින් තිබුණ ඒවගේම තියෙ�
 
 1. **Dropdown fix** — කලින් dropdown එක click කරාට පේන්නෙම නෑ කියල issue එකක් තිබුණා. Cause එක: top nav bar එකට (`.jumpnav-inner`) දාලා තිබුණු `overflow-x:auto` (horizontal scroll දෙන්නත් ඕන නිසා) එකේම side-effect එකක් විදිහට browser එක `overflow-y`ත් auto කරලා dropdown එකේ menu එක clip කරලා invisible කරලා තිබ්බේ. දැන් fix කරලා තියෙන්නේ dropdown menu එක JS එකෙන් `<body>` එකට කෙලින්ම attach කරලා (`position:fixed` එකෙන්, button එකේ actual screen position එක JS එකෙන් calculate කරලා) — දැන් nav bar එකේ scroll container එකෙන් bare කරන්නේ නෑ.
 2. **Nested navigation** — Course button එක click කළහම semester list එක පේනවා. Semester එකකට module already add කරලා තියෙනවා නම්, ඒ semester එක click කළහම navigate වෙන්නේ නෑ — ඒක යටින්ම module list එක expand වෙනවා (accordion විදිහට), module එකක් click කළහම විතරයි ඒකට navigate වෙන්නේ (deepest/final sub-part එකට). Semester එකකට module නැත්නම් (හිස් semester එකක් නම්), ඒක තමයි final sub-part එක නිසා ඒ semester එකම click කළහම කෙලින්ම navigate වෙනවා.
+
+## v4.2 — 6 hour session expiry
+
+"Remember me" checked login එකෙන් save වෙන session එකත් දැන් permanent නෑ — login වුනාට පස්සේ 6 පැය ඇතුළත page එකට ආවොත් login ඇහුවේ නෑ, ඒත් 6 පැය ඉක්මවුනාට පස්සේ (localStorage එකේ session එක තිබ්බත්) ආයෙත් site gate එක auto-ම පෙන්නනවා. login timestamp එකත් session එක එක්කම save කරනවා, ඒක check කරලා expire වුනා නම් session එක auto-clear කරලා දාන්නේ.

@@ -1225,18 +1225,33 @@ function sha256(ascii){
     return result;
 }
 
+// Persistent ("Remember me") logins auto-expire after 6 hours — after that,
+// the site gate shows again even if nothing was ever explicitly logged out.
+const SESSION_MAX_AGE_MS = 6 * 60 * 60 * 1000;
+
 function getSession(){
-    try{ return JSON.parse(localStorage.getItem(SESSION_KEY) || sessionStorage.getItem(SESSION_KEY) || 'null'); }catch(e){ return null; }
+    try{
+        const raw = localStorage.getItem(SESSION_KEY) || sessionStorage.getItem(SESSION_KEY) || 'null';
+        const s = JSON.parse(raw);
+        if(!s) return null;
+        if(s.ts && (Date.now() - s.ts) > SESSION_MAX_AGE_MS){
+            clearSession();
+            return null;
+        }
+        return s;
+    }catch(e){ return null; }
 }
-// remember=true persists across browser restarts (localStorage); remember=false
-// only lasts for this tab/session (sessionStorage) — driven by the "Remember me" box.
+// remember=true persists across browser restarts (localStorage, still capped at
+// 24h above); remember=false only lasts for this tab/session (sessionStorage) —
+// driven by the "Remember me" box.
 function setSession(s, remember){
+    const withTs = Object.assign({}, s, { ts: Date.now() });
     try{
         if(remember === false){
-            sessionStorage.setItem(SESSION_KEY, JSON.stringify(s));
+            sessionStorage.setItem(SESSION_KEY, JSON.stringify(withTs));
             localStorage.removeItem(SESSION_KEY);
         } else {
-            localStorage.setItem(SESSION_KEY, JSON.stringify(s));
+            localStorage.setItem(SESSION_KEY, JSON.stringify(withTs));
             sessionStorage.removeItem(SESSION_KEY);
         }
     }catch(e){}
