@@ -438,22 +438,6 @@
                   ]
                 }
               ]
-            },
-            {
-              "id": "hdse-s1-general",
-              "label": "General / Misc",
-              "locked": false,
-              "resources": [],
-              "pdfs": [],
-              "repos": [
-                {
-                  "id": "per2",
-                  "n": "AMG Repo · Praveena Gunasekara",
-                  "p": "https://github.com/slgunasekara/",
-                  "visible": true,
-                  "l": []
-                }
-              ]
             }
           ]
         },
