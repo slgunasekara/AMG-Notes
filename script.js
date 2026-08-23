@@ -1782,9 +1782,13 @@ const CHAT_RULES = [
     { k:['owner panel','customize','admin panel'], r:'Only the owner account can open the Owner Panel — from there they can add resources, publish/hide/rename cards, create new modules, edit page text, and publish everything to GitHub.' },
     { k:['github'], r:'Here you go: <a href="https://github.com/slgunasekara" target="_blank" rel="noopener">github.com/slgunasekara</a>' },
     { k:['facebook'], r:'Here you go: <a href="https://www.facebook.com/" target="_blank" rel="noopener">facebook.com</a>' },
-    { k:['portfolio'], r:'Here you go: <a href="https://slgunasekara.github.io/amg-portfolio/" target="_blank" rel="noopener">Praveena\'s portfolio</a>' },
-    { k:['hi','hello','hey','ayubowan','vanakkam'], r:'Hi! 👋 I can help you find notes, explain how login works, or tell you who built this site. What do you need?' },
-    { k:['thank', 'thanks', 'ok', 'okay'], r:'You\'re welcome! Anything else I can help with?' }
+    { k:['portfolio','praveen','praveena'], r:'Here you go: <a href="https://slgunasekara.github.io/amg-portfolio/" target="_blank" rel="noopener">Praveena\'s portfolio</a>' },
+    { k:['company'], r:'Here you go: <a href="https://slgunasekara.github.io/AMGLankaGroup/" target="_blank" rel="noopener">Praveena\'s Company</a>' },
+    { k:['hi','hello','hey','ayubowan','vanakkam','kohomada'], r:'Hi! 👋 I can help you find notes, explain how login works, or tell you who built this site. What do you need?' },
+    { k:['thank', 'thanks', 'ok', 'okay'], r:'You\'re welcome! Anything else I can help with?' },
+    { k:['bye'], r:'Bye, See you again!' }
+
+
 ];
 function escapeRegex(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
 function keywordMatches(msgLower, keyword){
