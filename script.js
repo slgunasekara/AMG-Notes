@@ -30,9 +30,13 @@ const ICONS = {
     meta:'<path d="M6.4 4.2C3.6 4.2 2 7.9 2 12.4c0 3.9 1.5 6.6 3.9 6.6 2 0 3.1-1.4 5.1-4.7 2 3.3 3.1 4.7 5.1 4.7 2.4 0 3.9-2.7 3.9-6.6 0-4.5-1.6-8.2-4.4-8.2-1.9 0-3.1 1.5-4.6 4.1-1.5-2.6-2.7-4.1-4.6-4.1z" fill="none" stroke="#ffffff" stroke-width="2.1" stroke-linejoin="round"/>',
     ycombo:'<path d="M12 12.6V21M5 3.6l7 9 7-9" fill="none" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12.6" r="1.15" fill="#12327A" opacity=".5"/>',
     hexH:'<path d="M12 2.2L20.6 7.1V16.9L12 21.8L3.4 16.9V7.1z" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linejoin="round"/><rect x="8.3" y="7.5" width="1.9" height="9" rx=".9"/><rect x="13.8" y="7.5" width="1.9" height="9" rx=".9"/><rect x="8.3" y="11" width="7.4" height="1.9" rx=".9"/>',
-    catface:'<path d="M6.5 7.6L4.9 3.1 9.5 6.1Z"/><path d="M17.5 7.6L19.1 3.1 14.5 6.1Z"/><circle cx="12" cy="10.2" r="5.6"/><rect x="9.3" y="14.8" width="2.2" height="6" rx="1.1"/><rect x="12.5" y="14.8" width="2.2" height="6" rx="1.1"/><path fill-rule="evenodd" d="M10.6 18.1a3.3 3.3 0 1 1 -6.6 0 3.3 3.3 0 0 1 6.6 0z M9.9 17.1a2.05 2.05 0 1 0 -4.1 0 2.05 2.05 0 0 0 4.1 0z"/>'
+    catface:'<path d="M6.5 7.6L4.9 3.1 9.5 6.1Z"/><path d="M17.5 7.6L19.1 3.1 14.5 6.1Z"/><circle cx="12" cy="10.2" r="5.6"/><rect x="9.3" y="14.8" width="2.2" height="6" rx="1.1"/><rect x="12.5" y="14.8" width="2.2" height="6" rx="1.1"/><path fill-rule="evenodd" d="M10.6 18.1a3.3 3.3 0 1 1 -6.6 0 3.3 3.3 0 0 1 6.6 0z M9.9 17.1a2.05 2.05 0 1 0 -4.1 0 2.05 2.05 0 0 0 4.1 0z"/>',
+    keyboard:'<rect x="1" y="4.5" width="22" height="15" rx="2.8"/><g fill="#12327A" opacity=".55"><rect x="2.9" y="6.6" width="1.8" height="1.8" rx=".5"/><rect x="5.5" y="6.6" width="1.8" height="1.8" rx=".5"/><rect x="8.1" y="6.6" width="1.8" height="1.8" rx=".5"/><rect x="10.7" y="6.6" width="1.8" height="1.8" rx=".5"/><rect x="13.3" y="6.6" width="1.8" height="1.8" rx=".5"/><rect x="15.9" y="6.6" width="1.8" height="1.8" rx=".5"/><rect x="18.5" y="6.6" width="1.8" height="1.8" rx=".5"/><rect x="2.9" y="9.4" width="1.8" height="1.8" rx=".5"/><rect x="5.5" y="9.4" width="1.8" height="1.8" rx=".5"/><rect x="8.1" y="9.4" width="1.8" height="1.8" rx=".5"/><rect x="10.7" y="9.4" width="1.8" height="1.8" rx=".5"/><rect x="13.3" y="9.4" width="1.8" height="1.8" rx=".5"/><rect x="15.9" y="9.4" width="1.8" height="1.8" rx=".5"/><rect x="18.5" y="9.4" width="1.8" height="1.8" rx=".5"/><rect x="5" y="12.6" width="14" height="1.9" rx=".95"/></g>'
 };
 function svg(name, cls){ return `<svg viewBox="0 0 24 24" fill="#fff" class="${cls||''}">${ICONS[name]||ICONS.doc}</svg>`; }
+function inlineIcon(name, size){
+    return `<svg viewBox="0 0 24 24" width="${size||14}" height="${size||14}" fill="currentColor" style="vertical-align:-2px;margin-right:4px;">${ICONS[name]||ICONS.doc}</svg>`;
+}
 function navSvg(kind){
     return kind === 'people'
         ? '<circle cx="6" cy="6" r="2.1"/><circle cx="6" cy="18" r="2.1"/><circle cx="18" cy="12" r="2.1"/><path d="M6 8.1V16M6 8.1c0 4.3 4 4.3 8.5 4.3H16"/>'
@@ -60,7 +64,8 @@ const TOOLS = [
     {t:'Beginners Book', u:'https://beginnersbook.com/', i:'book', c:'#2E86DE,#1B4F91'},
     {t:'Hacker News', u:'https://news.ycombinator.com/', i:'ycombo', c:'#FF6600,#CC5200'},
     {t:'HackerRank', u:'https://www.hackerrank.com/', i:'hexH', c:'#00C46A,#009150'},
-    {t:'GDSE Full Notes', u:'https://themiu.github.io/Notes/', i:'layers', c:'#14B8A6,#0D7377'}
+    {t:'GDSE Full Notes', u:'https://themiu.github.io/Notes/', i:'layers', c:'#14B8A6,#0D7377'},
+    {t:'Typing Practice', u:'https://www.typing.com/', i:'keyboard', c:'#2563EB,#1D4ED8'}
 ];
 function renderTools(){
     document.getElementById('toolsRow').innerHTML = TOOLS.map(t=>{
@@ -989,7 +994,7 @@ function moduleCardHTML(m){
     }
     if(repos.length){
         body += `<div class="sub-card sub-repo">
-      <div class="sub-card-head">🐙 Lecture Repo <span class="count">${repos.length}</span></div>
+      <div class="sub-card-head">${inlineIcon('catface',15)}Lecture Repo <span class="count">${repos.length}</span></div>
       <div class="people-grid small">${repos.map(personHTML).join('')}</div>
     </div>`;
     }
@@ -1465,6 +1470,14 @@ function flash(id, text, ok){
     el.className = 'admin-msg ' + (ok ? 'ok' : 'err');
     setTimeout(()=>{ el.className = 'admin-msg'; }, 3500);
 }
+// Same as flash(), but for static, developer-written messages that need an
+// inline icon — never pass user-entered text through this one.
+function flashHTML(id, html, ok){
+    const el = document.getElementById(id);
+    el.innerHTML = html;
+    el.className = 'admin-msg ' + (ok ? 'ok' : 'err');
+    setTimeout(()=>{ el.className = 'admin-msg'; }, 3500);
+}
 
 /* ---------------- Tree lookup helpers (Course → Semester → Module) ---------------- */
 function courseById(id){ return CONTENT.courses.find(c=>c.id===id); }
@@ -1717,7 +1730,7 @@ function renderStructureHost(){
           ${resItems || '<div class="empty-note">None yet.</div>'}
           <div style="font-size:11px;font-weight:700;color:#C2410C;margin-top:8px;">📁 PDF / Drive</div>
           ${pdfItems || '<div class="empty-note">None yet.</div>'}
-          <div style="font-size:11px;font-weight:700;color:var(--blue-700);margin-top:8px;">🐙 Lecture Repo</div>
+          <div style="font-size:11px;font-weight:700;color:var(--blue-700);margin-top:8px;">${inlineIcon('catface',13)}Lecture Repo</div>
           ${repoItems || '<div class="empty-note">None yet.</div>'}
         </div>`;
             });
@@ -1906,7 +1919,7 @@ document.getElementById('secUpdateBtn').addEventListener('click', async ()=>{
     document.getElementById('ubName').textContent = 'Owner';
 
     resetSecurityTab();
-    flash('secMsg','Credentials updated in this browser. Go to 🐙 GitHub Sync → Publish to make the new login live for everyone.', true);
+    flashHTML('secMsg','Credentials updated in this browser. Go to '+inlineIcon('catface',13)+'GitHub Sync → Publish to make the new login live for everyone.', true);
 });
 
 document.getElementById('gateUpdateBtn').addEventListener('click', async ()=>{
@@ -1933,7 +1946,7 @@ document.getElementById('gateUpdateBtn').addEventListener('click', async ()=>{
     saveDraft();
 
     resetSecurityTab();
-    flash('gateMsg','Shared login updated in this browser. Go to 🐙 GitHub Sync → Publish to make it live for everyone.', true);
+    flashHTML('gateMsg','Shared login updated in this browser. Go to '+inlineIcon('catface',13)+'GitHub Sync → Publish to make it live for everyone.', true);
 });
 
 /* =========================================================
