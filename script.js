@@ -1770,7 +1770,7 @@ document.getElementById('resetBtn').addEventListener('click', async ()=>{
    ========================================================= */
 const CREATOR_REPLY = `This notes hub was built by <b>Praveena Gunasekara</b>.<br>
       🔗 <a href="https://github.com/slgunasekara" target="_blank" rel="noopener">GitHub</a><br>
-      🔗 <a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a><br>
+      🔗 <a href="https://www.facebook.com/praveena.gunasekara" target="_blank" rel="noopener">Facebook</a><br>
       🔗 <a href="https://slgunasekara.github.io/amg-portfolio/" target="_blank" rel="noopener">Portfolio</a><br>
       🏢 Company: <a href="https://slgunasekara.github.io/AMGLankaGroup/" target="_blank" rel="noopener">AMG Lanka Group</a>`;
 
@@ -1781,7 +1781,7 @@ const CHAT_RULES = [
     { k:['semester 3','sem 3','semester 4','sem 4','semester 5','sem 5','other course','other courses'], r:'If the owner has published a Semester 3/4/5 or Other Courses section, you\'ll see it in the top nav bar automatically.' },
     { k:['owner panel','customize','admin panel'], r:'Only the owner account can open the Owner Panel — from there they can add resources, publish/hide/rename cards, create new modules, edit page text, and publish everything to GitHub.' },
     { k:['github'], r:'Here you go: <a href="https://github.com/slgunasekara" target="_blank" rel="noopener">github.com/slgunasekara</a>' },
-    { k:['facebook'], r:'Here you go: <a href="https://www.facebook.com/" target="_blank" rel="noopener">facebook.com</a>' },
+    { k:['facebook'], r:'Here you go: <a href="https://www.facebook.com/praveena.gunasekara" target="_blank" rel="noopener">facebook.com</a>' },
     { k:['portfolio','praveen','praveena'], r:'Here you go: <a href="https://slgunasekara.github.io/amg-portfolio/" target="_blank" rel="noopener">Praveena\'s portfolio</a>' },
     { k:['company'], r:'Here you go: <a href="https://slgunasekara.github.io/AMGLankaGroup/" target="_blank" rel="noopener">Praveena\'s Company</a>' },
     { k:['hi','hello','hey','ayubowan','vanakkam','kohomada'], r:'Hi! 👋 I can help you find notes, explain how login works, or tell you who built this site. What do you need?' },
