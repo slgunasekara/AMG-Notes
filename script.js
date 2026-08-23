@@ -1153,15 +1153,39 @@ function applyTextSettings(){
    AUTH
    ========================================================= */
 // Owner password is never stored in plain text — only its SHA-256 hash
-// lives in this file, so simply viewing the source does not reveal it.
+// lives here, so simply viewing the source does not reveal it.
 // This is a plain, dependency-free SHA-256 implementation (not the
 // browser's Web Crypto API) so it also works when the page is opened
 // directly from disk via file:// — crypto.subtle is disabled by browsers
 // on file:// / non-https origins, which silently broke the login button
 // before.
-const OWNER_USER = 'praveen';
-const OWNER_HASH = '5f6d85795935b1867132762b3645e0e7e68be6b4450abfdf5192c61c79cad2d2';
+// These are only the DEFAULTS. The Owner Panel's Security tab lets the
+// owner change username/password from within the site itself — the
+// active credentials then live in CONTENT.settings.ownerUser /
+// CONTENT.settings.ownerHash (published to data.json like any other
+// content edit), and only fall back to these two constants until the
+// owner sets their own.
+const OWNER_USER_DEFAULT = 'praveen';
+const OWNER_HASH_DEFAULT = '5f6d85795935b1867132762b3645e0e7e68be6b4450abfdf5192c61c79cad2d2';
 const SESSION_KEY = 'amg_session_v1';
+function getOwnerUser(){
+    return ((CONTENT && CONTENT.settings && CONTENT.settings.ownerUser) || OWNER_USER_DEFAULT).toLowerCase();
+}
+function getOwnerHash(){
+    return (CONTENT && CONTENT.settings && CONTENT.settings.ownerHash) || OWNER_HASH_DEFAULT;
+}
+// Same idea for the shared "site gate" login (the one every visitor sees
+// first) — default is amg / amg123, but the owner can change it from the
+// Security tab. The active values live in CONTENT.settings.gateUser /
+// CONTENT.settings.gateHash; only the password's hash is ever stored.
+const GATE_USER_DEFAULT = 'amg';
+const GATE_HASH_DEFAULT = '05a8afabf2874eee03d2cf440153f5f267987f0387c153cf5b1b302357909336'; // sha256('amg123')
+function getGateUser(){
+    return ((CONTENT && CONTENT.settings && CONTENT.settings.gateUser) || GATE_USER_DEFAULT).toLowerCase();
+}
+function getGateHash(){
+    return (CONTENT && CONTENT.settings && CONTENT.settings.gateHash) || GATE_HASH_DEFAULT;
+}
 
 function sha256(ascii){
     function rightRotate(v,a){ return (v>>>a) | (v<<(32-a)); }
@@ -1262,13 +1286,11 @@ function clearSession(){
 }
 
 /* =========================================================
-   SITE GATE — one shared login (amg / amg123) every visitor
-   must pass before the site is shown; the owner's own
-   username/password also works here and unlocks Owner Panel
-   in the same step.
+   SITE GATE — one shared login (default amg / amg123, changeable
+   from the Owner Panel's Security tab) every visitor must pass
+   before the site is shown; the owner's own username/password
+   also works here and unlocks Owner Panel in the same step.
    ========================================================= */
-const GATE_USER = 'amg';
-const GATE_PASS = 'amg123';
 
 function greetingText(){
     const h = new Date().getHours();
@@ -1289,7 +1311,7 @@ function unlockSite(){
 function lockSite(){
     clearSession();
     document.getElementById('gateForm').reset();
-    document.getElementById('gateRemember').checked = true;
+    document.getElementById('gateRemember').checked = false;
     document.getElementById('gateError').classList.remove('show');
     paintGreeting();
     document.getElementById('siteGate').classList.remove('gate-done');
@@ -1318,11 +1340,11 @@ document.getElementById('gateForm').addEventListener('submit', async (e)=>{
     }
     const remember = document.getElementById('gateRemember').checked;
     let role = null;
-    if(u.toLowerCase() === GATE_USER && p === GATE_PASS){
+    const hash = await sha256(p);
+    if(u.toLowerCase() === getGateUser() && hash === getGateHash()){
         role = 'guest';
-    } else {
-        const hash = await sha256(p);
-        if(u.toLowerCase() === OWNER_USER && hash === OWNER_HASH) role = 'owner';
+    } else if(u.toLowerCase() === getOwnerUser() && hash === getOwnerHash()){
+        role = 'owner';
     }
     if(!role){
         errBox.textContent = 'Incorrect username or password.';
@@ -1356,7 +1378,7 @@ async function handleLogin(e){
         return;
     }
     const hash = await sha256(p);
-    if(u.toLowerCase() === OWNER_USER && hash === OWNER_HASH){
+    if(u.toLowerCase() === getOwnerUser() && hash === getOwnerHash()){
         setSession({ user: u, role: 'owner' });
         closeLoginModal();
         enterSite();
@@ -1526,6 +1548,7 @@ function renderAdminPanel(){
     document.getElementById('labelListHost').innerHTML = labelRows;
 
     renderStructureHost();
+    resetSecurityTab();
 }
 
 /* ---------------- Add a resource / PDF / repo — all target the module chosen in the Add tab cascade ---------------- */
@@ -1822,6 +1845,84 @@ document.getElementById('saveTextBtn').addEventListener('click', ()=>{
     saveDraft();
     renderModules();
     flash('textMsg','Page text updated.', true);
+});
+
+/* ---------------- Security tab (change owner username/password) ---------------- */
+function resetSecurityTab(){
+    ['secCurrentPass','secNewUser','secNewPass','secConfirmPass','gateNewUser','gateNewPass','gateConfirmPass'].forEach(id=>{
+        document.getElementById(id).value = '';
+    });
+}
+document.getElementById('secUpdateBtn').addEventListener('click', async ()=>{
+    const currentPass = document.getElementById('secCurrentPass').value;
+    const newUser = document.getElementById('secNewUser').value.trim();
+    const newPass = document.getElementById('secNewPass').value;
+    const confirmPass = document.getElementById('secConfirmPass').value;
+
+    if(!currentPass){
+        flash('secMsg','Enter your current password to confirm this change.', false);
+        return;
+    }
+    const currentHash = await sha256(currentPass);
+    if(currentHash !== getOwnerHash()){
+        flash('secMsg','Current password is incorrect.', false);
+        return;
+    }
+    if(!newUser && !newPass){
+        flash('secMsg','Enter a new username and/or a new password.', false);
+        return;
+    }
+    if(newPass && newPass.length < 4){
+        flash('secMsg','New password should be at least 4 characters.', false);
+        return;
+    }
+    if(newPass && newPass !== confirmPass){
+        flash('secMsg','New password and confirmation do not match.', false);
+        return;
+    }
+
+    const finalUser = (newUser || getOwnerUser()).toLowerCase();
+    const finalHash = newPass ? await sha256(newPass) : getOwnerHash();
+
+    CONTENT.settings = CONTENT.settings || {};
+    CONTENT.settings.ownerUser = finalUser;
+    CONTENT.settings.ownerHash = finalHash;
+    saveDraft();
+
+    // Keep the owner logged in under the new username instead of forcing a re-login.
+    const wasRemembered = !!localStorage.getItem(SESSION_KEY);
+    setSession({ user: finalUser, role: 'owner' }, wasRemembered);
+    document.getElementById('ubName').textContent = 'Owner';
+
+    resetSecurityTab();
+    flash('secMsg','Credentials updated in this browser. Go to 🐙 GitHub Sync → Publish to make the new login live for everyone.', true);
+});
+
+document.getElementById('gateUpdateBtn').addEventListener('click', async ()=>{
+    const newUser = document.getElementById('gateNewUser').value.trim();
+    const newPass = document.getElementById('gateNewPass').value;
+    const confirmPass = document.getElementById('gateConfirmPass').value;
+
+    if(!newUser && !newPass){
+        flash('gateMsg','Enter a new shared username and/or a new shared password.', false);
+        return;
+    }
+    if(newPass && newPass.length < 4){
+        flash('gateMsg','New password should be at least 4 characters.', false);
+        return;
+    }
+    if(newPass && newPass !== confirmPass){
+        flash('gateMsg','New password and confirmation do not match.', false);
+        return;
+    }
+
+    CONTENT.settings = CONTENT.settings || {};
+    CONTENT.settings.gateUser = (newUser || getGateUser()).toLowerCase();
+    CONTENT.settings.gateHash = newPass ? await sha256(newPass) : getGateHash();
+    saveDraft();
+
+    resetSecurityTab();
+    flash('gateMsg','Shared login updated in this browser. Go to 🐙 GitHub Sync → Publish to make it live for everyone.', true);
 });
 
 /* =========================================================

@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div class="gate-row">
-                    <label class="remember"><input type="checkbox" id="gateRemember" checked><span>Remember me</span></label>
+                    <label class="remember"><input type="checkbox" id="gateRemember"><span>Remember me</span></label>
                 </div>
                 <button type="submit" class="btn-primary gate-submit">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>
@@ -142,6 +142,7 @@
         <div class="admin-tab" data-page="tab-add">➕ Add</div>
         <div class="admin-tab" data-page="tab-structure">🗂 Structure</div>
         <div class="admin-tab" data-page="tab-text">🔤 Page Text</div>
+        <div class="admin-tab" data-page="tab-security">🔐 Security</div>
         <div class="admin-tab" data-page="tab-github">🐙 GitHub Sync</div>
         <div class="admin-tab" data-page="tab-backup">💾 Backup</div>
     </div>
@@ -256,6 +257,34 @@
             <div class="label-list" id="labelListHost"></div>
             <button class="btn-ghost" id="saveTextBtn" style="margin-top:16px;">Save text</button>
             <div class="admin-msg" id="textMsg"></div>
+        </div>
+    </div>
+
+    <!-- ---------- TAB: security (change owner username/password) ---------- -->
+    <div class="admin-page" id="tab-security">
+        <div class="admin-panel">
+            <h3><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Change owner username &amp; password</h3>
+            <p style="font-size:12.5px;color:var(--muted);margin:0 0 14px;">
+                This replaces the default owner login. You'll need your <b>current password</b> to confirm the change.
+                Like other edits, it's saved instantly in this browser — go to <b>🐙 GitHub Sync → Publish</b> afterwards to make the new login live for everyone.
+            </p>
+            <div class="field"><label>Current password</label><input type="password" id="secCurrentPass" autocomplete="off"></div>
+            <div class="field"><label>New username</label><input type="text" id="secNewUser" autocomplete="off" placeholder="Leave blank to keep the current username"></div>
+            <div class="field"><label>New password</label><input type="password" id="secNewPass" autocomplete="off" placeholder="Leave blank to keep the current password"></div>
+            <div class="field"><label>Confirm new password</label><input type="password" id="secConfirmPass" autocomplete="off"></div>
+            <button class="btn-primary" id="secUpdateBtn" style="margin-top:6px;">Update credentials</button>
+            <div class="admin-msg" id="secMsg"></div>
+        </div>
+        <div class="admin-panel" style="margin-top:16px;">
+            <h3><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Change shared site login</h3>
+            <p style="font-size:12.5px;color:var(--muted);margin:0 0 14px;">
+                This is the login screen every visitor sees first (default <code>amg</code> / <code>amg123</code>). No current-password check needed here — you're already signed in as owner.
+            </p>
+            <div class="field"><label>New shared username</label><input type="text" id="gateNewUser" autocomplete="off" placeholder="Leave blank to keep the current username"></div>
+            <div class="field"><label>New shared password</label><input type="password" id="gateNewPass" autocomplete="off" placeholder="Leave blank to keep the current password"></div>
+            <div class="field"><label>Confirm new password</label><input type="password" id="gateConfirmPass" autocomplete="off"></div>
+            <button class="btn-primary" id="gateUpdateBtn" style="margin-top:6px;">Update shared login</button>
+            <div class="admin-msg" id="gateMsg"></div>
         </div>
     </div>
 
