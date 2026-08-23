@@ -2019,16 +2019,7 @@ function applyTextSettings(){
     if(s.siteSubtitle) document.querySelector('p.subtitle').textContent = s.siteSubtitle;
 }
 
-/* =========================================================
-   AUTH
-   ========================================================= */
-// Owner password is never stored in plain text — only its SHA-256 hash
-// lives in this file, so simply viewing the source does not reveal it.
-// This is a plain, dependency-free SHA-256 implementation (not the
-// browser's Web Crypto API) so it also works when the page is opened
-// directly from disk via file:// — crypto.subtle is disabled by browsers
-// on file:// / non-https origins, which silently broke the login button
-// before.
+
 const OWNER_USER = 'praveen';
 const OWNER_HASH = '5f6d85795935b1867132762b3645e0e7e68be6b4450abfdf5192c61c79cad2d2';
 const SESSION_KEY = 'amg_session_v1';

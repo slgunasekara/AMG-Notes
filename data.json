@@ -1,6 +1,7 @@
 {
   "settings": {
     "siteTitle": "Documents by AMG",
+<<<<<<< HEAD
     "siteSubtitle": "Every note, VIVA guide, PDF and GitHub repo — organised by course, semester and module. Click any card to jump straight to the resource."
   },
   "tools": [
@@ -37,11 +38,664 @@
             {"id":"came-prod","label":"Production ML","locked":false,
               "resources":[{"id":"r6","t":"Production ML Systems","u":"https://docs.google.com/document/d/1Jbg8i3IeUYXAaFqP2MSsA6MrqHeBWZYAb3p06W5Qu0c/edit?tab=t.0","i":"cloud","visible":true}],
               "pdfs":[],"repos":[]}
+=======
+    "siteSubtitle": "Every note, VIVA guide and GitHub repo in one place. Click any card to jump straight to the resource."
+  },
+  "tools": [
+    {
+      "t": "Google Docs",
+      "u": "https://docs.google.com/document/u/0/",
+      "i": "doc",
+      "c": "#4285F4,#34A853"
+    },
+    {
+      "t": "GeeksforGeeks",
+      "u": "https://www.geeksforgeeks.org/",
+      "i": "code",
+      "c": "#2F8D46,#0C7C36"
+    },
+    {
+      "t": "W3Schools",
+      "u": "https://www.w3schools.com/",
+      "i": "globe",
+      "c": "#04AA6D,#04724D"
+    },
+    {
+      "t": "ChatGPT",
+      "u": "https://chatgpt.com/?model=auto",
+      "i": "spark",
+      "c": "#10A37F,#0D8266"
+    },
+    {
+      "t": "Gemini",
+      "u": "https://gemini.google.com/app",
+      "i": "sparkle",
+      "c": "#4285F4,#9B72CB"
+    },
+    {
+      "t": "Claude",
+      "u": "https://claude.ai/new",
+      "i": "asterisk",
+      "c": "#D97757,#B85C3E"
+    },
+    {
+      "t": "DeepSeek",
+      "u": "https://chat.deepseek.com/",
+      "i": "whale",
+      "c": "#4D6BFE,#3350D6"
+    },
+    {
+      "t": "NotebookLM",
+      "u": "https://notebooklm.google.com/",
+      "i": "notebook",
+      "c": "#F9AB00,#E37400"
+    }
+  ],
+  "modules": [
+    {
+      "id": "came",
+      "kind": "grid",
+      "label": "CAME Course ( AI / ML )",
+      "locked": true,
+      "items": [
+        {
+          "id": "d1",
+          "t": "Introduction to Python and Basic Syntax",
+          "u": "https://docs.google.com/document/d/11dBODKj3eJ8gUUdevrfrEB_HRqgHA9dTbaMfDf1aEiE/edit?tab=t.0",
+          "i": "code",
+          "visible": true
+        },
+        {
+          "id": "d2",
+          "t": "Python for ML",
+          "u": "https://docs.google.com/document/d/11dBODKj3eJ8gUUdevrfrEB_HRqgHA9dTbaMfDf1aEiE/edit?tab=t.0",
+          "i": "code",
+          "visible": true
+        },
+        {
+          "id": "d3",
+          "t": "Mathematical Foundations for ML",
+          "u": "https://docs.google.com/document/d/1dmqADrE-hph5LuVJUry-xlod3DgIRGu6lZvojompilg/edit?tab=t.0",
+          "i": "sigma",
+          "visible": true
+        },
+        {
+          "id": "d4",
+          "t": "Introduction to Machine Learning",
+          "u": "https://docs.google.com/document/d/1Z4_rxkXORi_yrGHRhytXf7B0qKe0_yQxBW6UdEyCDKs/edit?tab=t.0",
+          "i": "brain",
+          "visible": true
+        },
+        {
+          "id": "d5",
+          "t": "Deep Learning & Neural Networks",
+          "u": "https://docs.google.com/document/d/1CLpxCuWo04MhmcAh4VNt1eU-AWWwoF_z9cLxCCbTi_A/edit?tab=t.0",
+          "i": "chip",
+          "visible": true
+        },
+        {
+          "id": "d6",
+          "t": "Production ML Systems",
+          "u": "https://docs.google.com/document/d/1Jbg8i3IeUYXAaFqP2MSsA6MrqHeBWZYAb3p06W5Qu0c/edit?tab=t.0",
+          "i": "cloud",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "sem1",
+      "kind": "grid",
+      "label": "HDSE · SEM 1",
+      "locked": true,
+      "items": [
+        {
+          "id": "s1-1",
+          "t": "Python Basics",
+          "u": "https://docs.google.com/document/d/1IbAqHpC1bBuQQuyruzXdrMzZelOhgolPtUyZdE5IJ-8/edit?tab=t.0",
+          "i": "code",
+          "visible": true
+        },
+        {
+          "id": "s1-2",
+          "t": "Linux Basics",
+          "u": "https://docs.google.com/document/d/1zDb34o19STOO-GEQkF220b_GDaASbEUQmgcJpNvygiU/edit?tab=t.0",
+          "i": "code",
+          "visible": true
+        },
+        {
+          "id": "s1-3",
+          "t": "Linux Fundamentals",
+          "u": "https://docs.google.com/document/d/1Ua17Mhc2TiVyeykO6eaX08bXZ8Y4X4qr5Q7TEtUXlEI/edit?tab=t.0",
+          "i": "code",
+          "visible": true
+        },
+        {
+          "id": "s1-4",
+          "t": "Programming Fundamental with java (PRF) Full Note",
+          "u": "https://docs.google.com/document/d/1YBgb1URQofg5VcfPPVhDdqt1N_sq-j-Kh-Bk_PUQKmU/edit?usp=sharing",
+          "i": "leaf",
+          "visible": true
+        },
+        {
+          "id": "s1-5",
+          "t": "PRF Summery",
+          "u": "https://docs.google.com/document/d/1BoNTYJTfPKh5FozDPG3h-qnEe1hF9GYmvU24f0jM80g/edit?tab=t.0",
+          "i": "doc",
+          "visible": true
+        },
+        {
+          "id": "s1-6",
+          "t": "Data Base Management System (DBMS) Full Note",
+          "u": "https://docs.google.com/document/d/18vDYDeQLgzsiFpTnLM2PaLvsiKDLAye0vU7N-DueDHo/edit?tab=t.0",
+          "i": "database",
+          "visible": true
+        },
+        {
+          "id": "s1-7",
+          "t": "DBMS Repeated Full Note",
+          "u": "https://docs.google.com/document/d/1IIYX1smAJQNrCY4FgMi3B2vnaaKLUKgG3i9J58INpC8/edit?tab=t.0",
+          "i": "database",
+          "visible": true
+        },
+        {
+          "id": "s1-8",
+          "t": "DBMS Commands",
+          "u": "https://docs.google.com/document/d/1hZOf7Cqk2qXyhTANqJXZMSIIugZcDAPDYwz2oI2Vhs4/edit?tab=t.0",
+          "i": "terminal",
+          "visible": true
+        },
+        {
+          "id": "s1-9",
+          "t": "DBMS Exam / Viva",
+          "u": "https://docs.google.com/document/d/1LLOpjiyU9Ar50TBsfIMHiADswnOrswW9WHGm6u_r2f4/edit?tab=t.0#heading=h.go1muws1y9y4",
+          "i": "badge",
+          "visible": true
+        },
+        {
+          "id": "s1-10",
+          "t": "OOP Lab Session",
+          "u": "https://docs.google.com/document/d/1665VXJaWxvCKK1EwDEIlrUGagcOcR7QJ1qaYyW2CyNI/edit?usp=sharing",
+          "i": "flask",
+          "visible": true
+        },
+        {
+          "id": "s1-11",
+          "t": "Object Oriented Programming (OOP) Full Note",
+          "u": "https://docs.google.com/document/d/15YUh0IGVE914dOjRBUs5w0EVu5xbUemWXZvhP47veCY/edit?tab=t.0",
+          "i": "book",
+          "visible": true
+        },
+        {
+          "id": "s1-12",
+          "t": "OOP Exam / Viva",
+          "u": "https://docs.google.com/document/d/1Jfq7UrIOHSNOEsoDIyEOPkfNBMJOmPtzR3jxQ5qXNKg/edit?tab=t.0",
+          "i": "badge",
+          "visible": true
+        },
+        {
+          "id": "s1-13",
+          "t": "Software Engineering (SWE) Full Note",
+          "u": "https://docs.google.com/document/d/13aUNBDXK86AOn9zojTw2vIP-XDvyljyuDfFL4F7Leww/edit?tab=t.0",
+          "i": "gear",
+          "visible": true
+        },
+        {
+          "id": "s1-14",
+          "t": "SWE Repeated Full Note",
+          "u": "https://docs.google.com/document/d/1uJHHjh278LbVYaqoOS0bl1jyaBpsNkP_eLyBK1TAZVE/edit?tab=t.0",
+          "i": "gear",
+          "visible": true
+        },
+        {
+          "id": "s1-15",
+          "t": "SWE Exam / Viva",
+          "u": "https://docs.google.com/document/d/120RJmBmoth3ef_ryS8XsdGrssnFc3vQI_dJTLBeRK-8/edit?tab=t.0",
+          "i": "badge",
+          "visible": true
+        },
+        {
+          "id": "s1-16",
+          "t": "Data Base Programming (DBP) Full Note",
+          "u": "https://docs.google.com/document/d/1MOIEtYBcbQ6T7QeBIwVY5pVxaKdx6PQtZnSzuPPZfFQ/edit?tab=t.0",
+          "i": "database",
+          "visible": true
+        },
+        {
+          "id": "s1-17",
+          "t": "DBP Exam / Viva",
+          "u": "https://docs.google.com/document/d/1LLOpjiyU9Ar50TBsfIMHiADswnOrswW9WHGm6u_r2f4/edit?tab=t.0#heading=h.go1muws1y9y4",
+          "i": "badge",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "docs1",
+      "kind": "grid",
+      "label": "Lecture Doc · SEM 1",
+      "locked": true,
+      "items": [
+        {
+          "id": "ld1-1",
+          "t": "OOP Galle Lab Session",
+          "u": "https://docs.google.com/document/d/1OnqoOqsRcm4k9tdm0TYygMYKvU2Oj191A16Q2f_JNO8/edit?usp=sharing",
+          "i": "flask",
+          "visible": true
+        },
+        {
+          "id": "ld1-2",
+          "t": "OOP Panadura Lab Session",
+          "u": "https://docs.google.com/document/d/1nFtTxuY_mhirZs_4UkBuqRviYNNkT4GIU9tQYxvicB4/edit?usp=sharing",
+          "i": "flask",
+          "visible": true
+        },
+        {
+          "id": "ld1-3",
+          "t": "OOP Galle Notes",
+          "u": "https://docs.google.com/document/d/1W_2behCSIt1ZUgBbHQtH2oWxaZXwXauif0bJOayi_Ww/edit?usp=sharing",
+          "i": "book",
+          "visible": true
+        },
+        {
+          "id": "ld1-4",
+          "t": "OOP Panadura Notes",
+          "u": "https://docs.google.com/document/d/1NmtWVQZAoE_akmkE9UdH3Z_mfscnJKQV9-xqn720zy4/edit?tab=t.0#heading=h.pxxzpzw95adm",
+          "i": "book",
+          "visible": true
+        },
+        {
+          "id": "ld1-5",
+          "t": "OOP Remedial by TDS",
+          "u": "https://docs.google.com/document/d/1kCqCVVamV7extSeQtKQa7KpMF2PmSJZsRB4RyU1yhDk/edit?tab=t.0",
+          "i": "badge",
+          "visible": true
+        },
+        {
+          "id": "ld1-6",
+          "t": "PRF Galle Notes",
+          "u": "https://docs.google.com/document/d/1i7BbykDhweZG6ZoUoQKlqQQpZ8WNXPwRBm1oAc-rLLI/edit?tab=t.0",
+          "i": "doc",
+          "visible": true
+        },
+        {
+          "id": "ld1-7",
+          "t": "PRF Panadura Notes",
+          "u": "https://docs.google.com/document/d/1MSCENziGNURWoKxqGPg4nhGsoBoBMCTcnfK9CjVfk2Y/edit?tab=t.0",
+          "i": "doc",
+          "visible": true
+        },
+        {
+          "id": "ld1-8",
+          "t": "PRF Remedial Galle Session",
+          "u": "https://docs.google.com/document/d/12l5-F5wwLNUGD9apruNLQjKgzRTPWVWpSEFpyNWKtS4/edit?usp=sharing",
+          "i": "badge",
+          "visible": true
+        },
+        {
+          "id": "ld1-9",
+          "t": "PRF Remedial by TDS · Panadura",
+          "u": "https://docs.google.com/document/d/1MSCENziGNURWoKxqGPg4nhGsoBoBMCTcnfK9CjVfk2Y/edit?tab=t.0",
+          "i": "badge",
+          "visible": true
+        },
+        {
+          "id": "ld1-10",
+          "t": "PRF Remedial by TDS",
+          "u": "https://docs.google.com/document/d/1mIeGaqpeMcbrpwMaU2VInS4Ban34ehHZC5tlbMgzCHc/edit?tab=t.0#heading=h.dexkl1gnzmr3",
+          "i": "badge",
+          "visible": true
+        },
+        {
+          "id": "ld1-11",
+          "t": "DBMS Galle Notes",
+          "u": "https://docs.google.com/document/d/1x18T96sGW8WkVTRoltA-fsRPP1xEW6WUgltEGXv2Dj4/edit?usp=sharing",
+          "i": "database",
+          "visible": true
+        },
+        {
+          "id": "ld1-12",
+          "t": "DBMS Panadura Notes",
+          "u": "https://docs.google.com/document/d/1QC_1zmrvMsGxRxok6SZ3E40vweXDYIY-YqgzYNUXvSY/edit?usp=sharing",
+          "i": "database",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "repo1",
+      "kind": "people",
+      "label": "Lecture Repo · SEM 1",
+      "locked": true,
+      "items": [
+        {
+          "id": "p1-1",
+          "n": "Kavindu Akash - DBP",
+          "p": "https://github.com/KavinduAkash",
+          "visible": true,
+          "l": [
+            {
+              "t": "Super Market",
+              "u": "https://github.com/KavinduAkash/supermarket_hdse_76/tree/master"
+            },
+            {
+              "t": "Food City",
+              "u": "https://github.com/KavinduAkash/foodcity-75-76"
+            }
+          ]
+        },
+        {
+          "id": "p1-2",
+          "n": "AMG Repo · Praveena Gunasekara",
+          "p": "https://github.com/slgunasekara/",
+          "visible": true,
+          "l": []
+        }
+      ]
+    },
+    {
+      "id": "sem2",
+      "kind": "grid",
+      "label": "HDSE · SEM 2",
+      "locked": true,
+      "items": [
+        {
+          "id": "s2-1",
+          "t": "Web Technologies (HTML . CSS . JS) Full Note",
+          "u": "https://docs.google.com/document/d/1QCFSmtf_q5uP8zpbTrWNMlCWMH3hpEJJYIZdfvFbv68/edit?tab=t.0",
+          "i": "globe",
+          "visible": true
+        },
+        {
+          "id": "s2-2",
+          "t": "Web VIVA",
+          "u": "https://docs.google.com/document/d/1IA2ZTc9N_nQX1ng3e5iJnT3ilIJKRWIvfIasI4f5_tk/edit?tab=t.0#heading=h.pv54tskdf7am",
+          "i": "badge",
+          "visible": true
+        },
+        {
+          "id": "s2-3",
+          "t": "Software Architecture & Design Pattern",
+          "u": "https://docs.google.com/document/d/1LwWL_iQY0itbzEC3_4bQZeRYQGeet9Wet6Y0o9h-bEw/edit?tab=t.0#heading=h.5fibx0x5tj2a",
+          "i": "layers",
+          "visible": true
+        },
+        {
+          "id": "s2-4",
+          "t": "Layered Architecture Viva / Exam",
+          "u": "https://docs.google.com/document/d/1yxebcslAPE72cSglHzgVpOILlh9TCnXqhwlSet3y55M/edit?tab=t.0#heading=h.rxroluf1e56g",
+          "i": "badge",
+          "visible": true
+        },
+        {
+          "id": "s2-5",
+          "t": "ORM Full Note",
+          "u": "https://docs.google.com/document/d/18SD8c62RO0ZSYnBuxAXw9gGp_JOyE0LIdG3rd5x_o8k/edit?tab=t.0",
+          "i": "link",
+          "visible": true
+        },
+        {
+          "id": "s2-6",
+          "t": "ORM Udaara",
+          "u": "https://docs.google.com/document/d/1b5gMlMEcQL5Au0B4iKuZWW3uwBf_e2A70iv2wm0hf7U/edit?tab=t.0#heading=h.u2bi3vhi37wy",
+          "i": "link",
+          "visible": true
+        },
+        {
+          "id": "s2-7",
+          "t": "ORM Viva / Exam",
+          "u": "https://docs.google.com/document/d/1_XLv5vjykaLcELK_vBcCC044e5jp5DGL73NCN4dxJes/edit?tab=t.0",
+          "i": "badge",
+          "visible": true
+        },
+        {
+          "id": "s2-8",
+          "t": "Network Programming Introduction",
+          "u": "https://docs.google.com/document/d/1xMKXsJyrj3AYJQ6_F5l2TjfJHOhdAm08yQ4Qez58zpA/edit?tab=t.0#heading=h.y7wrvj4cqehu",
+          "i": "network",
+          "visible": true
+        },
+        {
+          "id": "s2-9",
+          "t": "Foundation of Network Documentation",
+          "u": "https://docs.google.com/document/d/1yjx0p7snzk2PC4gZ2ol1OgD2_jvsa_FGq7Bi6ntJloI/edit?tab=t.0#heading=h.s2xifd8ngzwu",
+          "i": "network",
+          "visible": true
+        },
+        {
+          "id": "s2-10",
+          "t": "Computer Network Programming (CNS)",
+          "u": "https://docs.google.com/document/d/1669hdobAdqSgjnkHeQmm5YAwTwyD6JOVY1YYCII_otM/edit?tab=t.0",
+          "i": "network",
+          "visible": true
+        },
+        {
+          "id": "s2-11",
+          "t": "CNS Exam / Viva",
+          "u": "https://docs.google.com/document/d/1iWYOosABYFpOzPSxtRfVnnVBhYxUtrogvhtoIVd5LEs/edit?tab=t.0",
+          "i": "badge",
+          "visible": true
+        },
+        {
+          "id": "s2-12",
+          "t": "CNS Malindu",
+          "u": "https://docs.google.com/document/d/1r_31nBthhibiOssXyQgOzLOIh2GaAfEaxy8wXsZihks/edit?usp=sharing",
+          "i": "network",
+          "visible": true
+        },
+        {
+          "id": "s2-13",
+          "t": "Advance API Developments (AAD) Full Note",
+          "u": "https://docs.google.com/document/d/1NUQ-IZdf0YDnTDQqAyTyQupQBxE6n0bNmVNF6rFrh64/edit?tab=t.0",
+          "i": "plug",
+          "visible": true
+        },
+        {
+          "id": "s2-14",
+          "t": "Advance API Developments (AAD) Viva / Exam",
+          "u": "https://docs.google.com/document/d/1AJtM4EfmgvUKXUHJ_sZgjnekWxcPMqWFzJXF9QMDVHM/edit?tab=t.0",
+          "i": "badge",
+          "visible": true
+        },
+        {
+          "id": "s2-15",
+          "t": "Advance API Developments (AAD) TDS Note",
+          "u": "https://docs.google.com/document/d/1z_s5e6O3BDu9rS3AAkZHK5t0ms2mjByb-fXsJmbnXgs/edit?tab=t.0",
+          "i": "doc",
+          "visible": true
+        },
+        {
+          "id": "s2-16",
+          "t": "Spring Boot Full Note",
+          "u": "https://docs.google.com/document/d/1fdShxkISKhISkUNqAH9XNvc1SWSsqAF7LK_pXryl8lo/edit?tab=t.0#heading=h.5r67fq2iyupq",
+          "i": "leaf",
+          "visible": true
+        },
+        {
+          "id": "s2-17",
+          "t": "Spring Boot Exam / Viva",
+          "u": "https://docs.google.com/document/d/1fdShxkISKhISkUNqAH9XNvc1SWSsqAF7LK_pXryl8lo/edit?tab=t.0#heading=h.5r67fq2iyupq",
+          "i": "badge",
+          "visible": true
+        },
+        {
+          "id": "s2-18",
+          "t": "MERN Stack Full Note",
+          "u": "https://docs.google.com/document/d/1ddz41P9v5Qyb4Lqt5a_-NFnLNIDrxlegD32lLTXrO2E/edit?tab=t.0",
+          "i": "stack",
+          "visible": true
+        },
+        {
+          "id": "s2-19",
+          "t": "Professional English",
+          "u": "https://docs.google.com/document/d/1dIXMvkzJrUeyb-HIRn0g4LMWyqQvn-tgxZXOcTfc9nU/edit?tab=t.0",
+          "i": "book",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "repo2",
+      "kind": "people",
+      "label": "Lecture Repo · SEM 2",
+      "locked": true,
+      "items": [
+        {
+          "id": "p2-1",
+          "n": "Udaara San - Architecture 1 / Networking",
+          "p": "https://github.com/udarasan",
+          "visible": true,
+          "l": [
+            {
+              "t": "Layered",
+              "u": "https://github.com/udarasan/LA-PROJECT-75.git"
+            },
+            {
+              "t": "Layered Rules",
+              "u": "https://github.com/udarasan/LA_RULES_76"
+            },
+            {
+              "t": "Networking Intro / Chatapp",
+              "u": "https://github.com/udarasan/chatapp-75"
+            },
+            {
+              "t": "Java-Socket Programming",
+              "u": "https://github.com/udarasan/Java-Scoket-Programming"
+            },
+            {
+              "t": "JavaEE Theory (74)",
+              "u": "https://github.com/udarasan/JavaEE-Theory"
+            },
+            {
+              "t": "JavaEE - GDSE74",
+              "u": "https://github.com/udarasan/JavaEE-GDSE74"
+            },
+            {
+              "t": "Spring Framework 74",
+              "u": "https://github.com/udarasan/SpringFramework74"
+            },
+            {
+              "t": "JavaEE - 71 Batch",
+              "u": "https://github.com/udarasan/GDSE71-JavaEE"
+            },
+            {
+              "t": "JavaEE Final Project (71)",
+              "u": "https://github.com/udarasan/JAVAEE-FINAL-PROJECT-71"
+            },
+            {
+              "t": "Spring Framework 71",
+              "u": "https://github.com/udarasan/Spring-Framework-71"
+            },
+            {
+              "t": "Threads in Java",
+              "u": "https://github.com/udarasan/Threads-In-Java-72"
+            }
+          ]
+        },
+        {
+          "id": "p2-2",
+          "n": "Kavindu Akash - Web",
+          "p": "https://github.com/KavinduAkash",
+          "visible": true,
+          "l": [
+            {
+              "t": "Web",
+              "u": "https://github.com/KavinduAkash/ITS1119-HDSE75"
+            }
+          ]
+        },
+        {
+          "id": "p2-3",
+          "n": "Shamodha - ORM",
+          "p": "https://github.com/shamodhas-ijse-teaching",
+          "visible": true,
+          "l": [
+            {
+              "t": "ORM 1 · 76",
+              "u": "https://github.com/shamodhas-ijse-teaching/orm-day-01-76"
+            },
+            {
+              "t": "ORM 2 · 76",
+              "u": "https://github.com/shamodhas-ijse-teaching/orm-day-03-76"
+            },
+            {
+              "t": "ORM 3 · 76 (End Code)",
+              "u": "https://github.com/shamodhas-ijse-teaching/orm-end-76"
+            },
+            {
+              "t": "ORM 1 · 75",
+              "u": "https://github.com/shamodhas-ijse-teaching/orm-day-01-75"
+            },
+            {
+              "t": "ORM 2 · 75",
+              "u": "https://github.com/shamodhas-ijse-teaching/orm-day-02-75"
+            },
+            {
+              "t": "ORM 3 · 75",
+              "u": "https://github.com/shamodhas-ijse-teaching/orm-day-03-75"
+            }
+          ]
+        },
+        {
+          "id": "p2-4",
+          "n": "Yasiru - AAD",
+          "p": "https://github.com/Ryasiru/",
+          "visible": true,
+          "l": [
+            {
+              "t": "AAD Day 03 · 75",
+              "u": "https://github.com/Ryasiru/AAD_75"
+            },
+            {
+              "t": "AAD Day 03 · 76",
+              "u": "https://github.com/Ryasiru/AAD_76"
+            },
+            {
+              "t": "AAD Day 04 Task-1 · 76",
+              "u": "https://github.com/Ryasiru/AAD-76-Task-01"
+            },
+            {
+              "t": "AAD Day 05 Task-2 · 76",
+              "u": "https://github.com/Ryasiru/AAD-76-Task-02"
+            },
+            {
+              "t": "AAD Day end · 76",
+              "u": "https://github.com/Ryasiru/spring-security.git"
+            }
+          ]
+        },
+        {
+          "id": "p2-5",
+          "n": "Friends Repo · Tharusha",
+          "p": "https://github.com/Tharushadils",
+          "visible": true,
+          "l": [
+            {
+              "t": "AAD",
+              "u": "https://github.com/Tharushadils/AAD_Class_Project/tree/master"
+            }
+          ]
+        },
+        {
+          "id": "p2-6",
+          "n": "AMG Repo · Praveena Gunasekara",
+          "p": "https://github.com/slgunasekara/",
+          "visible": true,
+          "l": [
+            {
+              "t": "AAD Day 1",
+              "u": "https://github.com/slgunasekara/aad_day_1"
+            },
+            {
+              "t": "AAD Day 2",
+              "u": "https://github.com/slgunasekara/aad_day_2"
+            }
+>>>>>>> ea7255b923882d73faf82f54eb6bd049f4a1b018
           ]
         }
       ]
     },
     {
+<<<<<<< HEAD
       "id": "hdse", "label": "HDSE", "locked": true,
       "semesters": [
         {
@@ -197,3 +851,13 @@
     }
   ]
 }
+=======
+      "id": "hdse-sem-3",
+      "kind": "grid",
+      "label": "HDSE.SEM 3",
+      "locked": false,
+      "items": []
+    }
+  ]
+}
+>>>>>>> ea7255b923882d73faf82f54eb6bd049f4a1b018
