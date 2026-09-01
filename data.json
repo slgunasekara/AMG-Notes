@@ -396,7 +396,15 @@
                   "visible": true
                 }
               ],
-              "pdfs": [],
+              "pdfs": [
+                {
+                  "id": "xmtil4drp6m7ed",
+                  "t": "SWE ALL PDF",
+                  "u": "https://drive.google.com/drive/folders/1mYZiT9wOUq4JhYUo8FfkPy4TSlzTvEqe?usp=sharing",
+                  "i": "drive",
+                  "visible": true
+                }
+              ],
               "repos": []
             },
             {
@@ -853,7 +861,7 @@
                 },
                 {
                   "id": "xmt5uszewasm9s",
-                  "t": "RAD (MERN Stack) - malindu full note",
+                  "t": "RAD - malindu full note",
                   "u": "https://docs.google.com/document/d/1NOqFPjSGnHaEfANQvn1xyoIcj0SrMgYUVRE0bDA_9-0/edit?tab=t.0",
                   "i": "link",
                   "visible": true
