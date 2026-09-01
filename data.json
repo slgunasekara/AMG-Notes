@@ -399,7 +399,7 @@
               "pdfs": [
                 {
                   "id": "xmtil4drp6m7ed",
-                  "t": "SWE ALL PDF",
+                  "t": "SWE ALL Documents",
                   "u": "https://drive.google.com/drive/folders/1mYZiT9wOUq4JhYUo8FfkPy4TSlzTvEqe?usp=sharing",
                   "i": "drive",
                   "visible": true
@@ -634,7 +634,15 @@
                   "visible": true
                 }
               ],
-              "pdfs": [],
+              "pdfs": [
+                {
+                  "id": "xmtilb49ipgtfq",
+                  "t": "CNS ALL Documents",
+                  "u": "https://drive.google.com/drive/folders/1eKc6sOjGqp61SmBCHDH42wa-n12Ktsil?usp=sharing",
+                  "i": "drive",
+                  "visible": true
+                }
+              ],
               "repos": [
                 {
                   "id": "per6",
