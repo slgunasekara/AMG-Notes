@@ -883,7 +883,20 @@
                 }
               ],
               "pdfs": [],
-              "repos": []
+              "repos": [
+                {
+                  "id": "xmtmlaqur8rldu",
+                  "n": "Shamoda",
+                  "p": "https://github.com/shamodhas-ijse-teaching/rad-react-2-75",
+                  "visible": true,
+                  "l": [
+                    {
+                      "t": "day 3 - Contex",
+                      "u": "https://github.com/shamodhas-ijse-teaching/rad-react-2-75"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
