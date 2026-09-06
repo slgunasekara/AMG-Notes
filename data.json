@@ -921,6 +921,36 @@
           ]
         }
       ]
+    },
+    {
+      "id": "vibe-coding",
+      "label": "Vibe Coding",
+      "locked": false,
+      "semesters": [
+        {
+          "id": "vibe-coding-claude",
+          "label": "Claude",
+          "locked": false,
+          "modules": [
+            {
+              "id": "vibe-coding-claude-claude-code",
+              "label": "Claude Code",
+              "locked": false,
+              "resources": [
+                {
+                  "id": "xmtq4fkrsu15b9",
+                  "t": "Claude Code Execute JSON",
+                  "u": "https://docs.google.com/document/d/1y7tg9xWvafsdTfULZc1UjjPw9y1HjrPNHTCgTsPvm3U/edit?tab=t.0",
+                  "i": "link",
+                  "visible": true
+                }
+              ],
+              "pdfs": [],
+              "repos": []
+            }
+          ]
+        }
+      ]
     }
   ]
 }
