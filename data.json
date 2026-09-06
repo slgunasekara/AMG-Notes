@@ -689,7 +689,15 @@
                   "visible": true
                 }
               ],
-              "pdfs": [],
+              "pdfs": [
+                {
+                  "id": "xmtq3s7a7kwecg",
+                  "t": "AAD Theory PDF",
+                  "u": "https://drive.google.com/drive/folders/1V2AZv2gcsYTGlgZ1o2CxL_T7GQAhzf7P?usp=sharing",
+                  "i": "drive",
+                  "visible": true
+                }
+              ],
               "repos": [
                 {
                   "id": "per7",
