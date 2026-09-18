@@ -867,7 +867,15 @@
                   "visible": true
                 }
               ],
-              "pdfs": [],
+              "pdfs": [
+                {
+                  "id": "xmu72ilaur6b0g",
+                  "t": "Python Slids + PDF",
+                  "u": "https://drive.google.com/drive/folders/14L00Ajyj2kAwh9mFo2MbajXFu8xMmuBQ?usp=sharing",
+                  "i": "drive",
+                  "visible": true
+                }
+              ],
               "repos": []
             },
             {
