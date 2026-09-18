@@ -952,7 +952,7 @@
               "repos": [
                 {
                   "id": "xmtmlaqur8rldu",
-                  "n": "Shamoda",
+                  "n": "Shamodha",
                   "p": "https://github.com/shamodhas-ijse-teaching/rad-react-2-75",
                   "visible": true,
                   "l": [
@@ -971,6 +971,18 @@
                     {
                       "t": "day 3 - React Routing",
                       "u": "https://github.com/shamodhas-ijse-teaching/react-routing-75"
+                    }
+                  ]
+                },
+                {
+                  "id": "xmu73f9ee4dmi7",
+                  "n": "Shamodha",
+                  "p": "https://github.com/shamodhas-ijse-teaching",
+                  "visible": true,
+                  "l": [
+                    {
+                      "t": "day 5 - RAD backend 2",
+                      "u": "https://github.com/shamodhas-ijse-teaching/rad-be-2-75"
                     }
                   ]
                 }
