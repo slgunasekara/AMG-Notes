@@ -905,7 +905,43 @@
                   "visible": true
                 }
               ],
-              "pdfs": [],
+              "pdfs": [
+                {
+                  "id": "xmu72qgwly0zu3",
+                  "t": "RAD day - 1",
+                  "u": "https://app.notion.com/p/RAD-Day-1-75-3c332568c7b780bd896cf1e0073570ba?source=copy_link",
+                  "i": "drive",
+                  "visible": true
+                },
+                {
+                  "id": "xmu72s006hiket",
+                  "t": "RAD day - 2",
+                  "u": "https://app.notion.com/p/RAD-Day-2-75-76-3ca32568c7b780fcbd7eecae2cd3199a?source=copy_link",
+                  "i": "drive",
+                  "visible": true
+                },
+                {
+                  "id": "xmu72spy75buzn",
+                  "t": "RAD day - 3",
+                  "u": "https://app.notion.com/p/RAD-Day-3-75-3d032568c7b780939c17f45059c0e637?source=copy_link",
+                  "i": "drive",
+                  "visible": true
+                },
+                {
+                  "id": "xmu72t43p3qlku",
+                  "t": "RAD day - 4",
+                  "u": "https://app.notion.com/p/RAD-Day-04-75-3d232568c7b7801e9b8ff70567f31de7?source=copy_link",
+                  "i": "drive",
+                  "visible": true
+                },
+                {
+                  "id": "xmu72tg5pzqgr1",
+                  "t": "RAD day - 5",
+                  "u": "https://app.notion.com/p/RAD-Day-05-75-3df32568c7b780febb92fc7b5451097f?source=copy_link",
+                  "i": "drive",
+                  "visible": true
+                }
+              ],
               "repos": [
                 {
                   "id": "xmtmlaqur8rldu",
