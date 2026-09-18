@@ -940,6 +940,13 @@
                   "u": "https://app.notion.com/p/RAD-Day-05-75-3df32568c7b780febb92fc7b5451097f?source=copy_link",
                   "i": "drive",
                   "visible": true
+                },
+                {
+                  "id": "xmu72zxoesiyhq",
+                  "t": "RAD Coursework PDF",
+                  "u": "https://drive.google.com/drive/folders/1NjxFVWLXhvU9FcXiqDc0bvM65YojONYl?usp=sharing",
+                  "i": "drive",
+                  "visible": true
                 }
               ],
               "repos": [
@@ -962,7 +969,7 @@
                   "visible": true,
                   "l": [
                     {
-                      "t": "React Routing",
+                      "t": "day 3 - React Routing",
                       "u": "https://github.com/shamodhas-ijse-teaching/react-routing-75"
                     }
                   ]
