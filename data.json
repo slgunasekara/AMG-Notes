@@ -947,6 +947,13 @@
                   "u": "https://drive.google.com/drive/folders/1NjxFVWLXhvU9FcXiqDc0bvM65YojONYl?usp=sharing",
                   "i": "drive",
                   "visible": true
+                },
+                {
+                  "id": "xmuvbvdfel2wji",
+                  "t": "RAD day - 6",
+                  "u": "https://app.notion.com/p/RAD-Day-06-75-3ed32568c7b780248c9cc1e476d003fd",
+                  "i": "drive",
+                  "visible": true
                 }
               ],
               "repos": [
