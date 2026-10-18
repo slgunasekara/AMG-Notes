@@ -74,14 +74,16 @@ function renderTools(){
       <span class="tbadge" style="background:linear-gradient(135deg,${c1},${c2})">${svg(t.i)}</span>${t.t}
     </a>`;
     }).join('');
+    if(window.AMGFX) window.AMGFX.refresh();
 }
 
 /* =========================================================
    CONTENT (data-driven: site title/subtitle + all modules)
    Source of truth priority when the page loads:
-     1) an unpublished draft saved in this browser (localStorage)
-     2) data.json fetched from this site (what's actually published on GitHub)
-     3) the built-in DEFAULT_CONTENT below, as a last-resort fallback
+     1) data.json fetched fresh from this site (what's published on GitHub) — EVERYONE sees this
+     2) OWNER ONLY: an unpublished draft saved in this browser (localStorage), while signed in
+     3) the built-in DEFAULT_CONTENT below (a full copy of data.json), only if data.json can't be fetched
+        (e.g. the page was opened straight from disk with file://)
    ========================================================= */
 const CONTENT_KEY = 'amg_content_draft_v2';
 const GH_CONFIG_KEY = 'amg_gh_config_v1';
@@ -486,7 +488,15 @@ const DEFAULT_CONTENT = {
                   "visible": true
                 }
               ],
-              "pdfs": [],
+              "pdfs": [
+                {
+                  "id": "xmtil4drp6m7ed",
+                  "t": "SWE ALL Documents",
+                  "u": "https://drive.google.com/drive/folders/1mYZiT9wOUq4JhYUo8FfkPy4TSlzTvEqe?usp=sharing",
+                  "i": "drive",
+                  "visible": true
+                }
+              ],
               "repos": []
             },
             {
@@ -526,22 +536,6 @@ const DEFAULT_CONTENT = {
                       "u": "https://github.com/KavinduAkash/foodcity-75-76"
                     }
                   ]
-                }
-              ]
-            },
-            {
-              "id": "hdse-s1-general",
-              "label": "General / Misc",
-              "locked": false,
-              "resources": [],
-              "pdfs": [],
-              "repos": [
-                {
-                  "id": "per2",
-                  "n": "AMG Repo · Praveena Gunasekara",
-                  "p": "https://github.com/slgunasekara/",
-                  "visible": true,
-                  "l": []
                 }
               ]
             }
@@ -732,7 +726,15 @@ const DEFAULT_CONTENT = {
                   "visible": true
                 }
               ],
-              "pdfs": [],
+              "pdfs": [
+                {
+                  "id": "xmtilb49ipgtfq",
+                  "t": "CNS ALL Documents",
+                  "u": "https://drive.google.com/drive/folders/1eKc6sOjGqp61SmBCHDH42wa-n12Ktsil?usp=sharing",
+                  "i": "drive",
+                  "visible": true
+                }
+              ],
               "repos": [
                 {
                   "id": "per6",
@@ -777,9 +779,24 @@ const DEFAULT_CONTENT = {
                   "u": "https://docs.google.com/document/d/1z_s5e6O3BDu9rS3AAkZHK5t0ms2mjByb-fXsJmbnXgs/edit?tab=t.0",
                   "i": "doc",
                   "visible": true
+                },
+                {
+                  "id": "xmtzoacx3flxzq",
+                  "t": "AAD Project Analysis For Viva",
+                  "u": "https://docs.google.com/document/d/110EkJ3MeTV_SOdT6Ytwz4HigE2tGCAbd6mZQkC1kD0w/edit?tab=t.0#heading=h.k6wxinmowbg7",
+                  "i": "link",
+                  "visible": true
                 }
               ],
-              "pdfs": [],
+              "pdfs": [
+                {
+                  "id": "xmtq3s7a7kwecg",
+                  "t": "AAD Theory PDF",
+                  "u": "https://drive.google.com/drive/folders/1V2AZv2gcsYTGlgZ1o2CxL_T7GQAhzf7P?usp=sharing",
+                  "i": "drive",
+                  "visible": true
+                }
+              ],
               "repos": [
                 {
                   "id": "per7",
@@ -900,22 +917,6 @@ const DEFAULT_CONTENT = {
               ]
             },
             {
-              "id": "hdse-s2-mern",
-              "label": "MERN Stack",
-              "locked": false,
-              "resources": [
-                {
-                  "id": "m1",
-                  "t": "MERN Stack Full Note",
-                  "u": "https://docs.google.com/document/d/1ddz41P9v5Qyb4Lqt5a_-NFnLNIDrxlegD32lLTXrO2E/edit?tab=t.0",
-                  "i": "stack",
-                  "visible": true
-                }
-              ],
-              "pdfs": [],
-              "repos": []
-            },
-            {
               "id": "hdse-s2-english",
               "label": "Professional English",
               "locked": false,
@@ -932,23 +933,241 @@ const DEFAULT_CONTENT = {
               "repos": []
             }
           ]
+        },
+        {
+          "id": "hdse-semester-3",
+          "label": "Semester 3",
+          "locked": false,
+          "modules": [
+            {
+              "id": "hdse-semester-3-python",
+              "label": "Python",
+              "locked": false,
+              "resources": [
+                {
+                  "id": "xmt5fnz7z98b1y",
+                  "t": "Python for AI",
+                  "u": "https://docs.google.com/document/d/19BQ-4E6pGKQ5sJLoDA7NO-MRSEdfqyV3vUucDBCRdaI/edit?tab=t.0",
+                  "i": "link",
+                  "visible": true
+                },
+                {
+                  "id": "xmt5us5o0biqfo",
+                  "t": "Python malindu note",
+                  "u": "https://docs.google.com/document/d/1Om6hA3BQmp3vJCREMdWzCO_b3pyNjcEwxzbsbMhQ5wU/edit?tab=t.0",
+                  "i": "link",
+                  "visible": true
+                }
+              ],
+              "pdfs": [
+                {
+                  "id": "xmu72ilaur6b0g",
+                  "t": "Python Slids + PDF",
+                  "u": "https://drive.google.com/drive/folders/14L00Ajyj2kAwh9mFo2MbajXFu8xMmuBQ?usp=sharing",
+                  "i": "drive",
+                  "visible": true
+                }
+              ],
+              "repos": []
+            },
+            {
+              "id": "hdse-semester-3-rad",
+              "label": "RAD (MERN Stack)",
+              "locked": false,
+              "resources": [
+                {
+                  "id": "xmt5fnlk0t60px",
+                  "t": "RAD (MERN Stack) Full Note",
+                  "u": "https://docs.google.com/document/d/10-Gh8w5-D4mknr9kcnFrSSgwNv-I5YEuljQ0C8JW4fU/edit?tab=t.0#heading=h.u72mezl5t3tl",
+                  "i": "link",
+                  "visible": true
+                },
+                {
+                  "id": "xmt5uszewasm9s",
+                  "t": "RAD - malindu full note",
+                  "u": "https://docs.google.com/document/d/1NOqFPjSGnHaEfANQvn1xyoIcj0SrMgYUVRE0bDA_9-0/edit?tab=t.0",
+                  "i": "link",
+                  "visible": true
+                },
+                {
+                  "id": "xmt5zieygebokd",
+                  "t": "MERN Stack Full Note",
+                  "u": "https://docs.google.com/document/d/1ddz41P9v5Qyb4Lqt5a_-NFnLNIDrxlegD32lLTXrO2E/edit?tab=t.0",
+                  "i": "link",
+                  "visible": true
+                }
+              ],
+              "pdfs": [
+                {
+                  "id": "xmu72qgwly0zu3",
+                  "t": "RAD day - 1",
+                  "u": "https://app.notion.com/p/RAD-Day-1-75-3c332568c7b780bd896cf1e0073570ba?source=copy_link",
+                  "i": "drive",
+                  "visible": true
+                },
+                {
+                  "id": "xmu72s006hiket",
+                  "t": "RAD day - 2",
+                  "u": "https://app.notion.com/p/RAD-Day-2-75-76-3ca32568c7b780fcbd7eecae2cd3199a?source=copy_link",
+                  "i": "drive",
+                  "visible": true
+                },
+                {
+                  "id": "xmu72spy75buzn",
+                  "t": "RAD day - 3",
+                  "u": "https://app.notion.com/p/RAD-Day-3-75-3d032568c7b780939c17f45059c0e637?source=copy_link",
+                  "i": "drive",
+                  "visible": true
+                },
+                {
+                  "id": "xmu72t43p3qlku",
+                  "t": "RAD day - 4",
+                  "u": "https://app.notion.com/p/RAD-Day-04-75-3d232568c7b7801e9b8ff70567f31de7?source=copy_link",
+                  "i": "drive",
+                  "visible": true
+                },
+                {
+                  "id": "xmu72tg5pzqgr1",
+                  "t": "RAD day - 5",
+                  "u": "https://app.notion.com/p/RAD-Day-05-75-3df32568c7b780febb92fc7b5451097f?source=copy_link",
+                  "i": "drive",
+                  "visible": true
+                },
+                {
+                  "id": "xmu72zxoesiyhq",
+                  "t": "RAD Coursework PDF",
+                  "u": "https://drive.google.com/drive/folders/1NjxFVWLXhvU9FcXiqDc0bvM65YojONYl?usp=sharing",
+                  "i": "drive",
+                  "visible": true
+                },
+                {
+                  "id": "xmuvbvdfel2wji",
+                  "t": "RAD day - 6",
+                  "u": "https://app.notion.com/p/RAD-Day-06-75-3ed32568c7b780248c9cc1e476d003fd",
+                  "i": "drive",
+                  "visible": true
+                }
+              ],
+              "repos": [
+                {
+                  "id": "xmtmlaqur8rldu",
+                  "n": "Shamodha",
+                  "p": "https://github.com/shamodhas-ijse-teaching/rad-react-2-75",
+                  "visible": true,
+                  "l": [
+                    {
+                      "t": "day 3 - Contex",
+                      "u": "https://github.com/shamodhas-ijse-teaching/rad-react-2-75"
+                    }
+                  ]
+                },
+                {
+                  "id": "xmtmqi8r7rxwqh",
+                  "n": "Shamod",
+                  "p": "https://github.com/shamodhas-ijse-teaching/react-routing-75",
+                  "visible": true,
+                  "l": [
+                    {
+                      "t": "day 3 - React Routing",
+                      "u": "https://github.com/shamodhas-ijse-teaching/react-routing-75"
+                    }
+                  ]
+                },
+                {
+                  "id": "xmu73f9ee4dmi7",
+                  "n": "Shamodha",
+                  "p": "https://github.com/shamodhas-ijse-teaching",
+                  "visible": true,
+                  "l": [
+                    {
+                      "t": "day 5 - RAD backend 2",
+                      "u": "https://github.com/shamodhas-ijse-teaching/rad-be-2-75"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vibe-coding",
+      "label": "Vibe Coding",
+      "locked": false,
+      "semesters": [
+        {
+          "id": "vibe-coding-claude",
+          "label": "Claude",
+          "locked": false,
+          "modules": [
+            {
+              "id": "vibe-coding-claude-claude-code",
+              "label": "Claude Code",
+              "locked": false,
+              "resources": [
+                {
+                  "id": "xmtq4fkrsu15b9",
+                  "t": "Claude Code Execute JSON",
+                  "u": "https://docs.google.com/document/d/1y7tg9xWvafsdTfULZc1UjjPw9y1HjrPNHTCgTsPvm3U/edit?tab=t.0",
+                  "i": "link",
+                  "visible": true
+                }
+              ],
+              "pdfs": [],
+              "repos": []
+            }
+          ]
         }
       ]
     }
   ]
 };
 
-async function loadContent(){
-    const draft = localStorage.getItem(CONTENT_KEY);
-    if(draft){
-        try{ CONTENT = JSON.parse(draft); return 'draft'; }catch(e){}
-    }
+let PUBLISHED_CONTENT = null;   // what data.json (or the built-in copy) contains
+let CONTENT_SOURCE = 'default'; // 'published' | 'default' | 'draft'
+let CONTENT_FOR_OWNER = null;   // which kind of visitor CONTENT was prepared for
+const cloneJSON = o => JSON.parse(JSON.stringify(o));
+function sessionIsOwner(){ const s = getSession(); return !!(s && s.role === 'owner'); }
+
+async function fetchPublished(){
+    // unique query string = skips browser AND CDN caches, so a freshly pushed data.json shows up at once
     try{
-        const res = await fetch('data.json', {cache:'no-store'});
-        if(res.ok){ CONTENT = await res.json(); return 'published'; }
+        const res = await fetch('data.json?v=' + Date.now(), {cache:'no-store'});
+        if(res.ok){
+            const j = await res.json();
+            if(j && Array.isArray(j.courses)) return j;
+        }
     }catch(e){}
-    CONTENT = JSON.parse(JSON.stringify(DEFAULT_CONTENT));
-    return 'default';
+    return null;
+}
+function contentForCurrentUser(){
+    // A browser-local draft only ever applies to the signed-in owner. Visitors always see data.json.
+    if(sessionIsOwner()){
+        const draft = localStorage.getItem(CONTENT_KEY);
+        if(draft){
+            try{ CONTENT_SOURCE = 'draft'; return JSON.parse(draft); }catch(e){}
+        }
+    }
+    CONTENT_SOURCE = PUBLISHED_CONTENT === DEFAULT_CONTENT_REF ? 'default' : 'published';
+    return cloneJSON(PUBLISHED_CONTENT);
+}
+let DEFAULT_CONTENT_REF = null;
+async function loadContent(){
+    const published = await fetchPublished();
+    if(published){ PUBLISHED_CONTENT = published; }
+    else { DEFAULT_CONTENT_REF = cloneJSON(DEFAULT_CONTENT); PUBLISHED_CONTENT = DEFAULT_CONTENT_REF; }
+    CONTENT = contentForCurrentUser();
+    CONTENT_FOR_OWNER = sessionIsOwner();
+    return CONTENT_SOURCE;
+}
+// Called when someone signs in / out so the right content (draft vs published) is on screen.
+function syncContentToSession(){
+    const isOwner = sessionIsOwner();
+    if(isOwner === CONTENT_FOR_OWNER || !PUBLISHED_CONTENT) return;
+    CONTENT_FOR_OWNER = isOwner;
+    CONTENT = contentForCurrentUser();
+    renderModules();
 }
 function saveDraft(){ localStorage.setItem(CONTENT_KEY, JSON.stringify(CONTENT)); }
 
@@ -1081,6 +1300,7 @@ function renderModules(){
 
     applyTextSettings();
     rebuildSpyTargets();
+    if(window.AMGFX) window.AMGFX.refresh();
 }
 
 /* ---------------- Course dropdown + nested semester/module nav (event delegation) ----------------
@@ -1190,18 +1410,6 @@ function getOwnerUser(){
 function getOwnerHash(){
     return (CONTENT && CONTENT.settings && CONTENT.settings.ownerHash) || OWNER_HASH_DEFAULT;
 }
-// Same idea for the shared "site gate" login (the one every visitor sees
-// first) — default is amg / amg123, but the owner can change it from the
-// Security tab. The active values live in CONTENT.settings.gateUser /
-// CONTENT.settings.gateHash; only the password's hash is ever stored.
-const GATE_USER_DEFAULT = 'amg';
-const GATE_HASH_DEFAULT = '05a8afabf2874eee03d2cf440153f5f267987f0387c153cf5b1b302357909336'; // sha256('amg123')
-function getGateUser(){
-    return ((CONTENT && CONTENT.settings && CONTENT.settings.gateUser) || GATE_USER_DEFAULT).toLowerCase();
-}
-function getGateHash(){
-    return (CONTENT && CONTENT.settings && CONTENT.settings.gateHash) || GATE_HASH_DEFAULT;
-}
 
 function sha256(ascii){
     function rightRotate(v,a){ return (v>>>a) | (v<<(32-a)); }
@@ -1266,7 +1474,7 @@ function sha256(ascii){
 }
 
 // Persistent ("Remember me") logins auto-expire after 6 hours — after that,
-// the site gate shows again even if nothing was ever explicitly logged out.
+// the owner has to sign in again even if nothing was ever explicitly logged out.
 const SESSION_MAX_AGE_MS = 6 * 60 * 60 * 1000;
 
 function getSession(){
@@ -1274,6 +1482,8 @@ function getSession(){
         const raw = localStorage.getItem(SESSION_KEY) || sessionStorage.getItem(SESSION_KEY) || 'null';
         const s = JSON.parse(raw);
         if(!s) return null;
+        // Old "guest" sessions from the removed shared login are no longer valid.
+        if(s.role !== 'owner'){ clearSession(); return null; }
         if(s.ts && (Date.now() - s.ts) > SESSION_MAX_AGE_MS){
             clearSession();
             return null;
@@ -1302,74 +1512,15 @@ function clearSession(){
 }
 
 /* =========================================================
-   SITE GATE — one shared login (default amg / amg123, changeable
-   from the Owner Panel's Security tab) every visitor must pass
-   before the site is shown; the owner's own username/password
-   also works here and unlocks Owner Panel in the same step.
+   LOGIN — the site is open to everyone (no shared gate login).
+   Only the owner signs in, via the "Owner Login" button, to unlock
+   the Owner Panel. Logging out simply clears that owner session.
    ========================================================= */
-
-function greetingText(){
-    const h = new Date().getHours();
-    if(h >= 5 && h < 12) return 'Good Morning!';
-    if(h >= 12 && h < 17) return 'Good Afternoon!';
-    if(h >= 17 && h < 21) return 'Good Evening!';
-    return 'Good Night!';
-}
-function paintGreeting(){
-    const el = document.getElementById('gateGreeting');
-    if(el) el.textContent = greetingText();
-}
-function unlockSite(){
-    document.body.classList.remove('site-locked');
-    document.getElementById('siteGate').classList.add('gate-done');
-    enterSite();
-}
-function lockSite(){
+function logoutOwner(){
     clearSession();
-    document.getElementById('gateForm').reset();
-    document.getElementById('gateRemember').checked = false;
-    document.getElementById('gateError').classList.remove('show');
-    paintGreeting();
-    document.getElementById('siteGate').classList.remove('gate-done');
-    document.body.classList.add('site-locked');
     showSiteView();
     enterSite();
 }
-document.getElementById('gatePwToggle').addEventListener('click', ()=>{
-    const inp = document.getElementById('gatePass');
-    const btn = document.getElementById('gatePwToggle');
-    const showing = inp.type === 'text';
-    inp.type = showing ? 'password' : 'text';
-    btn.querySelector('.ic-eye').style.display = showing ? '' : 'none';
-    btn.querySelector('.ic-eye-off').style.display = showing ? 'none' : '';
-});
-document.getElementById('gateForm').addEventListener('submit', async (e)=>{
-    e.preventDefault();
-    const u = document.getElementById('gateUser').value.trim();
-    const p = document.getElementById('gatePass').value;
-    const errBox = document.getElementById('gateError');
-    errBox.classList.remove('show');
-    if(!u || !p){
-        errBox.textContent = 'Please enter both a username and password.';
-        errBox.classList.add('show');
-        return;
-    }
-    const remember = document.getElementById('gateRemember').checked;
-    let role = null;
-    const hash = await sha256(p);
-    if(u.toLowerCase() === getGateUser() && hash === getGateHash()){
-        role = 'guest';
-    } else if(u.toLowerCase() === getOwnerUser() && hash === getOwnerHash()){
-        role = 'owner';
-    }
-    if(!role){
-        errBox.textContent = 'Incorrect username or password.';
-        errBox.classList.add('show');
-        return;
-    }
-    setSession({ user: u, role }, remember);
-    unlockSite();
-});
 
 function openLoginModal(){
     document.getElementById('loginError').classList.remove('show');
@@ -1408,6 +1559,7 @@ async function handleLogin(e){
 // only ever unlocks the Owner Panel for the site owner; nothing else
 // in the app is restricted, so there is no separate "guest" role.
 function enterSite(){
+    syncContentToSession();
     const session = getSession();
     const isOwner = !!(session && session.role === 'owner');
     const isLoggedIn = !!session;
@@ -1427,7 +1579,7 @@ document.getElementById('loginCloseBtn').addEventListener('click', closeLoginMod
 document.getElementById('loginScreen').addEventListener('click', (e)=>{
     if(e.target.id === 'loginScreen') closeLoginModal();
 });
-document.getElementById('logoutBtn').addEventListener('click', lockSite);
+document.getElementById('logoutBtn').addEventListener('click', logoutOwner);
 
 /* ---------------- View switching ---------------- */
 function showSiteView(){
@@ -1436,6 +1588,7 @@ function showSiteView(){
     document.querySelector('nav.jumpnav').style.display = '';
     document.querySelector('footer').style.display = '';
     document.getElementById('adminView').classList.remove('show');
+    document.body.classList.remove('admin-open');
 }
 function showAdminView(){
     document.getElementById('content').style.display = 'none';
@@ -1443,6 +1596,7 @@ function showAdminView(){
     document.querySelector('nav.jumpnav').style.display = 'none';
     document.querySelector('footer').style.display = 'none';
     document.getElementById('adminView').classList.add('show');
+    document.body.classList.add('admin-open');
     window.scrollTo({top:0});
     renderAdminPanel();
 }
@@ -1549,7 +1703,7 @@ function renderAdminPanel(){
     const totalModules = CONTENT.courses.reduce((n,c)=>n+(c.semesters||[]).reduce((n2,s)=>n2+(s.modules||[]).length,0),0);
     const totalRes = CONTENT.courses.reduce((n,c)=>n+(c.semesters||[]).reduce((n2,s)=>n2+(s.modules||[]).reduce((n3,m)=>n3+(m.resources||[]).length+(m.pdfs||[]).length,0),0),0);
     document.getElementById('statusSummary').textContent =
-        `${CONTENT.courses.length} courses · ${totalModules} modules · ${totalRes} resource/PDF items · site title "${CONTENT.settings.siteTitle}".`;
+        `${CONTENT.courses.length} courses · ${totalModules} modules · ${totalRes} resource/PDF items · site title "${CONTENT.settings.siteTitle}". Showing: ${CONTENT_SOURCE === 'draft' ? 'your unpublished draft from this browser' : CONTENT_SOURCE === 'default' ? 'built-in copy (data.json could not be loaded)' : 'published data.json'}.`;
 
     refreshAddCascade();
     fillCourseSelect(document.getElementById('newSemCourseSelect'));
@@ -1873,7 +2027,7 @@ document.getElementById('saveTextBtn').addEventListener('click', ()=>{
 
 /* ---------------- Security tab (change owner username/password) ---------------- */
 function resetSecurityTab(){
-    ['secCurrentPass','secNewUser','secNewPass','secConfirmPass','gateNewUser','gateNewPass','gateConfirmPass'].forEach(id=>{
+    ['secCurrentPass','secNewUser','secNewPass','secConfirmPass'].forEach(id=>{
         document.getElementById(id).value = '';
     });
 }
@@ -1920,33 +2074,6 @@ document.getElementById('secUpdateBtn').addEventListener('click', async ()=>{
 
     resetSecurityTab();
     flashHTML('secMsg','Credentials updated in this browser. Go to '+inlineIcon('catface',13)+'GitHub Sync → Publish to make the new login live for everyone.', true);
-});
-
-document.getElementById('gateUpdateBtn').addEventListener('click', async ()=>{
-    const newUser = document.getElementById('gateNewUser').value.trim();
-    const newPass = document.getElementById('gateNewPass').value;
-    const confirmPass = document.getElementById('gateConfirmPass').value;
-
-    if(!newUser && !newPass){
-        flash('gateMsg','Enter a new shared username and/or a new shared password.', false);
-        return;
-    }
-    if(newPass && newPass.length < 4){
-        flash('gateMsg','New password should be at least 4 characters.', false);
-        return;
-    }
-    if(newPass && newPass !== confirmPass){
-        flash('gateMsg','New password and confirmation do not match.', false);
-        return;
-    }
-
-    CONTENT.settings = CONTENT.settings || {};
-    CONTENT.settings.gateUser = (newUser || getGateUser()).toLowerCase();
-    CONTENT.settings.gateHash = newPass ? await sha256(newPass) : getGateHash();
-    saveDraft();
-
-    resetSecurityTab();
-    flashHTML('gateMsg','Shared login updated in this browser. Go to '+inlineIcon('catface',13)+'GitHub Sync → Publish to make it live for everyone.', true);
 });
 
 /* =========================================================
@@ -2120,7 +2247,7 @@ const CREATOR_REPLY = `This notes hub was built by <b>Praveena Gunasekara</b>.<b
 
 const CHAT_RULES = [
     { k:['who made','who created','who built','who is the creator','who is the developer','creator','developer','who is created','owner of this site','who is the owner','admin of this site'], r: CREATOR_REPLY },
-    { k:['login','log in','sign in','password','how do i login','how do i log in'], r:'You don\'t need to log in at all to browse the notes — everything here is open. The "🔒 Owner Login" button at the top-right is only for the site owner, to unlock the Owner Panel for editing the page.' },
+    { k:['login','log in','sign in','password','how do i login','how do i log in'], r:'You don\'t need to log in at all to browse the notes — everything here is open. The 🔒 Owner Login button (top-right on desktop, round lock button at the bottom-right on phones) is only for the site owner, to unlock the Owner Panel for editing the page.' },
     { k:['find notes','how do i find','search','notes'], r:'Use the search bar at the top, or jump to a section from the nav bar — every module (CAME, SEM 1, SEM 2, Lecture Docs, repos, and any custom sections the owner has added) has its own pill.' },
     { k:['semester 3','sem 3','semester 4','sem 4','semester 5','sem 5','other course','other courses'], r:'If the owner has published a Semester 3/4/5 or Other Courses section, you\'ll see it in the top nav bar automatically.' },
     { k:['owner panel','customize','admin panel'], r:'Only the owner account can open the Owner Panel — from there they can add resources, publish/hide/rename cards, create new modules, edit page text, and publish everything to GitHub.' },
@@ -2236,7 +2363,8 @@ toTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'})
 /* Note: this only discourages casual users; it cannot truly prevent
    access to page source or devtools for anyone who knows how to
    disable JS, use browser dev menus, or view-source. */
-document.addEventListener('contextmenu', e => e.preventDefault());
+const isFormField = t => !!(t && t.closest && t.closest('input, textarea, select'));
+document.addEventListener('contextmenu', e => { if(!isFormField(e.target)) e.preventDefault(); });
 document.addEventListener('keydown', e => {
     if (e.key === 'F12') e.preventDefault();
     if (e.ctrlKey && e.shiftKey && ['I','J','C','i','j','c'].includes(e.key)) e.preventDefault();
@@ -2244,21 +2372,12 @@ document.addEventListener('keydown', e => {
     if (e.ctrlKey && (e.key === 's' || e.key === 'S')) e.preventDefault();
 });
 document.addEventListener('selectstart', e => {
-    if (e.target && e.target.id === 'searchBox') return;
+    if (isFormField(e.target)) return;
     e.preventDefault();
 });
 
 /* ---------------- Boot ---------------- */
 (async function boot(){
-    paintGreeting();
-    // Body starts with the "site-locked" class (see index.html), so the gate
-    // is the only thing visible until we know whether there's a valid session.
-    if(getSession()){
-        document.body.classList.remove('site-locked');
-        document.getElementById('siteGate').classList.add('gate-done');
-    } else {
-        setTimeout(()=> document.getElementById('gateUser').focus(), 400);
-    }
     renderTools();
     await loadContent();
     initGhTab();

@@ -396,7 +396,15 @@
                   "visible": true
                 }
               ],
-              "pdfs": [],
+              "pdfs": [
+                {
+                  "id": "xmtil4drp6m7ed",
+                  "t": "SWE ALL Documents",
+                  "u": "https://drive.google.com/drive/folders/1mYZiT9wOUq4JhYUo8FfkPy4TSlzTvEqe?usp=sharing",
+                  "i": "drive",
+                  "visible": true
+                }
+              ],
               "repos": []
             },
             {
@@ -626,7 +634,15 @@
                   "visible": true
                 }
               ],
-              "pdfs": [],
+              "pdfs": [
+                {
+                  "id": "xmtilb49ipgtfq",
+                  "t": "CNS ALL Documents",
+                  "u": "https://drive.google.com/drive/folders/1eKc6sOjGqp61SmBCHDH42wa-n12Ktsil?usp=sharing",
+                  "i": "drive",
+                  "visible": true
+                }
+              ],
               "repos": [
                 {
                   "id": "per6",
@@ -671,9 +687,24 @@
                   "u": "https://docs.google.com/document/d/1z_s5e6O3BDu9rS3AAkZHK5t0ms2mjByb-fXsJmbnXgs/edit?tab=t.0",
                   "i": "doc",
                   "visible": true
+                },
+                {
+                  "id": "xmtzoacx3flxzq",
+                  "t": "AAD Project Analysis For Viva",
+                  "u": "https://docs.google.com/document/d/110EkJ3MeTV_SOdT6Ytwz4HigE2tGCAbd6mZQkC1kD0w/edit?tab=t.0#heading=h.k6wxinmowbg7",
+                  "i": "link",
+                  "visible": true
                 }
               ],
-              "pdfs": [],
+              "pdfs": [
+                {
+                  "id": "xmtq3s7a7kwecg",
+                  "t": "AAD Theory PDF",
+                  "u": "https://drive.google.com/drive/folders/1V2AZv2gcsYTGlgZ1o2CxL_T7GQAhzf7P?usp=sharing",
+                  "i": "drive",
+                  "visible": true
+                }
+              ],
               "repos": [
                 {
                   "id": "per7",
@@ -836,7 +867,15 @@
                   "visible": true
                 }
               ],
-              "pdfs": [],
+              "pdfs": [
+                {
+                  "id": "xmu72ilaur6b0g",
+                  "t": "Python Slids + PDF",
+                  "u": "https://drive.google.com/drive/folders/14L00Ajyj2kAwh9mFo2MbajXFu8xMmuBQ?usp=sharing",
+                  "i": "drive",
+                  "visible": true
+                }
+              ],
               "repos": []
             },
             {
@@ -853,7 +892,7 @@
                 },
                 {
                   "id": "xmt5uszewasm9s",
-                  "t": "RAD (MERN Stack) - malindu full note",
+                  "t": "RAD - malindu full note",
                   "u": "https://docs.google.com/document/d/1NOqFPjSGnHaEfANQvn1xyoIcj0SrMgYUVRE0bDA_9-0/edit?tab=t.0",
                   "i": "link",
                   "visible": true
@@ -862,6 +901,123 @@
                   "id": "xmt5zieygebokd",
                   "t": "MERN Stack Full Note",
                   "u": "https://docs.google.com/document/d/1ddz41P9v5Qyb4Lqt5a_-NFnLNIDrxlegD32lLTXrO2E/edit?tab=t.0",
+                  "i": "link",
+                  "visible": true
+                }
+              ],
+              "pdfs": [
+                {
+                  "id": "xmu72qgwly0zu3",
+                  "t": "RAD day - 1",
+                  "u": "https://app.notion.com/p/RAD-Day-1-75-3c332568c7b780bd896cf1e0073570ba?source=copy_link",
+                  "i": "drive",
+                  "visible": true
+                },
+                {
+                  "id": "xmu72s006hiket",
+                  "t": "RAD day - 2",
+                  "u": "https://app.notion.com/p/RAD-Day-2-75-76-3ca32568c7b780fcbd7eecae2cd3199a?source=copy_link",
+                  "i": "drive",
+                  "visible": true
+                },
+                {
+                  "id": "xmu72spy75buzn",
+                  "t": "RAD day - 3",
+                  "u": "https://app.notion.com/p/RAD-Day-3-75-3d032568c7b780939c17f45059c0e637?source=copy_link",
+                  "i": "drive",
+                  "visible": true
+                },
+                {
+                  "id": "xmu72t43p3qlku",
+                  "t": "RAD day - 4",
+                  "u": "https://app.notion.com/p/RAD-Day-04-75-3d232568c7b7801e9b8ff70567f31de7?source=copy_link",
+                  "i": "drive",
+                  "visible": true
+                },
+                {
+                  "id": "xmu72tg5pzqgr1",
+                  "t": "RAD day - 5",
+                  "u": "https://app.notion.com/p/RAD-Day-05-75-3df32568c7b780febb92fc7b5451097f?source=copy_link",
+                  "i": "drive",
+                  "visible": true
+                },
+                {
+                  "id": "xmu72zxoesiyhq",
+                  "t": "RAD Coursework PDF",
+                  "u": "https://drive.google.com/drive/folders/1NjxFVWLXhvU9FcXiqDc0bvM65YojONYl?usp=sharing",
+                  "i": "drive",
+                  "visible": true
+                },
+                {
+                  "id": "xmuvbvdfel2wji",
+                  "t": "RAD day - 6",
+                  "u": "https://app.notion.com/p/RAD-Day-06-75-3ed32568c7b780248c9cc1e476d003fd",
+                  "i": "drive",
+                  "visible": true
+                }
+              ],
+              "repos": [
+                {
+                  "id": "xmtmlaqur8rldu",
+                  "n": "Shamodha",
+                  "p": "https://github.com/shamodhas-ijse-teaching/rad-react-2-75",
+                  "visible": true,
+                  "l": [
+                    {
+                      "t": "day 3 - Contex",
+                      "u": "https://github.com/shamodhas-ijse-teaching/rad-react-2-75"
+                    }
+                  ]
+                },
+                {
+                  "id": "xmtmqi8r7rxwqh",
+                  "n": "Shamod",
+                  "p": "https://github.com/shamodhas-ijse-teaching/react-routing-75",
+                  "visible": true,
+                  "l": [
+                    {
+                      "t": "day 3 - React Routing",
+                      "u": "https://github.com/shamodhas-ijse-teaching/react-routing-75"
+                    }
+                  ]
+                },
+                {
+                  "id": "xmu73f9ee4dmi7",
+                  "n": "Shamodha",
+                  "p": "https://github.com/shamodhas-ijse-teaching",
+                  "visible": true,
+                  "l": [
+                    {
+                      "t": "day 5 - RAD backend 2",
+                      "u": "https://github.com/shamodhas-ijse-teaching/rad-be-2-75"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vibe-coding",
+      "label": "Vibe Coding",
+      "locked": false,
+      "semesters": [
+        {
+          "id": "vibe-coding-claude",
+          "label": "Claude",
+          "locked": false,
+          "modules": [
+            {
+              "id": "vibe-coding-claude-claude-code",
+              "label": "Claude Code",
+              "locked": false,
+              "resources": [
+                {
+                  "id": "xmtq4fkrsu15b9",
+                  "t": "Claude Code Execute JSON",
+                  "u": "https://docs.google.com/document/d/1y7tg9xWvafsdTfULZc1UjjPw9y1HjrPNHTCgTsPvm3U/edit?tab=t.0",
                   "i": "link",
                   "visible": true
                 }
