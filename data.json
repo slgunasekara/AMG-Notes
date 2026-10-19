@@ -1028,6 +1028,36 @@
           ]
         }
       ]
+    },
+    {
+      "id": "framework-development",
+      "label": "Framework Development",
+      "locked": false,
+      "semesters": [
+        {
+          "id": "framework-development-framework",
+          "label": "Framework",
+          "locked": false,
+          "modules": [
+            {
+              "id": "framework-development-framework-stack-saga",
+              "label": "Stack Saga",
+              "locked": false,
+              "resources": [
+                {
+                  "id": "xmvei9tvjoju0w",
+                  "t": "Stack Saga Full Note",
+                  "u": "https://docs.google.com/document/d/1KR_tLEolWfTqQ_rolkSD4NPRED_4UhGmguyIywsy-z0/edit?tab=t.0",
+                  "i": "link",
+                  "visible": true
+                }
+              ],
+              "pdfs": [],
+              "repos": []
+            }
+          ]
+        }
+      ]
     }
   ]
 }
