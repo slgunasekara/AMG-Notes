@@ -954,18 +954,55 @@
                   "u": "https://app.notion.com/p/RAD-Day-06-75-3ed32568c7b780248c9cc1e476d003fd",
                   "i": "drive",
                   "visible": true
+                },
+                {
+                  "id": "xmvhwx1uc9a0hy",
+                  "t": "RAD day - 7",
+                  "u": "https://app.notion.com/p/RAD-Day-07-75-3f432568c7b7805494f1fe80caff4550?source=copy_link",
+                  "i": "drive",
+                  "visible": true
+                },
+                {
+                  "id": "xmvhx3ovvh6fnv",
+                  "t": "RAD day - 8",
+                  "u": "https://app.notion.com/p/RAD-Day-08-75-3fb32568c7b78076ac55e41a4124d594?source=copy_link",
+                  "i": "drive",
+                  "visible": true
+                },
+                {
+                  "id": "xmvhx5b76qwz8b",
+                  "t": "RAD FULL NOTE",
+                  "u": "https://docs.google.com/document/d/1Ddd9RvVJbrQ61PRd7YFEAoZ2Nc-p6Cgcxr0sHxhGvBM/edit?tab=t.0",
+                  "i": "drive",
+                  "visible": true
                 }
               ],
               "repos": [
                 {
                   "id": "xmtmlaqur8rldu",
                   "n": "Shamodha",
-                  "p": "https://github.com/shamodhas-ijse-teaching/rad-react-2-75",
+                  "p": "https://github.com/shamodhas-ijse-teaching",
                   "visible": true,
                   "l": [
                     {
                       "t": "day 3 - Contex",
                       "u": "https://github.com/shamodhas-ijse-teaching/rad-react-2-75"
+                    },
+                    {
+                      "t": "Day 7 - RAD Article - Frontend",
+                      "u": "https://github.com/shamodhas-ijse-teaching/rad-article-web-75"
+                    },
+                    {
+                      "t": "Day 7 - RAD Article - Backend",
+                      "u": "https://github.com/shamodhas-ijse-teaching/rad-article-api-75"
+                    },
+                    {
+                      "t": "MERN FULL PROJECT - Frontend",
+                      "u": "https://github.com/shamodhas-ijse-teaching/rad-article-web"
+                    },
+                    {
+                      "t": "MERN FULL PROJECT - Backend",
+                      "u": "https://github.com/shamodhas-ijse-teaching/rad-article-api"
                     }
                   ]
                 },
