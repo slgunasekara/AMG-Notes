@@ -1059,6 +1059,22 @@
                   ]
                 }
               ]
+            },
+            {
+              "id": "hdse-semester-3-interview-questions",
+              "label": "Interview Questions",
+              "locked": false,
+              "resources": [
+                {
+                  "id": "xmvlqfe3pvpj1e",
+                  "t": "Interview Questions",
+                  "u": "https://docs.google.com/document/d/1cPKfH5h0wQ6Sk6RO7rOqTBnJDE6KKg2v-9pveCB0i_I/edit?tab=t.0",
+                  "i": "link",
+                  "visible": true
+                }
+              ],
+              "pdfs": [],
+              "repos": []
             }
           ]
         }
