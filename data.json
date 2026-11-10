@@ -56,7 +56,7 @@
   "courses": [
     {
       "id": "came",
-      "label": "CAME Course ( AI / ML Engineering )",
+      "label": "CAME Course ( AI / ML )",
       "locked": true,
       "semesters": [
         {
@@ -1172,7 +1172,7 @@
     },
     {
       "id": "caae-course-agentic-ai-engineering",
-      "label": "CAAE Course ( Agentic AI Engineering )",
+      "label": "CAAE Course ( Agentic AI)",
       "locked": false,
       "semesters": [
         {
