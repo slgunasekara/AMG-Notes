@@ -872,6 +872,13 @@
                   "u": "https://docs.google.com/document/d/1U-M8Fcg7sdes6vM1RC9QiMOAxS_iBrqoDCfcL38kBOA/edit?tab=t.0",
                   "i": "link",
                   "visible": true
+                },
+                {
+                  "id": "xmvph0ayk6g1kg",
+                  "t": "Python Project",
+                  "u": "https://docs.google.com/document/d/1u5iSeh7DQoA1n5nQNjCDgT05EAYioC24XsTJnoiTRGY/edit?tab=t.0",
+                  "i": "link",
+                  "visible": true
                 }
               ],
               "pdfs": [
@@ -1139,6 +1146,12 @@
           ]
         }
       ]
+    },
+    {
+      "id": "caae-course-agentic-ai-engineering",
+      "label": "CAAE Course (Agentic AI Engineering)",
+      "locked": false,
+      "semesters": []
     }
   ]
 }
