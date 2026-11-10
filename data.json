@@ -1082,6 +1082,29 @@
               ],
               "pdfs": [],
               "repos": []
+            },
+            {
+              "id": "hdse-semester-3-amd-advanced-mobile-application",
+              "label": "AMD (Advanced Mobile Application)",
+              "locked": false,
+              "resources": [],
+              "pdfs": [
+                {
+                  "id": "xmwaamfli9n47v",
+                  "t": "Day 1 - AMD Note",
+                  "u": "https://drive.google.com/file/d/1l6PgH7nG-cOPEyL1g_UmMPjnKlMyRtHE/view?usp=sharing",
+                  "i": "drive",
+                  "visible": true
+                },
+                {
+                  "id": "xmwaan79atlbvr",
+                  "t": "Day 2 - AMD Note",
+                  "u": "https://app.notion.com/p/AMD-75-Day-01-40932568c7b780b28c27f14ba9e49ac4?source=copy_link",
+                  "i": "drive",
+                  "visible": true
+                }
+              ],
+              "repos": []
             }
           ]
         }
@@ -1151,7 +1174,71 @@
       "id": "caae-course-agentic-ai-engineering",
       "label": "CAAE Course (Agentic AI Engineering)",
       "locked": false,
-      "semesters": []
+      "semesters": [
+        {
+          "id": "caae-course-agentic-ai-engineering-core-modules",
+          "label": "Core Modules",
+          "locked": false,
+          "modules": [
+            {
+              "id": "caae-course-agentic-ai-engineering-core-modules-syllabus",
+              "label": "syllabus",
+              "locked": false,
+              "resources": [],
+              "pdfs": [
+                {
+                  "id": "xmwaajbprlxs0i",
+                  "t": "CAAE Technical Syllabus",
+                  "u": "https://drive.google.com/file/d/1l6PgH7nG-cOPEyL1g_UmMPjnKlMyRtHE/view?usp=sharing",
+                  "i": "drive",
+                  "visible": true
+                }
+              ],
+              "repos": []
+            },
+            {
+              "id": "caae-course-agentic-ai-engineering-core-modules-al-and-llm-foundations",
+              "label": "Al and LLM Foundations",
+              "locked": false,
+              "resources": [],
+              "pdfs": [],
+              "repos": []
+            },
+            {
+              "id": "caae-course-agentic-ai-engineering-core-modules-generative-al-and-al-assistants",
+              "label": "Generative Al and Al Assistants",
+              "locked": false,
+              "resources": [],
+              "pdfs": [],
+              "repos": []
+            },
+            {
+              "id": "caae-course-agentic-ai-engineering-core-modules-agentic-al-foundations",
+              "label": "Agentic Al Foundations",
+              "locked": false,
+              "resources": [],
+              "pdfs": [],
+              "repos": []
+            },
+            {
+              "id": "caae-course-agentic-ai-engineering-core-modules-single-agent-systems",
+              "label": "Single-Agent Systems",
+              "locked": false,
+              "resources": [],
+              "pdfs": [],
+              "repos": []
+            },
+            {
+              "id": "caae-course-agentic-ai-engineering-core-modules-multi-agent-systems",
+              "label": "Multi-Agent Systems",
+              "locked": false,
+              "resources": [],
+              "pdfs": [],
+              "repos": []
+            }
+          ]
+        }
+      ]
     }
   ]
 }
